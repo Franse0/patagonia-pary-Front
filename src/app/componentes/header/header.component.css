@@ -1,0 +1,115 @@
+/* Estilos del Header */
+header{
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    z-index: 20;
+    width: 100%;
+}
+.header-container{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    padding: 0 2rem;
+    width: 100%;
+} 
+
+/* Estilos del nav */
+nav{
+    background: var(--color2);
+    width: 100%;
+    height: calc(100vh - 60px);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    transform: translate(-100%);
+    z-index: 20;
+    transition:.2s;
+}
+
+.nav-links{
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+} 
+
+.nav-item>a{
+    color: white;
+    font-weight: bold;
+}
+
+.nav-item a:hover{
+    color: var(--color5);
+    transition: .2s;
+}
+
+.fa-bars{
+    font-size: 23px;
+    cursor: pointer;
+    color: var(--color4);
+}
+
+.visible{
+    transform: translateX(0);
+    transition: .2s;
+}
+
+.no-visible{
+    transform: translateX(-100%);
+    transition: .2s;
+}
+
+@media (min-width:600px){
+  nav{
+    position: relative;
+    transform: translate(0);
+    background: none;
+    height: 100%;
+    top: 0;
+    right: 0px;
+    padding: 0;
+    justify-content: end;
+    width: 50%;
+    transition:0;
+  }
+
+  .nav-links{
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 5%;
+    height: 100%;
+  }
+  
+  header{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(150, 150, 150, .6);
+}
+
+.header-container{
+    max-width: 1300px;
+    margin: 0 auto;
+    flex-direction: row;
+    padding:  0 0;
+    align-items: center;
+    padding-left: 2rem;
+  }
+
+  .nav-item a{
+    font-weight: 400;
+    color: white;
+    padding: 1%;
+  }
+
+   #bars-menu{
+    display: none;
+  } 
+}

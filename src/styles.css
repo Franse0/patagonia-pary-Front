@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,500;1,400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+
+:root{
+    --color1 : #000000;
+    --color2 : #252635;
+    --color3 : #565672;
+    --color4 : #8f8eb8;
+    --color5 : #d1ccff;
+}
+
+html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Para quitarle los estilos por defecto a las listas y los links */
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+
+.all-container{
+    margin: 0 auto;
+    max-width: 1300px;
+}

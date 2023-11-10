@@ -1,0 +1,84 @@
+/* Seccion de artistas */
+.artistas{
+    padding: 2rem 2rem;
+}
+
+.img-card-artista{
+    width: 100%;
+}
+
+.card-artista{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.all-artistas{
+    display: grid;
+    /* grid-template-columns: 1fr 1fr;
+    gap: 3%; */
+}
+.card-artista{
+    padding: 1rem 0;
+}
+
+.card-artista-container h3{
+    margin-top: 10px;
+    cursor: pointer;
+}
+.card-artista-container h3:hover{
+    color: var(--color4);
+}
+
+@media (min-width:700px){
+    .all-artistas{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 5%;
+    }
+    
+}
+
+
+
+
+/* Agregado */
+.show-artista{
+    display: none;
+}
+.display-artistas-container__active{
+    display: flex;
+    transition: display .3s;
+}
+
+.all-artistas__active{
+    grid-template-columns: 1fr 1fr;
+    width: 50%;
+    transition: grid-template-columns .3s, width .3s
+}
+
+.show-artista__active{
+    display: block;
+    width: 50%;
+    height: 100%;
+    /* background-color: red; */
+    padding: 2rem;
+    transition: .1s;
+}
+
+.informacion-artista {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.informacion-artista_active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.img-artista-display{
+    width: 80%;
+}
