@@ -113,3 +113,16 @@ nav{
     display: none;
   } 
 }
+
+
+
+
+.color3 {
+  background: var(--color3) !important;
+  transition: background 0.3s ease-in-out;
+}
+
+.default-color {  
+  background: rgba(150, 150, 150, 0.6);
+  transition: background 0.2s ease-in-out;
+}

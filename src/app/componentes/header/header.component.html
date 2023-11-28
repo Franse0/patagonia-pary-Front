@@ -1,19 +1,27 @@
     <!-- Header y Nav -->
-    <header id="header">
+      <header id="header" [ngClass]="{'color3': isScrolled, 'default-color': !isScrolled}">
         <div class="header-container">
           <!-- Menu hamburguesa -->
           <div class="logo">
             <img src="/assets/montana.png" alt="" width="100px">
           </div>
-          <i class="fa-solid fa-bars bars" id="bars-menu"></i>
+          <i class="fa-solid fa-bars bars" id="bars-menu" (click)="toogleNav($event)"></i>
   
           <!-- Nav -->
-           <nav class="nav" id="nav">
+            <nav class="nav" id="nav" >
               <ul class="nav-links">
-                <li class="nav-item"><a href="#agenda" class="nav-link">Agenda</a></li>
-                  <li class="nav-item"><a href="#artistas" class="nav-link">Artistas</a></li>
-                  <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
-                  <li class="nav-item"><a href="#galeria" class="nav-link">Musica</a></li>
+                <li class="nav-item">
+                  <a routerLink="/pagina-principal" class="nav-link"(click)="closeNav($event, 'agenda')">Agenda</a>
+                </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link"  (click)="closeNav($event, 'artistas')">Artistas</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link" (click)="closeNav($event, 'blog')">Blog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link" (click)="closeNav($event, 'aside')">Musica</a>
+                  </li>
                   <!-- <li class="nav-item"><a href="" class="nav-link"></a></li> -->
               </ul>
           </nav> 

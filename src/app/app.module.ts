@@ -1,8 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 // cuestiones de funciones
 import { AppRoutingModule } from './app-routing.module';
+
+// MercadoPago
+// import { MercadopagoComponent } from './componentes/mercadopago/mercadopago.component';
+// import { MercadoPagoConfig, Payment } from 'mercadopago';
 
 // Componentes de la pagina principal
 import { AppComponent } from './app.component';
@@ -16,6 +20,11 @@ import { FooterComponent } from './componentes/footer/footer.component';
 import { AsideSpotifyComponent } from './componentes/aside-spotify/aside-spotify.component';
 import { PaginaPrincipalComponent } from './componentes/pagina-principal/pagina-principal.component';
 
+import { HttpClientModule} from "@angular/common/http";
+import { NoticiaComponent } from './componentes/noticias/noticia/noticia.component';
+import { ArtistaComponent } from './componentes/artistas/artista/artista.component';
+
+
 
 @NgModule({
   declarations: [
@@ -28,12 +37,17 @@ import { PaginaPrincipalComponent } from './componentes/pagina-principal/pagina-
     LugaresComponent,
     FooterComponent,
     AsideSpotifyComponent,
-    PaginaPrincipalComponent
+    PaginaPrincipalComponent,
+    NoticiaComponent,
+    ArtistaComponent,
+    // MercadopagoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule
   ],
+  exports:[ ArtistasComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

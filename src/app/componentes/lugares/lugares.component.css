@@ -19,11 +19,12 @@
 
 .div-card-lugar{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 30%;
     width: 100%;
     font-weight:bold ;
 }
+
 
 
 .card-lugar-info-inferior{
@@ -46,7 +47,7 @@
 
 .card-lugar-links{
     width: 50%;
-    align-items: end;
+    align-items: flex-end;
     display: flex;
     height: 100%;
     gap: 5%;
@@ -119,6 +120,10 @@
         width: 100%;
         justify-content: space-between;
         padding: .5rem 0;
+    }
+
+    .card-lugar-info{
+        text-align: center;
     }
 }
 

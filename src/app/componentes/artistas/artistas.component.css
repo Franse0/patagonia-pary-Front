@@ -1,10 +1,12 @@
 /* Seccion de artistas */
 .artistas{
     padding: 2rem 2rem;
+    margin-bottom: 4rem;
 }
 
 .img-card-artista{
     width: 100%;
+    cursor: pointer;
 }
 
 .card-artista{
@@ -17,8 +19,8 @@
 
 .all-artistas{
     display: grid;
-    /* grid-template-columns: 1fr 1fr;
-    gap: 3%; */
+    /* grid-template-columns: 1fr 1fr; */
+    gap: 3%; 
 }
 .card-artista{
     padding: 1rem 0;
@@ -32,11 +34,29 @@
     color: var(--color4);
 }
 
+.show-artista{
+    display: none;
+}
+
+.card-links{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    gap: 7%;
+    background-color: white;
+    width: 100%;
+}
+
 @media (min-width:700px){
     .all-artistas{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 5%;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 2%;
+        height: auto;
+    }
+    .card-artista{
+        padding: 0;
     }
     
 }
@@ -44,27 +64,27 @@
 
 
 
-/* Agregado */
-.show-artista{
-    display: none;
-}
+/* Agregado en cuanto al despliegue  */
+
 .display-artistas-container__active{
     display: flex;
+    gap: 5px;
     transition: display .3s;
 }
 
 .all-artistas__active{
     grid-template-columns: 1fr 1fr;
     width: 50%;
-    transition: grid-template-columns .3s, width .3s
+    transition: grid-template-columns .3s, width .3s;
+    justify-content: start;
+    align-items: start;
 }
 
 .show-artista__active{
     display: block;
     width: 50%;
     height: 100%;
-    /* background-color: red; */
-    padding: 2rem;
+    /* padding: 0rem 2rem; */
     transition: .1s;
 }
 
@@ -72,6 +92,8 @@
     opacity: 0;
     transform: translateY(-100%);
     transition: opacity 0.5s ease, transform 0.5s ease;
+    padding: 1rem;
+    border-radius: 20px;
 }
 
 .informacion-artista_active {
@@ -81,4 +103,20 @@
 
 .img-artista-display{
     width: 80%;
+}
+
+
+.parrafo-descrip-card-pequeña{
+    max-height: 200px;
+    overflow: hidden;
+    line-height: 1.4;
+}
+
+
+
+/* Estilos de card desplegada */
+.card-grande{
+    background-color: grey;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .3);
 }
