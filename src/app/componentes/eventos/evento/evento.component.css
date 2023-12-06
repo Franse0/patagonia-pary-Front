@@ -1,0 +1,94 @@
+
+.img-container{
+    /* width: 80%; */
+    margin: 0 auto;
+    height: auto;
+}
+
+
+.package-producer img{
+    width: 10%;
+}
+.package-producer span{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.package-producer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.ubication iframe{
+    width: 100%;
+}
+.adquirir-entrada{
+    padding: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+ul{
+
+    padding: 0;
+}
+
+.title-container{
+    padding: 0;
+}
+
+.enlace2{
+    transition: .2s;
+    color: goldenrod;
+}
+.enlace2:hover{
+    color: rgb(255, 183, 0);
+    cursor: pointer;
+}
+
+
+.grande{
+    width: 90%;
+    max-height: 80vh;
+}
+
+.all-container{
+    padding: 70px 1rem 0;
+}
+
+.title-container {
+    font-size: 1rem 1rem;
+    padding: 0 1rem;
+}
+
+.acerca-de{
+    font-size: 14px;
+    width: 90%;
+    margin: 0 auto;
+}
+.info-evento-container{
+    padding: 1rem 1rem;
+}
+
+@media (min-width:700px){
+    .show-evento{
+        display: flex;
+    }
+    .info-evento-container{
+        padding: 1rem;
+        width: 50%;
+    }
+    
+    .show-card{
+        width: 50%;
+    }
+    .package-producer span{
+        line-height: 1.7rem;
+    }
+    .logo{
+        width: 80px;
+    }
+
+}
+

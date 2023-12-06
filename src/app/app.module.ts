@@ -23,6 +23,27 @@ import { PaginaPrincipalComponent } from './componentes/pagina-principal/pagina-
 import { HttpClientModule} from "@angular/common/http";
 import { NoticiaComponent } from './componentes/noticias/noticia/noticia.component';
 import { ArtistaComponent } from './componentes/artistas/artista/artista.component';
+import { AllNoticiasComponent } from './componentes/noticias/all-noticias/all-noticias.component';
+import { AllArtistasComponent } from './componentes/artistas/all-artistas/all-artistas.component';
+import { EventosComponent } from './componentes/eventos/eventos.component';
+import { EventoComponent } from './componentes/eventos/evento/evento.component';
+import { EventoSelectComponent } from './componentes/proximos-eventos/evento-select/evento-select.component';
+import { AllLugaresComponent } from './componentes/lugares/all-lugares/all-lugares.component';
+import { LugarComponent } from './componentes/lugares/lugar/lugar.component';
+import { ProdcutorasComponent  } from './componentes/entidades/productoras.component';
+import { AdminComponent } from './componentes/admin/admin.component';
+import { LoginComponent } from './componentes/admin/login/login.component';
+import { InLoginComponent } from './componentes/admin/in-login/in-login.component';
+import { ArtistasAdminComponent } from './componentes/admin/in-login/artistas-admin/artistas-admin.component';
+import { EventosAdminComponent } from './componentes/admin/in-login/eventos-admin/eventos-admin.component';
+import { NoticiasAdminComponent } from './componentes/admin/in-login/noticias-admin/noticias-admin.component';
+import { ProductorasAdminComponent } from './componentes/admin/in-login/productoras-admin/productoras-admin.component';
+import { LugaresAdminComponent } from './componentes/admin/in-login/lugares-admin/lugares-admin.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProductoraComponent } from './componentes/entidades/productora/productora.component';
+
+// import { LightboxModule } from 'ngx-lightbox';
+
 
 
 
@@ -40,12 +61,31 @@ import { ArtistaComponent } from './componentes/artistas/artista/artista.compone
     PaginaPrincipalComponent,
     NoticiaComponent,
     ArtistaComponent,
+    AllNoticiasComponent,
+    AllArtistasComponent,
+    EventosComponent,
+    EventoComponent,
+    EventoSelectComponent,
+    AllLugaresComponent,
+    LugarComponent,
+    ProdcutorasComponent,
+    ProductoraComponent,
+    AdminComponent,
+    LoginComponent,
+    InLoginComponent,
+    ArtistasAdminComponent,
+    EventosAdminComponent,
+    NoticiasAdminComponent,
+    ProductorasAdminComponent,
+    LugaresAdminComponent,
     // MercadopagoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    // LightboxModule,
   ],
   exports:[ ArtistasComponent],
   providers: [],

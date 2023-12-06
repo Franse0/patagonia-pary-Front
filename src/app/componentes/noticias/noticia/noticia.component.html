@@ -1,22 +1,14 @@
 <div class="all-container">
     <section class="noticias">
       <div class="noticias-container">
-        <article class="noticia-complete">
-          <h2 class="h1">¡OnFiter ilumina la Navidad en una Fiesta Electrónica junto al Lago!</h2>
+        <article class="noticia-complete" *ngIf="noticia">
+          <h2 class="h1">{{noticia.titulo}} </h2>
           <div class="img-noticia-container">
-            <img src="/assets/noticias/noticia.jpg" alt="">
+            <img src="{{noticia.img}}" alt="">
           </div>
-          <p class="negrita ">Una experiencia única para celebrar la magia navideña al ritmo de la música electrónica.</p>
-          <p>En colaboración con OnFiter, la reconocida productora de eventos, nos complace anunciar una fiesta excepcional que transformará la tranquila orilla de nuestro hermoso lago en un escenario vibrante y lleno de energía. ¡Prepárate para vivir una Navidad como nunca antes!</p>
-          <p> Los amantes de la música electrónica tendrán la oportunidad de sumergirse en un ambiente festivo y único, donde las luces brillantes, los ritmos contagiosos y la magia navideña se fusionarán de manera espectacular.</p>
-          <p> La colaboración con OnFiter garantiza una producción de alta calidad, con detalles cuidados que harán que esta fiesta se destaque entre las demás. Desde la selección de artistas hasta la disposición del escenario, cada elemento se ha diseñado pensando en ofrecer una experiencia inolvidable.</p>
-          <div class="img-noticia-container">
-            <img src="/assets/noticias/noticia.jpg" alt="">
-          </div>
-          <h3> Artistas de renombre y sets exclusivos para una noche inolvidable.</h3>
-          <p>Los decks estarán a cargo de reconocidos DJs del ámbito electrónico, dispuestos a hacer que el público baile al compás de las mejores mezclas. Desde clásicos atemporales hasta las últimas tendencias, la diversidad musical garantiza una experiencia única para todos los asistentes.</p>
-          <p>Con una cuidadosa curación de artistas, la fiesta en el lago se convertirá en un escaparate de talento, ofreciendo a los fanáticos la oportunidad de disfrutar de sets exclusivos que se quedarán grabados en la memoria.</p>
-          <p>En medio de la naturaleza y bajo el cielo estrellado, cada beat resonará con una potencia única, creando un ambiente mágico donde la música electrónica y la esencia navideña se entrelazarán de manera armoniosa.</p>  
+          <p class="negrita ">{{noticia.resumen}} </p>
+
+          <p>{{noticia.cuerpo}}</p>
         </article>
 
 
@@ -24,75 +16,44 @@
           <h5>Principales Noticias</h5>
          
          
-          <div class="card-noticia-section">
-            <div class="img-card-container">
-              <img src="/assets/noticias/noticia.jpg" alt="">
+          <div class="card-noticia-section" *ngFor="let noticia of noticiaAside">
+            <div class="img-card-container" >
+              <img src="{{noticia.img}}" alt="">
             </div>    
             <div>        
-            <a class="link">Un titlo de alguna noticia interesante</a>
+            <a class="link" (click)="capturarValor($event)" id="{{noticia.id}}">{{noticia.titulo}} </a>
             <br>
-            <span>22 noviembre 2023</span>
+            <span>{{noticia.fecha_publi}} </span>
           </div>
           </div>
-          <div class="card-noticia-section">
-            <div class="img-card-container">
-              <img src="./assets/1.jpeg" alt="">
-            </div>    
-            <div class="">        
-            <a class="link">Un titlo de alguna noticia interesante</a>
-            <br>
-            <span>22 noviembre 2023</span>
-          </div>
-          </div>
+
         </aside>
       </div>
     </section>
   
-   <section class="mas-noticias">
-    <div class="title-container">
-      <h2>No te lo pierdas</h2>
-    </div>
-    <div class="mas-noticias-container">
-      <div class="card-noticia-new">
-        <span class="fecha">23 de noviembre</span>
-        <div class="img-mas-container">
-          <img src="/assets/noticias/noticia.jpg" alt="" class="img-mas">
-        </div>
-        <span class="enlace">Faabio Florido anuncio su primera gira en latinoamerica</span>
-        <p class="description noticia">
-          El dj y productor Fabio Florido (It) anunció recientemente su próxima gira que inlcuye presentaciones y actividades en Argentina, Uruguay y Perú, entre las que se destacan una intensa gira por numerosas ciudades de Argentina y un curso durante el mes de diciembre sobre Sound Healing en el Valle Sa
-        </p>
+    <section class="list-noticias">
+      <div class="title-container">
+        <h2>No te lo pierdas</h2>
+        <a routerLink="/all-noticias">ver todos</a>
       </div>
-      <div class="card-noticia-new">
-        <span class="fecha">23 de noviembre</span>
-        <div class="img-mas-container">
-          <img src="/assets/noticias/noticia.jpg" alt="" class="img-mas">
+      <div class="list-noticias-container">
+  
+        <div class="card-noticia-a" *ngFor="let noticia of noticiasMas">
+          <span class="fecha-card-a">23 de noviembre</span>
+          <div class="img-card-a-container">
+            <img src="{{noticia.img}}" alt="" class="img-card-a link" (click)="capturarValor($event)" id="{{noticia.id}}" >
+          </div>
+          <span class="enlace" (click)="capturarValor($event)" id="{{noticia.id}}" >{{noticia.titulo}} </span>
+          <p class="description-noticia-card-a">
+            {{noticia.resumen}}
+          </p>
+          <span class="enlace link" (click)="capturarValor($event)" id="{{noticia.id}}">Leer completa...</span>
         </div>
-        <span class="enlace">Faabio Florido anuncio su primera gira en latinoamerica</span>
-        <p class="description noticia">
-          El dj y productor Fabio Florido (It) anunció recientemente su próxima gira que inlcuye presentaciones y actividades en Argentina, Uruguay y Perú, entre las que se destacan una intensa gira por numerosas ciudades de Argentina y un curso durante el mes de diciembre sobre Sound Healing en el Valle Sa
-        </p>
+      
+        
+   
+  
+  
       </div>
-      <div class="card-noticia-new">
-        <span class="fecha">23 de noviembre</span>
-        <div class="img-mas-container">
-          <img src="/assets/noticias/noticia.jpg" alt="" class="img-mas">
-        </div>
-        <span class="enlace">Faabio Florido anuncio su primera gira en latinoamerica</span>
-        <p class="description noticia">
-          El dj y productor Fabio Florido (It) anunció recientemente su próxima gira que inlcuye presentaciones y actividades en Argentina, Uruguay y Perú, entre las que se destacan una intensa gira por numerosas ciudades de Argentina y un curso durante el mes de diciembre sobre Sound Healing en el Valle Sa
-        </p>
-      </div>
-      <div class="card-noticia-new">
-        <span class="fecha">23 de noviembre</span>
-        <div class="img-mas-container">
-          <img src="/assets/noticias/noticia.jpg" alt="" class="img-mas">
-        </div>
-        <span class="enlace">Faabio Florido anuncio su primera gira en latinoamerica</span>
-        <p class="description noticia">
-          El dj y productor Fabio Florido (It) anunció recientemente su próxima gira que inlcuye presentaciones y actividades en Argentina, Uruguay y Perú, entre las que se destacan una intensa gira por numerosas ciudades de Argentina y un curso durante el mes de diciembre sobre Sound Healing en el Valle Sa
-        </p>
-      </div>
-    </div>
-   </section>
+     </section> 
   </div>

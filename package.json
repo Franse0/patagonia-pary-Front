@@ -20,6 +20,7 @@
     "@angular/router": "^15.0.0",
     "@mercadopago/sdk-js": "^0.0.3",
     "mercadopago": "^2.0.4",
+    "ngx-lightbox": "^3.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

@@ -1,0 +1,24 @@
+<div class="all-container">
+    <section class="entidades">
+      <div class="title-container">
+        <h2>Entidades</h2>
+        <a routerLink="/all-entidades">ver todos</a>
+      </div>
+      <div class="all-entidades">
+        <div class="card-entidad" *ngFor="let entidad of entidades">
+          <div class="card-entidad-img-container">
+            <img
+              [routerLink]="['/productora', entidad.id]"
+              src="{{entidad.img}}"
+              alt=""
+              class="img-card-entidad"
+            />
+          </div>
+          <div class="card-entidad-info">
+            <h4 class="h4 enlace"  [routerLink]="['/entidad', entidad.id]">{{entidad.nombre}}</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  

@@ -1,7 +1,7 @@
 /* Seccion de artistas */
 .artistas{
     padding: 2rem 2rem;
-    margin-bottom: 4rem;
+    height: auto;
 }
 
 .img-card-artista{
@@ -17,13 +17,10 @@
     text-align: center;
 }
 
-.all-artistas{
-    display: grid;
-    /* grid-template-columns: 1fr 1fr; */
-    gap: 3%; 
-}
 .card-artista{
     padding: 1rem 0;
+    position: relative;
+    box-sizing: border-box;
 }
 
 .card-artista-container h3{
@@ -52,11 +49,18 @@
     .all-artistas{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 2%;
-        height: auto;
+        gap: 1%;
+        /* height: auto; */
     }
     .card-artista{
         padding: 0;
+        width: 100%;
+    }
+    .display-artistas-container__active{
+        display: flex;
+        height: auto;
+        gap: 5%;
+        transition: display .3s;
     }
     
 }
@@ -68,23 +72,25 @@
 
 .display-artistas-container__active{
     display: flex;
-    gap: 5px;
+    flex-direction: column-reverse;
+    height: auto;
+    gap: 2%;
     transition: display .3s;
 }
 
 .all-artistas__active{
     grid-template-columns: 1fr 1fr;
-    width: 50%;
+    width: 100%;
+    gap: 1rem;
     transition: grid-template-columns .3s, width .3s;
-    justify-content: start;
-    align-items: start;
+    /* justify-content: start; */
+    align-items: center;
+    height: auto !important;
 }
 
 .show-artista__active{
     display: block;
-    width: 50%;
-    height: 100%;
-    /* padding: 0rem 2rem; */
+    width: 100%;
     transition: .1s;
 }
 
@@ -114,9 +120,43 @@
 
 
 
+@media (min-width:700px){
+    .display-artistas-container__active{
+        flex-direction: row;
+    }
+    .show-artista__active{
+        width: 50%;
+    }
+    .all-artistas__active{
+        width: 50%;
+    }
+}
+
+
+
+
 /* Estilos de card desplegada */
 .card-grande{
     background-color: grey;
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, .3);
 }
+
+.card-artista .fa-xmark {
+    /* display: none; */
+    position: absolute;
+    right: 50%;
+    top: 2%;
+    opacity: 0;
+    transition: opacity .3s;
+    
+  }
+  .card-artista:hover .fa-xmark {
+    opacity: .7;
+    transition: .3s;
+    cursor: pointer;
+    color: white;
+    font-size: 2rem;
+    display: block;
+  }
+  

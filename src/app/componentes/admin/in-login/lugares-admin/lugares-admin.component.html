@@ -1,0 +1,31 @@
+<div class="all-container">
+    <div class="">
+        <h3>En la siguiente seccion usted podra agregar o editar informacion acerca de los lugares</h3>
+        <h4>Luego mas abajo podras ver como quedaria en el layout</h4>
+    </div>
+    <form class="form-edit" [formGroup]="formAdmin" (submit)="cargarLocal()">
+        <label for="id">Id</label>
+        <input type="number"formControlName="id" id="id">
+        <label for="nombre">Nombre</label>
+        <input type="text" formControlName="pretskit" id="pretskit">
+        <label for="descripcion">Descripcion</label>
+        <textarea name="" id="descripcion" formControlName="descripcion" cols="30" rows="10"></textarea>
+        <label for="img1">Img1</label>
+        <input type="text" formControlName="img1" id="img1">
+        <label for="img2">img2</label>
+        <input type="text" formControlName="img2" id="img2">
+        <label for="instagram">Instagram</label>
+        <input type="text" formControlName="instagram" id="instagram">
+        <label for="ubicacion">Ubicacion</label>
+        <input type="text" formControlName="ubicacion" id="ubicacion">
+        <label for="facebook">Facebook</label>
+        <input type="text" formControlName="facebook" id="facebook">
+        <label for="telefono">Telefono</label>
+        <input type="text" formControlName="telefono" id="telefono">
+        <label for="horario">Horario</label>
+        <input type="text" formControlName="horario" id="horario">
+        <label for="link_ubi">Link ubi</label>
+        <input type="text" formControlName="link_ubi" id="link_ubi">
+        <button type="submit">Cargar</button>
+    </form>
+</div>

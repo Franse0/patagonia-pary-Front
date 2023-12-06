@@ -1,0 +1,39 @@
+<div class="all-container">
+    <div >
+        <h3>En la siguiente seccion usted podra agregar o editar informacion acerca de los artistas</h3>
+        <h4>Luego mas abajo podras ver como quedaria en el layout</h4>
+    </div>
+    <form class="form-edit" [formGroup]="formAdmin" (submit)="cargarArtista()">
+        <label for="id">Id</label>
+        <input type="number"formControlName="id" id="id">
+        <label for="nombre">Nombre</label>
+        <input type="text"  formControlName="nombre" id="nombre">
+        <label for="apellido">Apellido</label>
+        <input type="text" formControlName="apellido" id="apellido">
+        <label for="pretskit">Pretskit</label>
+        <input type="text" formControlName="pretskit" id="pretskit">
+        <label for="seudonimo">Seudonimo</label>
+        <input type="text" formControlName="seudonimo" id="seudonimo">
+        <label for="img">Imagen</label>
+        <input type="text" formControlName="img" id="img">
+        <label for="soundcloud">Soundcloud</label>
+        <input type="text" formControlName="soundcloud" id="soundcloud">
+        <label for="instagram">Instagram</label>
+        <input type="text" formControlName="instagram" id="instagram">
+        <label for="spotify">Spotify</label>
+        <input type="text" formControlName="spotify" id="spotify">
+        <label for="youtube">Youtube</label>
+        <input type="text" formControlName="youtube" id="youtube">
+        <label for="mail">Mail</label>
+        <input type="text" formControlName="mail" id="mail">
+        <label for="telefono">Telefono</label>
+        <input type="text" formControlName="telefono" id="telefono">
+        <label for="track">Track</label>
+        <input type="text" formControlName="track" id="track">
+        <label for="video_yt">Video Yt</label>
+        <input type="text" formControlName="video_yt" id="video_yt">
+        <label for="descripcion">Descripcion</label>
+        <textarea name="" id="descripcion" formControlName="descripcion" cols="30" rows="10"></textarea>
+        <button type="submit">Cargar</button>
+    </form>
+</div>

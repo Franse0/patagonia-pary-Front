@@ -15,13 +15,13 @@
     width: 100%;
 }
 
-.panel a{
+.panel span{
     color: white;
     padding: 0 .5rem;
     cursor: pointer;
 }
 
-.panel a:hover{
+.panel span:hover{
     border-bottom: 2px solid white;
 }
 
@@ -100,18 +100,23 @@ iframe{
 
 .redes>div{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 15px;
     padding: 0rem  1rem 1rem;
+}
+
+.redes .h4{
+    padding:  0 1rem;
 }
 
 
 @media (min-width:790px){
-    .noticia-layout{
+    .artista-layout{
         display:flex;
         justify-content: center;
         /* width: 100px; */
     }
-    .noticia-layout>div{
+    .artista-layout>div{
         width: 40%;
     }
 
@@ -129,3 +134,4 @@ iframe{
         margin: 0 auto;
     }
 }
+

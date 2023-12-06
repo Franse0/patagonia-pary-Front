@@ -1,0 +1,69 @@
+<div class="all-contianer">
+    <div class="panel-container">
+        <div class="panel">
+            <span (click)="mostrarSeccion('bio')" [ngClass]="{'is-selected': seccionActiva === 'bio' || (!seccionActiva && seccionPredeterminada === 'bio')}">Bio</span>
+            <span (click)="mostrarSeccion('fotos')" [ngClass]="{'is-selected': seccionActiva === 'fotos'}">Fotos</span>
+            <span (click)="mostrarSeccion('multimedia')" [ngClass]="{'is-selected': seccionActiva === 'multimedia'}">Multimedia</span>
+        </div>
+    </div>
+    <div>
+    <div class="artista-layout" *ngIf="lugar">
+        <div>
+    <section class="artista-ind">
+        <article  class="about">
+            <div class="location">
+                <div>
+                    <i class="fa-solid fa-location-dot"></i> 
+                </div>
+                <div>
+                    <span>{{lugar.ubicacion}}</span>
+                </div>
+            </div>
+            <h4>{{lugar?.nombre}} </h4>
+            <img src="{{lugar?.img1}}" alt="" class="profile-img" *ngIf="seccionActiva === 'bio'">
+            <p [innerHTML]="lugar?.descripcion" *ngIf="seccionActiva === 'bio'">
+               
+            <!-- </p> -->
+        </article>
+        <article *ngIf="seccionActiva === 'fotos'|| seccionActiva ==='bio'" class="fotos">
+            <h4 class="h4">Fotos</h4>
+            <div class="galeria">
+                <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
+                <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
+                <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
+                <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
+                <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
+            </div>
+        </article>
+        <article *ngIf="seccionActiva === 'bio' || seccionActiva === 'multimedia'" class="video">
+            <h4 class="h4">video</h4>
+            <iframe  src="https://www.youtube.com/embed/4M-I8jYrMFs?si=WcvoVAM3ALzL2hMs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </article>
+
+    </section>
+    
+</div>
+    <section class="redes ">
+  
+            <h4 class="h4"> Redes</h4>
+
+      
+        <div class="">        
+            <i class="fa-brands fa-tiktok"></i>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-regular fa-envelope"></i>
+        </div>
+        <article>
+           <h4 class="h4">ubicacion</h4>
+           <iframe src="{{lugar?.link_ubi}}" frameborder="0"></iframe>
+        </article>
+    </section>
+</div>
+
+<app-lugares ></app-lugares>
+
+</div>
+
+</div>

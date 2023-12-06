@@ -1,9 +1,11 @@
 <div class="all-container" >
   <section class="artistas" id="artistas">
+
     <div class="title-container">
       <h2>Artistas</h2>
-      <a href="#">ver todos</a>
+      <a routerLink="/all-artistas">ver todos</a>
     </div>
+    
     <div class="display-artistas-container" [ngClass]="{'display-artistas-container__active': cardGrandeActive}">
       <div class="all-artistas" [ngClass]="{'all-artistas__active': cardGrandeActive}">
         <div class="card-artista" *ngFor="let artista of artistasList" (click)="showArtista(artista)">
@@ -11,7 +13,7 @@
           src="{{artista.img}}"
           alt=""
           class="img-card-artista"
-          
+          (click)="showArtista(artista)"
           />
           <div class="card-artista-container">
             <h3 class="title-artista" (click)="showArtista(artista)">{{artista.seudonimo}} </h3>
@@ -24,12 +26,13 @@
 
       <div class="show-artista" [ngClass]="{'show-artista__active': cardGrandeActive}" *ngIf="artistasService.artistaSeleccionado$ | async as selectedArtista">
         <div class="card-artista card-grande">
+          <i class="fa-solid fa-xmark" (click)="cerrarCardMediana()"></i>
           <img src="{{selectedArtista.img}}" alt="" class="img-card-artista img-artista-display" />
           <div class="card-artista-container">
-            <h3 class="title-artista">{{selectedArtista.nombre}}</h3>
+            <h3 class="title-artista" (click)="mostrarDetallesArtista(selectedArtista)" [id]="selectedArtista.id" >{{selectedArtista.nombre}}</h3>
             <div class="informacion-artista" [ngClass]="{'informacion-artista_active': showInfoArtista}">
               <p [innerHTML]="selectedArtista.descripcion" class="parrafo-descrip-card-pequeña"></p>
-              <span (click)="mostrarDetallesArtista(selectedArtista)" [id]="selectedArtista.id">Leer mas...</span>
+              <span (click)="mostrarDetallesArtista(selectedArtista)" [id]="selectedArtista.id" class="enlace">Leer mas...</span>
               <div class="card-links">
                 <i class="fa-brands fa-tiktok"></i>
                 <i class="fa-brands fa-facebook"></i>

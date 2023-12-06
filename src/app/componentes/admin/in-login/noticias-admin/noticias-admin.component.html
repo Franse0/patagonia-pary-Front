@@ -1,0 +1,24 @@
+<div class="all-container">
+    <div class="">
+        <h3>En la siguiente seccion usted podra agregar o editar informacion acerca de las noticias</h3>
+        <h4>Luego mas abajo podras ver como quedaria en el layout</h4>
+    </div>
+    <form class="form-edit" [formGroup]="formAdmin" (submit)="cargarNoticia()">
+        <label for="id">Id</label>
+        <input type="number"formControlName="id" id="id">
+        <label for="titulo">Titulo</label>
+        <input type="text"  formControlName="titulo" id="titulo">
+        <label for="cuerpo">Cuerpo</label>
+        <textarea name="" id="cuerpo" formControlName="cuerpo" cols="30" rows="10"></textarea>
+        <label for="resumen">Resumen</label>
+        <input type="text" formControlName="resumen" id="resumen">
+        <label for="fecha_publi">Fecha Publi</label>
+        <input type="text" formControlName="fecha_publi" id="fecha_publi">
+        <label for="url">Url</label>
+        <input type="text" formControlName="url" id="url">
+        <label for="img">Imagen</label>
+        <input type="text" formControlName="img" id="img">
+        
+        <button type="submit">Cargar</button>
+    </form>
+</div>

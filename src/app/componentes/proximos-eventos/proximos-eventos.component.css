@@ -1,7 +1,6 @@
 /* Eventos */
 
 .proximos-eventos{
-    margin-bottom: 3rem;
     padding:1rem 2rem;
 }
 
@@ -38,19 +37,16 @@
 @media (min-width:790px){
     .eventos{
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         height: auto;
     }
 
-    .eventos{
-        height: 100vh;
-    }
+
     .proximos-eventos{
-        padding: 2rem ;
+        padding: 0 2rem ;
     }
 
-    .eventos-grid{
-        width: 50%;
+    .eventos-home{
         display: grid;
         grid-template-columns: 1fr 1fr;
         height: 90%;
@@ -58,14 +54,17 @@
     }
     .evento-seleccionado {
         display: block;
-        width: 50%;
     }    
+    .card-evento h3{
+        line-height: 22px;
+    }
     
     .card-evento{
-        max-height: 300px;
+        /* max-height: 300px; */
         display: flex;
         flex-direction: column;
         height: auto;
+        line-height: 17px;
     }
 
     .card-evento-contenido{
@@ -92,9 +91,16 @@
 
 
 
-
-.contenedor{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+.all-container{
+    padding: 0;
 }
+
+
+.card-evento-img{
+    transition: opacity .2s;
+    cursor: pointer;
+}
+.card-evento-img:hover{
+    opacity: .8;
+}
+

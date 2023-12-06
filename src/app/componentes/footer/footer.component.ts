@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+  mail(){
+    alert("El contacto es patagoniapary@gmail.com")
+  }
 }

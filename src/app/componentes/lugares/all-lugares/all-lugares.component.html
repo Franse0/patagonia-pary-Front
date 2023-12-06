@@ -1,0 +1,59 @@
+<div class="all-container">
+    <section class="lugares all-lugares">
+      <div class="title-container">
+      <h2 class="noticia-title">Lugares</h2>
+    </div>
+      <div class="all-lugares">
+        <div class="card-lugar" *ngFor="let lugar of lugares">
+          <div class="card-lugar-img">
+            <img
+              src="{{lugar.img1}}"
+              alt=""
+              class="card-lugar-a"
+            />
+            <img
+              src="{{lugar.img2}}"
+              alt=""
+              class="card-lugar-b"
+            />
+          </div>
+          <div class="card-lugar-info">
+            <h3 [routerLink]="['/lugar', lugar.id]" class="enlace" >{{lugar.nombre}} </h3>
+            <div>
+              <p>
+                {{lugar.descripcion}}
+              </p>
+  
+              <div class="div-card-lugar">
+                <span>lun-viernes 8 a 19hs</span>
+                <span>{{lugar.ubicacion}} </span>
+              </div>
+            </div>
+            <div class="card-lugar-info-inferior">
+              <div class="card-lugar-links">
+                <i class="fa-brands fa-tiktok"></i>
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-regular fa-envelope"></i>
+              </div>
+              <div class="card-lugar-ubicacion">
+                <iframe
+                  src="{{lugar.link_ubi}}"
+                  class="iframe-card-lugar"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  
+      </div>
+    </section>
+
+    <app-noticias></app-noticias>
+  </div>
+  

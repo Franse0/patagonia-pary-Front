@@ -11,5 +11,7 @@ export class Artista {
     youtube:String=""
     mail:String=""
     telefono:String=""
+    track:String;
+    video_yt:String;
     descripcion:String=""
 }

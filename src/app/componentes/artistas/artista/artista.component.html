@@ -1,31 +1,31 @@
 <div class="all-contianer">
     <div class="panel-container">
         <div class="panel">
-            <a href="#" class="item-panel  is-selected">Bio</a>
-            <a href="#" class="item-panel">fotos</a>
-            <a href="#" class="item-panel">redes</a>
+            <span (click)="mostrarSeccion('bio')" [ngClass]="{'is-selected': seccionActiva === 'bio' || (!seccionActiva && seccionPredeterminada === 'bio')}">Bio</span>
+            <span (click)="mostrarSeccion('fotos')" [ngClass]="{'is-selected': seccionActiva === 'fotos'}">Fotos</span>
+            <span (click)="mostrarSeccion('multimedia')" [ngClass]="{'is-selected': seccionActiva === 'multimedia'}">Multimedia</span>
         </div>
     </div>
     <div>
-    <div class="noticia-layout ">
+    <div class="artista-layout">
         <div>
     <section class="artista-ind">
-        <article class="about">
+        <article  class="about">
             <div class="location">
                 <div>
                     <i class="fa-solid fa-location-dot"></i> 
                 </div>
                 <div>
-                    <span>Neuquen, Neuquen, Argentina</span>
+                    <span>{{artista?.ubicacion}} </span>
                 </div>
             </div>
             <h4>{{artista?.seudonimo}} </h4>
             <img src="{{artista?.img}}" alt="" class="profile-img">
-            <p [innerHTML]="artista?.descripcion">
+            <p [innerHTML]="artista?.descripcion" *ngIf="seccionActiva === 'bio'">
                
-            <!-- </p> -->
+            </p>
         </article>
-        <article class="fotos">
+        <article *ngIf="seccionActiva === 'fotos'|| seccionActiva==='bio'" class="fotos">
             <h4 class="h4">Fotos</h4>
             <div class="galeria">
                 <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
@@ -35,26 +35,29 @@
                 <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
             </div>
         </article>
-        <article class="video">
-            <h4 class="h4">video</h4>
-            <iframe  src="https://www.youtube.com/embed/4M-I8jYrMFs?si=WcvoVAM3ALzL2hMs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </article>
-
+      
+        
+ 
+           
     </section>
     
 </div>
     <section class="redes">
-        <h4 class="h4"> Redes</h4>
+  
+            <h4 class="h4"> Redes</h4>
+
+      
         <div class="">        
-            <i class="fa-brands fa-tiktok"></i>
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-youtube"></i>
-            <i class="fa-regular fa-envelope"></i>
+            <i class="fa-brands fa-tiktok" *ngIf="artista.tiktok"> <a href="{{artista?.tiktok}}"></a></i>
+            <i class="fa-brands fa-instagram"  *ngIf="artista.instagram"><a href="{{artista?.instagram}}"></a></i>
+            <i class="fa-brands fa-youtube"  *ngIf="artista.youtube"><a href="{{artista?.youtube}} "></a></i>
+            <i class="fa-brands fa-spotify"  *ngIf="artista.spotify"><a href="{{artista?.spotify}}"></a></i>
+            <i class="fa-brands fa-soundcloud"*ngIf="artista.soundcloud"><a href="{{artista?.soundcloud}}"></a></i>
         </div>
     </section>
 </div>
-<article class="musica">
+<!-- <article *ngIf="seccionActiva === 'multimedia'" class="musica"> -->
+<article *ngIf="seccionActiva === 'bio' || seccionActiva === 'multimedia'" class="musica">
     <h4 class="h4">Que lo disfrutes</h4>
     <iframe width="100%"  scrolling="no" frameborder="no" allow="autoplay"
         src=" https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&amp;">
@@ -64,7 +67,4 @@
 
 </div>
 
-
-
-    <!-- <app-artista></app-artista> -->
 </div>

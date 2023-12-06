@@ -6,6 +6,7 @@ header{
     position: fixed;
     z-index: 20;
     width: 100%;
+    margin-bottom: 60px;
 }
 .header-container{
     height: 60px;
@@ -77,14 +78,15 @@ nav{
     right: 0px;
     padding: 0;
     justify-content: end;
-    width: 50%;
+    /* width: 50%; */
     transition:0;
   }
 
   .nav-links{
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-end;
     gap: 5%;
+    padding-right: 3rem;
     height: 100%;
   }
   

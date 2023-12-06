@@ -1,0 +1,22 @@
+<div class="all-container">
+  <section class="list-noticias">
+
+    <div class="list-noticias-container">
+
+
+      <div class="card-noticia-a" *ngFor="let noticias of noticias">
+        <span class="fecha-card-a">{{noticias.fecha_publi}}</span>
+        <div class="img-card-a-container">
+          <img src="{{noticias.img}}" alt="" class="img-card-a link" [routerLink]="['/noticia', noticias.id]">
+        </div>
+        <span class="enlace" [routerLink]="['/noticia', noticias.id]"> {{noticias.titulo}} </span>
+        <p class="description noticia">
+          {{noticias.resumen}}
+        </p>
+      </div>
+    
+
+
+    </div>
+   </section>
+</div>

@@ -39,6 +39,7 @@ a{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 1rem ;
 }
 
 /* Estilos generales de logos a redes sociales */
@@ -78,12 +79,110 @@ a{
 }
 
 
-.btn-btn{
+.btn-tech{
     padding: .2rem 0; 
     width: 50%;
     background:#252635;
     border-radius: 20px;
     color: white;
-    margin-left: 3rem;
+    cursor: pointer;
+    transition:  .2s;
+}
+.btn-tech:hover{
+    opacity: .7;
+    background: none;
+    color: #000000;
 }
 
+
+.link{
+    cursor: pointer;
+}
+.enlace{
+    cursor: pointer;
+    line-height: 15px;
+    padding: .5rem 0;
+}
+
+
+/* Estilos genericos de nocicias. */
+
+
+/* Seccion de mas noticias */
+.list-noticias{
+    margin-bottom: 4rem;
+}
+.card-noticia-a{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+    overflow-x: hidden;
+}
+
+.card-noticia-a p{
+    font-weight: 400;
+    opacity: .8;
+    font-size: 14px;
+    padding: 0;
+}
+
+.description-noticia-card-a{
+    max-height: 150px;
+    overflow: hidden;
+    line-height: 1.4;
+}
+
+.list-noticias-container{
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    padding: 0 1rem;
+}
+
+.fecha-card-a{
+    position: relative;
+    top: 40px;
+    left: 20px;
+    border-radius: 10px;
+    background-color: var(--color5);
+    text-align: center;
+    opacity: .7;
+}
+
+
+.enlace:hover{
+    color: var(--color3);
+}
+
+.img-card-a-container{
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.img-card-a{
+    width: 100%;
+    transition: .3s;
+    margin: 0 auto;
+}
+
+.img-card-a:hover{
+    width: 110%;
+}
+
+
+
+@media(min-width:700px){
+    .list-noticias-container{
+        grid-template-columns: 1fr 1fr 1fr ;
+    }
+}
+@media(min-width: 1000px){
+    .list-noticias-container{
+        display: grid;   
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}

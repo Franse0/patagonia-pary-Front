@@ -14,7 +14,8 @@
 }
 
 .img-card-noticia{
-    width: 50%;
+    /* width: 50%; */
+    width: 100%;
     height: 50%;
 }
 
@@ -28,6 +29,10 @@
 
 .container-card-noticia h3:hover{
     color: var(--color4);
+}
+
+.enlace{
+    line-height: 1.3rem;
 }
 
 @media (min-width:769px){

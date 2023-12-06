@@ -1,0 +1,17 @@
+<div class="evento-seleccionado">
+
+    <div class="card-evento-seleccionado" *ngFor="let eventoSelected of eventoSelected">
+      <img src="{{eventoSelected.img}}" alt="" class="img-evento" />
+      <div class="card-evento-contenido">
+        <h3 (click)="mostrarDetallesArtista(eventoSelected)" class="enlace">{{eventoSelected.nombre}}</h3>
+        
+        <p>
+          {{eventoSelected.descripcion}}
+        </p>
+    <div class="contenedor"> 
+             <span><i class="fa-solid fa-location-dot"></i>{{eventoSelected.ubicacion}}</span> 
+            <button class="btn-tech" ><a href="https://api.whatsapp.com/send/?phone=5492994535581&text&type=phone_number&app_absent=0" target="_blank">Comprar Entrada</a></button>
+          </div> 
+      </div> 
+    </div>
+  </div>

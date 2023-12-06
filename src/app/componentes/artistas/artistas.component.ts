@@ -19,13 +19,12 @@ export class ArtistasComponent  implements OnInit{
   constructor(public artistasService:ArtistasService, private router:Router){}
 
   ngOnInit() {
+    const currentRoute = this.router.url;
     this.artistasService.artistaTodos().subscribe(data=>{
-      if(data.length>=8){
+      if(data.length>=8 && currentRoute!=="/all-artistas"){
         this.artistasList = data.slice(0,8)
-      console.log(this.artistasList)
       } else{
       this.artistasList=data;
-      console.log(this.artistasList)
       }
     })
   }
@@ -39,11 +38,15 @@ export class ArtistasComponent  implements OnInit{
       this.mostrarDetallesArtista(artista);
     } else {
       // Estás en la página de artistas, muestra la card mediana
-      this.artistasService.artistaSeleccionado$.subscribe(selectedArtista => {
+      const subscription = this.artistasService.artistaSeleccionado$.subscribe(selectedArtista => {
         const mismoArtista = selectedArtista?.id === artista.id;
   
         if (!mismoArtista) {
           this.artistasService.actualizarArtistaSeleccionado(artista);
+        } else {
+          // Si haces clic en el mismo artista, cierra la card mediana
+          this.cardGrandeActive = false;
+          this.showInfoArtista = false;
         }
   
         this.cardGrandeActive = !this.cardGrandeActive;
@@ -55,6 +58,9 @@ export class ArtistasComponent  implements OnInit{
         } else {
           this.showInfoArtista = false;
         }
+  
+        // Desuscribirse después de completar el proceso
+        subscription.unsubscribe();
       });
     }
   }
@@ -63,7 +69,13 @@ export class ArtistasComponent  implements OnInit{
 
 mostrarDetallesArtista(artista: Artista): void {
   // Utiliza el servicio de enrutamiento para navegar al componente deseado
-  this.router.navigate(['/artista'], { queryParams: { id: artista.id } });}
+  this.router.navigate(['/artista'], { queryParams: { id: artista.id } });
+}
+
+cerrarCardMediana(){
+  this.cardGrandeActive = false;
+  this.showInfoArtista = false;
+}
 
 
     

@@ -1,0 +1,85 @@
+<app-evento [eventoId]="idSelected"  *ngIf="idSelected !== undefined"></app-evento>
+<div class="all-container">
+    <section class="all-eventos">
+        <div class="title-container">
+            <h2>Eventos</h2>
+        </div>
+        <div class="all-eventos-container" >
+            <div class="card-evento"  *ngFor="let eventos of eventos">
+                <div class="img-container">
+                    <div class="fecha">
+                        <span>Dic</span>
+                        <span>01</span>
+                        <span>vie</span>
+                    </div>
+                    <img src="{{eventos.img}} " alt="" class="img-card-evento" (click)="capturarValor($event)" id="{{eventos.id}}">
+                </div>
+                <div class="info-evento-card">
+                    <h3 class="link enlace" (click)="capturarValor($event)" id="{{eventos.id}}">{{eventos.nombre}} </h3>
+                    <p>Por: <span class="resaltado link enlace">{{eventos.organiza}} </span></p>
+                    <span> <i class="fa-solid fa-location-dot"></i>{{eventos.ubicacion}} </span>
+                </div>
+            </div> 
+             <!-- <div class="card-evento">
+                <div class="img-container">
+                    <div class="fecha">
+                        <span>Dic</span>
+                        <span>01</span>
+                        <span>vie</span>
+                    </div>
+                    <img src="/assets/fiestas/1.jpg" alt="" class="img-card-evento">
+                </div>
+                <div class="info-evento-card">
+                    <h3 class="link enlace">Titulo de la fiesta</h3>
+                    <p>Por: <span class="resaltado link enlace">Onfilter</span></p>
+                    <span> <i class="fa-solid fa-location-dot"></i>Terraza neuquen</span>
+                </div>
+            </div>
+            <div class="card-evento">
+                <div class="img-container">
+                    <div class="fecha">
+                        <span>Dic</span>
+                        <span>01</span>
+                        <span>vie</span>
+                    </div>
+                    <img src="/assets/fiestas/1.jpg" alt="" class="img-card-evento">
+                </div>
+                <div class="info-evento-card">
+                    <h3 class="link enlace">Titulo de la fiesta</h3>
+                    <p>Por: <span class="resaltado link enlace">Onfilter</span></p>
+                    <span> <i class="fa-solid fa-location-dot"></i>Terraza neuquen</span>
+                </div>
+            </div>
+            <div class="card-evento">
+                <div class="img-container">
+                    <div class="fecha">
+                        <span>Dic</span>
+                        <span>01</span>
+                        <span>vie</span>
+                    </div>
+                    <img src="/assets/fiestas/1.jpg" alt="" class="img-card-evento">
+                </div>
+                <div class="info-evento-card">
+                    <h3 class="link enlace">Titulo de la fiesta</h3>
+                    <p>Por: <span class="resaltado link enlace">Onfilter</span></p>
+                    <span> <i class="fa-solid fa-location-dot"></i>Terraza neuquen</span>
+                </div>
+            </div>
+            <div class="card-evento">
+                <div class="img-container">
+                    <div class="fecha">
+                        <span>Dic</span>
+                        <span>01</span>
+                        <span>vie</span>
+                    </div>
+                    <img src="/assets/fiestas/1.jpg" alt="" class="img-card-evento">
+                </div>
+                <div class="info-evento-card">
+                    <h3 class="link enlace">Titulo de la fiesta</h3>
+                    <p>Por: <span class="resaltado link enlace">Onfilter</span></p>
+                    <span> <i class="fa-solid fa-location-dot"></i>Terraza neuquen</span>
+                </div>
+            </div>  -->
+        </div>
+    </section>
+</div>

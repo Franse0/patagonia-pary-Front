@@ -5,6 +5,9 @@
     gap: 5px;
     margin-right: 5px;
 }
+.card-lugar-info{
+    position: relative;
+}
 
 .lugares{
     padding: 2rem;
@@ -23,7 +26,10 @@
     gap: 30%;
     width: 100%;
     font-weight:bold ;
+    position: absolute;
+    bottom: 60px;
 }
+
 
 
 
@@ -32,6 +38,9 @@
     align-items: center;
     gap: 5%;
     height: 65px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 
 .card-lugar-ubicacion{
@@ -93,6 +102,10 @@
     }
 }
 @media (max-width:760px){
+    .card-lugar-info{
+        position: static;
+        text-align: center;
+    }
     .card-lugar-b{
         display:block;
     }
@@ -104,6 +117,8 @@
     }
     .card-lugar-info-inferior{
         height: auto;
+        position: static;
+        
     }
     .card-lugar-ubicacion{
         height: 60px;
@@ -121,9 +136,9 @@
         justify-content: space-between;
         padding: .5rem 0;
     }
-
-    .card-lugar-info{
-        text-align: center;
+    .div-card-lugar{
+        position: static;
     }
+
 }
 

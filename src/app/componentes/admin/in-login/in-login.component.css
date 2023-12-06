@@ -1,0 +1,15 @@
+.btn-panel-container{
+    display: flex;
+    gap: 5%;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-edit{
+    display: flex;
+    flex-direction: column;
+}
+
+.all-container{
+    padding-top:65px ;
+}
