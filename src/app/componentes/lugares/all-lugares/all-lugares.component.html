@@ -18,33 +18,37 @@
             />
           </div>
           <div class="card-lugar-info">
-            <h3 [routerLink]="['/lugar', lugar.id]" class="enlace" >{{lugar.nombre}} </h3>
+            <h3 [routerLink]="['/lugar', lugar.id]" class="enlace" >{{lugar.nombre}} <span *ngIf="mostrarId">{{lugar.id}} </span> </h3>
             <div>
               <p>
                 {{lugar.descripcion}}
               </p>
   
               <div class="div-card-lugar">
-                <span>lun-viernes 8 a 19hs</span>
+                <span>{{lugar.horario}} </span>
                 <span>{{lugar.ubicacion}} </span>
               </div>
             </div>
             <div class="card-lugar-info-inferior">
               <div class="card-lugar-links">
-                <i class="fa-brands fa-tiktok"></i>
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-youtube"></i>
-                <i class="fa-regular fa-envelope"></i>
+              <a href="{{lugar?.instagram}}" target="_blank">
+                  <i class="fa-brands fa-instagram"  *ngIf="lugar?.instagram"></i>
+              </a>
+              <a href="{{lugar?.facebook}} " target="_blank">
+                  <i class="fa-brands fa-youtube"  *ngIf="lugar?.facebook"></i>
+              </a>
+              <a href="{{lugar?.telefono}}" target="_blank">
+                  <i class="fa-solid fa-phone"  *ngIf="lugar?.telefono"></i>
+              </a>
               </div>
               <div class="card-lugar-ubicacion">
-                <iframe
+                <!-- <iframe
                   src="{{lugar.link_ubi}}"
                   class="iframe-card-lugar"
                   allowfullscreen=""
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
-                ></iframe>
+                ></iframe> -->
               </div>
             </div>
           </div>
@@ -54,6 +58,6 @@
       </div>
     </section>
 
-    <app-noticias></app-noticias>
+    <app-noticias *ngIf="!mostrarId"></app-noticias>
   </div>
   

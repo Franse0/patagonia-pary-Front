@@ -1,7 +1,7 @@
 <div class="all-container">
     <section class="entidades">
       <div class="title-container">
-        <h2>Entidades</h2>
+        <h2>Productoras</h2>
         <a routerLink="/all-entidades">ver todos</a>
       </div>
       <div class="all-entidades">
@@ -15,7 +15,7 @@
             />
           </div>
           <div class="card-entidad-info">
-            <h4 class="h4 enlace"  [routerLink]="['/entidad', entidad.id]">{{entidad.nombre}}</h4>
+            <h4 class="h4 enlace"  [routerLink]="['/productora', entidad?.id]">{{entidad.nombre}} <span *ngIf="mostrarId">{{entidad?.id}}</span> </h4>
           </div>
         </div>
       </div>

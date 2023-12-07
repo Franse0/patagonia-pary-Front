@@ -37,7 +37,7 @@
     width: 90%;
     margin: 0 auto;
 }
-.info-evento-container{
+.info-productora-container{
     padding: 1rem 1rem;
 }
 
@@ -51,12 +51,23 @@ iframe{
     width: 100%;
     height: 300px;
 }
+.galeria{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.galeria>img{
+border-radius: 10px;
+}
+.section-galeria{
+    padding-top: 1rem;
+    border-top: .7px solid grey ;
+}
 @media (min-width:700px){
     .show-entidad{
         display: flex;
         padding: 2ren 1rem;
     }
-    .info-evento-container{
+    .info-productora-container{
         padding: 1rem;
         width: 50%;
     }
@@ -86,7 +97,9 @@ iframe{
         width: 100%;
         height: 400px;
     }
-
     
+    .galeria{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }    
 }
 

@@ -9,9 +9,11 @@ import { LocalesService } from 'src/app/services/locales.service';
   styleUrls: ['./lugares-admin.component.css', '../in-login.component.css']
 })
 export class LugaresAdminComponent {
+  formNumber:FormGroup
   formAdmin:FormGroup
+  forEdit:any;
 
-  constructor(private localService:LocalesService, private formBuilder:FormBuilder){
+  constructor(private localService:LocalesService, private formBuilder:FormBuilder, private number:FormBuilder){
     this.formAdmin= this.formBuilder.group({
       id:["",[]],
     nombre:["",[]],
@@ -24,6 +26,10 @@ export class LugaresAdminComponent {
     telefono:["",[]],
     horario:["",[]],
     link_ubi:["",[]],
+    })
+
+    this.formNumber=this.number.group({
+      id_edit:["",[]],
     })
   }
   cargarLocal(){
@@ -41,5 +47,20 @@ export class LugaresAdminComponent {
     link_ubi:this.formAdmin.value.link_ubi,
     }
     this.localService.lugarAgregar(lugar).subscribe()
+    this.formAdmin.reset()
+    console.log("lugar cargado con exito")
+  }
+
+  getForEdit(){
+    const valueId = this.formNumber.value.id_edit;
+    if(valueId==""){
+      console.log("debe elegir un lugar para editar");
+      return
+    }else{
+      this.localService.lugarParticular(valueId).subscribe(data=>{
+        this.forEdit=data;
+      })
+    }
+
   }
 }

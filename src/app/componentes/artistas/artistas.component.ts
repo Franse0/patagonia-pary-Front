@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class ArtistasComponent  implements OnInit{
   artistasList:any;
-  // selectedArtista: Artista | null = null;
   artistaId:any;
+  mostrarid:boolean=false;
   
   @Output() emitirArtista= new EventEmitter<number>();
 
@@ -20,6 +20,10 @@ export class ArtistasComponent  implements OnInit{
 
   ngOnInit() {
     const currentRoute = this.router.url;
+    if (this.router.url.includes('/artistas-admin')) {
+      this.mostrarid=true
+      console.log("hola")
+    }
     this.artistasService.artistaTodos().subscribe(data=>{
       if(data.length>=8 && currentRoute!=="/all-artistas"){
         this.artistasList = data.slice(0,8)
@@ -33,7 +37,7 @@ export class ArtistasComponent  implements OnInit{
   showInfoArtista = false;
 
   showArtista(artista: Artista): void {
-    if (this.router.url.includes('/artista')) {
+  if (this.router.url.includes('/artista')) {
       // Estás en la página de artista completo, navega directamente al componente deseado
       this.mostrarDetallesArtista(artista);
     } else {

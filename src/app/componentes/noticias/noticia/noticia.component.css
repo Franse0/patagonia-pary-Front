@@ -17,11 +17,14 @@
     width: 100%;
     height: 300px;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .img-noticia-container img{
     width: 100%;
-    height: 500px;
+    height: 400px;
     display: block;
 }
 
@@ -109,3 +112,4 @@ p{
         height: 150px;
     }
 }
+

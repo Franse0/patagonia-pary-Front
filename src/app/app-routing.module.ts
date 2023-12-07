@@ -47,6 +47,7 @@ const routes: Routes = [
   {path:"productoras-admin", component:ProductorasAdminComponent},
 
 
+  // {path:"**", redirectTo: "/", pathMatch:"full"},
   {path:"", redirectTo: "pagina-principal", pathMatch:"full"},
 ];
 

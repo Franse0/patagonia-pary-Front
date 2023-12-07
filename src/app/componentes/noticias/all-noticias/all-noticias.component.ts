@@ -1,5 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Noticia } from 'src/app/models/noticia';
 import { NoticiasService } from 'src/app/services/noticias.service';
 
@@ -10,11 +11,15 @@ import { NoticiasService } from 'src/app/services/noticias.service';
 })
 export class AllNoticiasComponent  implements OnInit{
   noticias:Noticia[];
+  mostrarId:boolean=false;
 
 
-  constructor(private noticiaService:NoticiasService,private viewportScroller: ViewportScroller){}
+  constructor(private noticiaService:NoticiasService,private viewportScroller: ViewportScroller, private router:Router){}
 
   ngOnInit(): void {
+    if(this.router.url.includes("/noticias-admin")){
+      this.mostrarId=true;
+    }
     this.viewportScroller.scrollToPosition([0, 0]);
     this.noticiaService.noticiasTodos().subscribe(data=>{
       this.noticias=data

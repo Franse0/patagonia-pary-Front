@@ -5,12 +5,14 @@
       <div class="card-evento-contenido">
         <h3 (click)="mostrarDetallesArtista(eventoSelected)" class="enlace">{{eventoSelected.nombre}}</h3>
         
-        <p>
+        <p class="parrafo-description-event">
           {{eventoSelected.descripcion}}
         </p>
+        <!-- <br> -->
+        <span><i class="fa-solid fa-location-dot"></i>{{eventoSelected.ubicacion}}</span> 
     <div class="contenedor"> 
-             <span><i class="fa-solid fa-location-dot"></i>{{eventoSelected.ubicacion}}</span> 
-            <button class="btn-tech" ><a href="https://api.whatsapp.com/send/?phone=5492994535581&text&type=phone_number&app_absent=0" target="_blank">Comprar Entrada</a></button>
+             
+            <button class="btn-tech" ><a href="https://api.whatsapp.com/send/?phone=5492994535581&text&type=phone_number&app_absent=0" target="_blank" class="a-white">Comprar Entrada</a></button>
           </div> 
       </div> 
     </div>

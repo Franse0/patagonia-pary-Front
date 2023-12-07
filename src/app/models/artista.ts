@@ -13,5 +13,6 @@ export class Artista {
     telefono:String=""
     track:String;
     video_yt:String;
+    tiktok:String;
     descripcion:String=""
 }

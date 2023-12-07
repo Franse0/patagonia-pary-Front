@@ -10,6 +10,7 @@
           <img src="{{noticias.img}}" alt="" class="img-card-a link" [routerLink]="['/noticia', noticias.id]">
         </div>
         <span class="enlace" [routerLink]="['/noticia', noticias.id]"> {{noticias.titulo}} </span>
+        <span *ngIf="mostrarId"> {{noticias.id}} </span>
         <p class="description noticia">
           {{noticias.resumen}}
         </p>

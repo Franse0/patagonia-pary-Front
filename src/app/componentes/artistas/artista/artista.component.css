@@ -87,22 +87,21 @@ iframe{
 
 
 
-.redes>div>i{
+.redes-links>a>i{
     color: white;
     border-radius: 50%;
     background: gray;
     padding: 1rem;
     -webkit-background-clip: initial;
     background-clip: initial;
-
-    
+    font-size: 1.2rem;
 }
 
 .redes>div{
     display: flex;
     justify-content: center;
-    gap: 15px;
-    padding: 0rem  1rem 1rem;
+    gap: 5px;
+
 }
 
 .redes .h4{
@@ -115,6 +114,7 @@ iframe{
         display:flex;
         justify-content: center;
         /* width: 100px; */
+        height: auto;
     }
     .artista-layout>div{
         width: 40%;
@@ -122,7 +122,7 @@ iframe{
 
     .redes{
         width: 30%;
-        height: 600px;
+        /* height: 600px; */
         margin-top: 3%;
     }
 
@@ -132,6 +132,18 @@ iframe{
     .musica{
         width: 70%;
         margin: 0 auto;
+    }
+
+    .galeria{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .img-galeria:nth-child(1){
+        grid-area: 1/1/2/2;
+    }
+    .img-galeria:nth-child(2){
+        grid-area: 1/2/3/3;
     }
 }
 

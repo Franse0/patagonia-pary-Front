@@ -8,7 +8,8 @@
           </div>
           <p class="negrita ">{{noticia.resumen}} </p>
 
-          <p>{{noticia.cuerpo}}</p>
+          <!-- <p>{{noticia.cuerpo}}</p> -->
+          <div class="cuerpo" [innerHTML]="noticia.cuerpo"></div>
         </article>
 
 

@@ -78,6 +78,19 @@ a{
     color: transparent;
 }
 
+.fa-phone{
+    cursor: pointer;
+    font-size: 150%;
+    color: blue;
+}
+.fa-soundcloud{
+    color: #FF5500;
+    font-size: 200%;
+}
+.fa-spotify{
+    color:  #1DB954;
+    font-size: 200%;
+}
 
 .btn-tech{
     padding: .2rem 0; 
@@ -185,4 +198,8 @@ a{
         display: grid;   
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
+}
+
+a{
+    color: black;
 }

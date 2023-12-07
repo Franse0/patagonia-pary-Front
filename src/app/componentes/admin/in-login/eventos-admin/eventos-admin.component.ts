@@ -10,8 +10,10 @@ import { EventosService } from 'src/app/services/eventos.service';
 })
 export class EventosAdminComponent {
   formAdmin:FormGroup
+  forEdit:any;
+  formNumber:FormGroup;
 
-  constructor(private eventosService:EventosService, private formBuilder:FormBuilder){
+  constructor(private eventosService:EventosService, private formBuilder:FormBuilder, private number:FormBuilder){
     this.formAdmin= this.formBuilder.group({
       id:["",[]],
     nombre:["",[]],
@@ -23,6 +25,9 @@ export class EventosAdminComponent {
     precio:["",[]],
     descripcion:["",[]],
     organiza:["",[]],
+    })
+    this.formNumber=this.number.group({
+    id_edit:["",[]],
     })
   }
   cargarEvento(){
@@ -38,6 +43,23 @@ export class EventosAdminComponent {
     descripcion:this.formAdmin.value.descripcion,
     organiza:this.formAdmin.value.organiza,
     }
+    console.log(evento);
     this.eventosService.fiestaaAgregar(evento).subscribe()
+    this.formAdmin.reset()
+    console.log("evento cargado correctamente")
+  }
+
+  getForEdit(){
+    const valueId =this.formNumber.value.id_edit;
+    console.log(valueId)
+    if(valueId==""){
+      alert("debes seleccionar el artista a editar");
+      return;
+    }else{
+      this.eventosService.fiestaParticular(valueId).subscribe(data=>{
+        console.log(data)
+        this.forEdit=data
+      })
+    }
   }
 }

@@ -16,7 +16,8 @@
           (click)="showArtista(artista)"
           />
           <div class="card-artista-container">
-            <h3 class="title-artista" (click)="showArtista(artista)">{{artista.seudonimo}} </h3>
+            <h3 class="title-artista" (click)="showArtista(artista)">{{artista.seudonimo}}  <span *ngIf="mostrarid">{{artista.id}} </span> </h3>
+          
           </div>
         </div>
 
@@ -29,16 +30,16 @@
           <i class="fa-solid fa-xmark" (click)="cerrarCardMediana()"></i>
           <img src="{{selectedArtista.img}}" alt="" class="img-card-artista img-artista-display" />
           <div class="card-artista-container">
-            <h3 class="title-artista" (click)="mostrarDetallesArtista(selectedArtista)" [id]="selectedArtista.id" >{{selectedArtista.nombre}}</h3>
+            <h3 class="title-artista" (click)="mostrarDetallesArtista(selectedArtista)" [id]="selectedArtista.id" >{{selectedArtista.seudonimo}}</h3>
             <div class="informacion-artista" [ngClass]="{'informacion-artista_active': showInfoArtista}">
               <p [innerHTML]="selectedArtista.descripcion" class="parrafo-descrip-card-pequeña"></p>
               <span (click)="mostrarDetallesArtista(selectedArtista)" [id]="selectedArtista.id" class="enlace">Leer mas...</span>
               <div class="card-links">
-                <i class="fa-brands fa-tiktok"></i>
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-youtube"></i>
-                <i class="fa-regular fa-envelope"></i>
+                <i class="fa-brands fa-tiktok" *ngIf="selectedArtista.tiktok"> <a href="{{selectedArtista?.tiktok}}"></a></i>
+            <i class="fa-brands fa-instagram"  *ngIf="selectedArtista.instagram"><a href="{{selectedArtista.instagram}}"></a></i>
+            <i class="fa-brands fa-youtube"  *ngIf="selectedArtista.youtube"><a href="{{selectedArtista.youtube}} "></a></i>
+            <i class="fa-brands fa-spotify"  *ngIf="selectedArtista.spotify"><a href="{{selectedArtista.spotify}}"></a></i>
+            <i class="fa-brands fa-soundcloud"*ngIf="selectedArtista.soundcloud"><a href="{{selectedArtista.soundcloud}}"></a></i>
               </div>
             </div>
           </div>

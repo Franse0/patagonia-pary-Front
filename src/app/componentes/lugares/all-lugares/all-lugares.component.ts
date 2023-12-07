@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Local } from 'src/app/models/local';
 import { LocalesService } from 'src/app/services/locales.service';
 
@@ -9,11 +10,15 @@ import { LocalesService } from 'src/app/services/locales.service';
 })
 export class AllLugaresComponent implements OnInit{
   lugares:Local[];
+  mostrarId=false;
 
-  constructor(private localService:LocalesService){
+  constructor(private localService:LocalesService, private router:Router){
 
   }
   ngOnInit(): void {
+    if(this.router.url.includes("/lugares-admin")){
+      this.mostrarId=true
+    }
     this.localService.lugarTodos().subscribe(data=>{
       this.lugares=data;
       

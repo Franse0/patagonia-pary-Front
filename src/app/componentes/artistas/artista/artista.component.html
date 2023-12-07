@@ -17,23 +17,25 @@
                 </div>
                 <div>
                     <span>{{artista?.ubicacion}} </span>
+                    <span>Neuquen, Argentina.</span>
                 </div>
             </div>
             <h4>{{artista?.seudonimo}} </h4>
-            <img src="{{artista?.img}}" alt="" class="profile-img">
+            <img src="{{artista?.img}}" alt="" class="profile-img" *ngIf="seccionActiva === 'bio'">
             <p [innerHTML]="artista?.descripcion" *ngIf="seccionActiva === 'bio'">
-               
             </p>
         </article>
-        <article *ngIf="seccionActiva === 'fotos'|| seccionActiva==='bio'" class="fotos">
+        <article *ngIf="seccionActiva === 'fotos' || seccionActiva==='bio'" class="fotos">
             <h4 class="h4">Fotos</h4>
             <div class="galeria">
-                <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
-                <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
-                <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
-                <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
-                <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
+                <img src="/assets/artistas/tomas1.JPG" alt="" class="img-galeria">
+                <img src="/assets/artistas/tomas2.JPG" alt="" class="img-galeria">
+                <img src="/assets/artistas/tomas.jpg" alt="" class="img-galeria">
             </div>
+        </article>
+        <article *ngif='(artista.youtube) && (seccionActiva === "multimedia" || seccionActiva==="bio")'class="fotos">
+            <h4 class="h4">Videos</h4>
+            <iframe [src]="sanitizedYoutubeVideoUrl" frameborder="0"></iframe>
         </article>
       
         
@@ -47,12 +49,22 @@
             <h4 class="h4"> Redes</h4>
 
       
-        <div class="">        
-            <i class="fa-brands fa-tiktok" *ngIf="artista.tiktok"> <a href="{{artista?.tiktok}}"></a></i>
-            <i class="fa-brands fa-instagram"  *ngIf="artista.instagram"><a href="{{artista?.instagram}}"></a></i>
-            <i class="fa-brands fa-youtube"  *ngIf="artista.youtube"><a href="{{artista?.youtube}} "></a></i>
-            <i class="fa-brands fa-spotify"  *ngIf="artista.spotify"><a href="{{artista?.spotify}}"></a></i>
-            <i class="fa-brands fa-soundcloud"*ngIf="artista.soundcloud"><a href="{{artista?.soundcloud}}"></a></i>
+        <div class="redes-links">        
+            <a href="{{artista?.tiktok}}" target="_blank"> 
+                <i class="fa-brands fa-tiktok" *ngIf="artista?.tiktok"></i>
+            </a>
+            <a href="{{artista?.instagram}}" target="_blank">
+                <i class="fa-brands fa-instagram"  *ngIf="artista?.instagram"></i>
+            </a>
+            <a href="{{artista?.youtube}} " target="_blank">
+                <i class="fa-brands fa-youtube"  *ngIf="artista?.youtube"></i>
+            </a>
+            <a href="{{artista?.spotify}}" target="_blank">
+                <i class="fa-brands fa-spotify"  *ngIf="artista?.spotify"></i>
+            </a>
+            <a href="{{artista?.soundcloud}}" target="_blank">
+                <i class="fa-brands fa-soundcloud"*ngIf="artista?.soundcloud"></i>
+            </a>
         </div>
     </section>
 </div>

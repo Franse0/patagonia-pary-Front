@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { EventosService } from 'src/app/services/eventos.service';
 
 @Component({
@@ -8,13 +9,16 @@ import { EventosService } from 'src/app/services/eventos.service';
 })
 export class EventosComponent implements OnInit{
   idSelected:number;
-
+  mostrarId:boolean=false
   eventos:any;
 
-  constructor(private eventosService:EventosService){
+  constructor(private eventosService:EventosService, private router:Router){
 
   }
   ngOnInit(): void {
+    if(this.router.url.includes("/eventos-admin")){
+      this.mostrarId=true;
+    }
   this.eventosService.fiestasTodos().subscribe(data=>{
     this.eventos=data
     console.log(this.eventos)

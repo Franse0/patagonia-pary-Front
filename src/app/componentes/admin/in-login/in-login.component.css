@@ -5,11 +5,29 @@
     justify-content: center;
 }
 
-.form-edit{
+.form-layout{
+    display: flex;
+}
+
+.form-layout>div{
     display: flex;
     flex-direction: column;
+    width: 100%;
+    
 }
 
 .all-container{
     padding-top:65px ;
+}
+
+.llamar-para-edicion{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.form-edit{
+    display: flex;
+    flex-direction: column;
 }

@@ -18,6 +18,9 @@
 .btn-tech{
     width: 100%;
 }
+.a-white{
+    color: white;
+}
 @media (min-width:790px){
     .card-evento-contenido{
         padding: 1rem;
@@ -28,12 +31,16 @@
         width: 50vw;
     }
     .contenedor{
-        flex-direction: row;
+        margin-top: 5px;
     }
     .img-evento{
         max-width: 30vw;
     }
     
+    .parrafo-description-event{
+        padding: 0;
+
+    }
 }
 
 

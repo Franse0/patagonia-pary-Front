@@ -26,6 +26,6 @@ export class NoticiasService {
   }
 
   noticiasBorrar(id:number):Observable<any>{
-    return this.http.delete(this.url+"/noticia/borrar"+id);
+    return this.http.delete(this.url+"/noticia/borrar/"+id);
   }
 }
