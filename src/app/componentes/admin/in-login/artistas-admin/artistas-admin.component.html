@@ -7,44 +7,39 @@
         <div class="form-layout">
             <div>
                 <label for="id">Id</label>
-                <input type="number"formControlName="id" id="id" value="{{forEdit?.id}}">
+                <input type="number"formControlName="id" id="id" [value]="forEdit?.id">
                 <label for="nombre">Nombre</label>
-                <input type="text"  formControlName="nombre" id="nombre" value="{{forEdit?.nombre}}">
+                <input type="text"  formControlName="nombre" id="nombre" [value]="forEdit?.nombre">
                 <label for="apellido">Apellido</label>
-                <input type="text" formControlName="apellido" id="apellido" value="{{forEdit?.apellido}}">
+                <input type="text" formControlName="apellido" id="apellido" [value]="forEdit?.apellido">
                 <label for="pretskit">Pretskit</label>
-                <input type="text" formControlName="pretskit" id="pretskit" value="{{forEdit?.pretskit}}">
+                <input type="text" formControlName="pretskit" id="pretskit" [value]="forEdit?.pretskit">
                 <label for="seudonimo">Seudonimo</label>
-                <input type="text" formControlName="seudonimo" id="seudonimo" value="{{forEdit?.seudonimo}}">
+                <input type="text" formControlName="seudonimo" id="seudonimo" [value]="forEdit?.seudonimo">
                 <label for="img">Imagen</label>
-                <input type="text" formControlName="img" id="img" value="{{forEdit?.img}}">
+                <input type="text" formControlName="img" id="img" [value]="forEdit?.img">
+                <label for="img_list">Imagenes varias</label>
+                <input type="text" formControlName="img_list" id="img_list" [value]="forEdit?.img_list">
                 <label for="soundcloud">Soundcloud</label>
-                <input type="text" formControlName="soundcloud" id="soundcloud" value="{{forEdit?.soundcloud}}">
-                <label for="tiktok">tiktok</label>
-                <input type="text" formControlName="tiktok" id="tiktok" value="{{forEdit?.tiktok}}">
+                <input type="text" formControlName="soundcloud" id="soundcloud" [value]="forEdit?.soundcloud">
             </div>
             <div>
+                <label for="tiktok">tiktok</label>
+                <input type="text" formControlName="tiktok" id="tiktok" [value]="forEdit?.tiktok">
                 <label for="instagram">Instagram</label>
-                <input type="text" formControlName="instagram" id="instagram" value="{{forEdit?.instagram}}">
+                <input type="text" formControlName="instagram" id="instagram" [value]="forEdit?.instagram">
                 <label for="spotify">Spotify</label>
-                <input type="text" formControlName="spotify" id="spotify" value="{{forEdit?.spotify}}">
+                <input type="text" formControlName="spotify" id="spotify" [value]="forEdit?.spotify">
                 <label for="youtube">Youtube</label>
-                <input type="text" formControlName="youtube" id="youtube" value="{{forEdit?.youtube}}">
+                <input type="text" formControlName="youtube" id="youtube" [value]="forEdit?.youtube">
                 <label for="mail">Mail</label>
-                <input type="text" formControlName="mail" id="mail" value="{{forEdit?.mail}}">
+                <input type="text" formControlName="mail" id="mail" [value]="forEdit?.mail">
                 <label for="telefono">Telefono</label>
-                <input type="text" formControlName="telefono" id="telefono" value="{{forEdit?.telefono}}">
+                <input type="text" formControlName="telefono" id="telefono" [value]="forEdit?.telefono">
                 <label for="track">Track</label>
-                <input type="text" formControlName="track" id="track" value="{{forEdit?.track}}">
+                <input type="text" formControlName="track" id="track" [value]="forEdit?.track">
                 <label for="video_yt">Video Yt</label>
-                <input type="text" formControlName="video_yt" id="video_yt" value="{{forEdit?.video_yt}}">
-                <div class="llamar-para-edicion">
-                    <label for="id_edit">Selecciona artista a editar</label>
-                    <div id="llamar" >
-                        <input type="number" formControlName="id_edit" id="id_edit">
-                        <button  (click)="getForEdit()">Seleccionar</button>
-                    </div>
-                </div>
+                <input type="text" formControlName="video_yt" id="video_yt" [value]="forEdit?.video_yt">
                 
             </div>
         </div>
@@ -52,5 +47,15 @@
         <textarea name="" id="descripcion" formControlName="descripcion" cols="30" rows="5" [value]="forEdit?.descripcion"></textarea>
         <button type="submit">Cargar</button>
     </form>
+    <form class="llamar-para-edicion" [formGroup]="formNumber">
+        <label for="id_edit">Selecciona artista a editar</label>
+        <div id="llamar" >
+            <input type="number" formControlName="id_edit" id="id_edit">
+            <div>
+                <button type="button"  (click)="getForEdit()">Seleccionar</button>
+                <button type="button"  (click)="deleteMapping()">borrar</button>
+              </div>
+        </div>
+    </form>
 </div>
-<app-artistas *ngIf="modoEdit"> </app-artistas>
+<app-artistas > </app-artistas>

@@ -4,6 +4,8 @@ import { Component, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { GaleriaService } from 'src/app/services/galeria.service';
+
 // import { Lightbox } from 'ngx-lightbox';
 
 @Component({
@@ -15,32 +17,51 @@ export class ArtistaComponent {
   artista:any;
   youtubeVideoId!:String; // ID del video de YouTube
   sanitizedYoutubeVideoUrl!: SafeResourceUrl|undefined;
+  artistaFotos: string[] = [];
 
   
   
   constructor(private route: ActivatedRoute, private artistasService: ArtistasService, 
-    private viewportScroller: ViewportScroller, private sanitizer: DomSanitizer, 
+    private viewportScroller: ViewportScroller, private sanitizer: DomSanitizer, private galeriaService:GaleriaService 
     ) {    }
 
   
 
-  ngOnInit(): void {
-
-    
-
-    // Obtener el id del artista de los parámetros de la URL
-    this.route.queryParams.subscribe(params => {
-      const id = params['id'];
-      this.youtubeVideoId = '';
-      this.sanitizedYoutubeVideoUrl=undefined;
-      // Cargar la información del artista utilizando el servicio correspondiente
-      this.artistasService.artistaParticular(id).subscribe(data => {
-        console.log("datos",data)
-        this.artista=data
-        this.extractYoutubeVideoId();
-        this.viewportScroller.scrollToPosition([0, 0]);
+    ngOnInit(): void {
+      this.route.params.subscribe(params => {
+        const id = params['id'];
+        this.loadData(id);
       });
+    
+      // También puedes suscribirte a los cambios en queryParams
+      this.route.queryParams.subscribe(queryParams => {
+        const idFromQueryParams = queryParams['id'];
+        if (idFromQueryParams) {
+          this.loadData(idFromQueryParams);
+        }
+      });
+    }
+  loadData(id: any): void {
+    this.youtubeVideoId = '';
+    this.sanitizedYoutubeVideoUrl = undefined;
+    this.artistasService.artistaParticular(id).subscribe(data => {
+      console.log("datos", data);
+      this.artista = data;
+      this.procesarFotos();
+      this.extractYoutubeVideoId();
+      this.viewportScroller.scrollToPosition([0, 0]);
     });
+  }
+
+  procesarFotos(): void {
+    // Verificar si el campo img_list está presente en el objeto artista
+    if (this.artista && this.artista.img_list) {
+      // Dividir el string de fotos en un array usando la coma como delimitador
+      this.artistaFotos = this.artista.img_list.split(',');
+  
+      // Ahora tienes un array con las URLs de las fotos del artista
+      console.log("soy las fotos", this.artistaFotos);
+    }
   }
 
   extractYoutubeVideoId(): void {
@@ -71,6 +92,8 @@ export class ArtistaComponent {
   }
 
 
-
+  abrirGaleriaDesdePrincipal(index: number): void {
+    this.galeriaService.abrirGaleria(this.artistaFotos, index);
+  }
 
 }

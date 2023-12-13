@@ -22,6 +22,7 @@ export class NoticiasService {
   }
 
   noticiasAgregar(noticia:Noticia):Observable<Noticia>{
+    console.log(noticia)
     return this.http.post<Noticia>(this.url+"/noticia", noticia);
   }
 

@@ -10,7 +10,8 @@
 }
 
 .card-evento{
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
     padding:  1rem 2rem;
     overflow: hidden;
 }
@@ -22,7 +23,8 @@
 
 .card-evento h3{
     cursor: pointer;
-    font-size: 23px;
+    font-size: 16px;
+    font-weight: bold;
 }
 .card-evento h3:hover{
     color: var(--color4);
@@ -56,7 +58,7 @@
         display: block;
     }    
     .card-evento h3{
-        line-height: 22px;
+        line-height: 18pxpx;
     }
     
     .card-evento{
@@ -65,6 +67,7 @@
         flex-direction: column;
         height: auto;
         line-height: 17px;
+        width: 100%;
     }
 
     .card-evento-contenido{

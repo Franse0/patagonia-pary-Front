@@ -1,19 +1,19 @@
 <div class="all-container">
-    <section class="show-evento " #showEvento >   
+    <section class="show-evento " #showEvento  *ngIf="eventoSelected$ | async as eventoSelected">   
         
-            <div *ngIf="eventoSelected" class="card-evento show-card" >
+            <div   class="evento-seleccionado" >
                 <div class="img-container">
                     <div class="fecha">
                         <span>Dic</span>
                         <span>01</span>
                         <span>vie</span>
                     </div>
-                    <img src="{{eventoSelected.img}}" alt="" class="img-card-evento grande">
+                    <img src="{{eventoSelected?.img}}" alt="" class="img-card-evento grande">
                 </div>
                 <div class="info-evento-card">
-                    <h3 class="link enlace">{{eventoSelected.nombre}} </h3>
-                    <p>Por: <span class="resaltado link enlace2">{{eventoSelected.organiza}}</span></p>
-                    <span> <i class="fa-solid fa-location-dot"></i>{{eventoSelected.ubicacion}}</span>
+                    <h3 class="link enlace">{{eventoSelected?.nombre}} </h3>
+                    <p>Por: <span class="resaltado link enlace2">{{eventoSelected?.organiza}}</span></p>
+                    <span> <i class="fa-solid fa-location-dot"></i>{{eventoSelected?.ubicacion}}</span>
                 </div>
             </div>
 
@@ -22,14 +22,14 @@
                 <h4 class="title-container">Ofrecido por</h4>
                 <div class="package-producer">
                     <img src="/assets/entidades/ojo.png" alt="" class="logo">
-                    <span class="enlace2">{{eventoSelected.organiza}}</span>
+                    <span class="enlace2">{{eventoSelected?.organiza}}</span>
                 </div>
                 <div class="acerca-de">
                     <div class="title-container">
                         <h4>Acerca de</h4>
                     </div>
                     <p>
-                        Aca va la descripcion de la fiesta, si es al aire libre, Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut accusamus maxime nulla necessitatibus veniam nisi unde at dolore dolor eos. Incidunt pariatur commodi, deserunt vel eos illum ipsa doloribus neque!
+                        {{eventoSelected?.descripcion}}
                     </p>
 
                     <div class="line-up">
@@ -37,14 +37,13 @@
                             <h4>Line up</h4>
                         </div>
                         <ul>
-                            <li class="enlace">Guus Muñoz</li>
-                            <li class="enlace">Tomas Carbonetti</li>
-                            <li class="enlace">Mati Aztroza</li>
-                            <li class="enlace">Lu Llanquil</li>
+                            <li *ngFor="let item of enlacesDJs" class="enlace">
+                                <a [routerLink]="[item.enlace]">{{ item.seudonimo }}</a>
+                              </li>                       
                         </ul>
                     </div>
                     <div class="adquirir-entrada">
-                        <button class="btn-tech" ><a href="https://api.whatsapp.com/send/?phone=5492994535581&text&type=phone_number&app_absent=0" target="_blank">Comprar Entrada</a></button>
+                        <a href="https://api.whatsapp.com/send/?phone=5492994535581&text&type=phone_number&app_absent=0" target="_blank" class="bnt-tech" ><button class="btn-tech" >Comprar Entrada</button></a>
                     </div>
                     <div class="ubication">
                         <iframe

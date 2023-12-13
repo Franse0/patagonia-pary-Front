@@ -14,6 +14,7 @@ export class EventosService {
 
   constructor(private http:HttpClient) { }
 
+
   fiestasTodos():Observable<any>{
     return this.http.get(this.url+"/fiestas");
   }
@@ -27,6 +28,10 @@ export class EventosService {
   }
 
   fiestaBorrar(id:number):Observable<any>{
-    return this.http.delete(this.url+"/fiesta/borrar"+id);
+    return this.http.delete(this.url+"/fiesta/borrar/"+id);
+  }
+
+  buscarFiesta(parametro:String):Observable<any>{
+    return this.http.get<any[]>(`${this.url}/fiesta/buscar/${parametro}`)
   }
 }

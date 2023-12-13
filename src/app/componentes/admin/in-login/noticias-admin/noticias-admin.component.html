@@ -7,30 +7,34 @@
         <div class="form-layout">
             <div>
                 <label for="id">Id</label>
-                <input type="number"formControlName="id" id="id" value="{{forEdit?.id}}">
+                <input type="number"formControlName="id" id="id" [value]="forEdit?.id">
                 <label for="titulo">Titulo</label>
-                <input type="text"  formControlName="titulo" id="titulo" value="{{forEdit?.titulo}}">
+                <input type="text"  formControlName="titulo" id="titulo" [value]="forEdit?.titulo">
                 <label for="resumen">Resumen</label>
-                <input type="text" formControlName="resumen" id="resumen" value="{{forEdit?.resumen}}">
+                <input type="text" formControlName="resumen" id="resumen" [value]="forEdit?.resumen">
             </div>
             <div>
                 <label for="fecha_publi">Fecha Publi</label>
-                <input type="text" formControlName="fecha_publi" id="fecha_publi" value="{{forEdit?.fecha_publi}}">
+                <input type="text" formControlName="fecha_publi" id="fecha_publi" [value]="forEdit?.fecha_publi">
                 <label for="url">Url</label>
-                <input type="text" formControlName="url" id="url" value="{{forEdit?.url}}">
+                <input type="text" formControlName="url" id="url" [value]="forEdit?.url">
                 <label for="img">Imagen</label>
-                <input type="text" formControlName="img" id="img" value="{{forEdit?.img}}">
+                <input type="text" formControlName="img" id="img" [value]="forEdit?.img">
             </div>
         </div>
         <label for="cuerpo">Cuerpo</label>
-        <textarea name="" id="cuerpo" formControlName="cuerpo" cols="30" rows="10" value="{{forEdit?.cuerpo}}"></textarea>
+        <textarea name="" id="cuerpo" formControlName="cuerpo" cols="30" rows="10" [value]="forEdit?.cuerpo"></textarea>
         <button type="submit">Cargar</button>
     </form>
     <form class="llamar-para-edicion" [formGroup]="formNumber">
-        <label for="id_edit">Selecciona artista a editar</label>
+        <label for="id_edit">Selecciona nnoticia a editar</label>
         <div id="llamar" >
             <input type="number" formControlName="id_edit" id="id_edit">
-            <button type="button"  (click)="getForEdit()">Seleccionar</button>
+            <div>
+                <button type="button"  (click)="getForEdit()">Seleccionar</button>
+                <button type="button"  (click)="deleteMapping()">borrar</button>
+
+              </div>
         </div>
     </form>
 </div>

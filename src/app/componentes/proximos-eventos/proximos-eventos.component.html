@@ -8,11 +8,11 @@
       <div class="eventos-home" >
         <div class="card-evento"*ngFor="let fiestas of fiestas"  >
           <img
-          id={{fiestas.id}} (click)="capturarValor($event)"
-            src={{fiestas.img}}
-            id={{fiestas.id}} 
-            alt=""
-            class="card-evento-img"
+          src={{fiestas.img}}
+          id={{fiestas.id}} 
+          alt=""
+          class="card-evento-img"
+          (click)="capturarValor($event)"
           />
           <h3 id={{fiestas.id}} (click)="capturarValor($event)">{{fiestas.nombre}} </h3>
           <span> <i class="fa-solid fa-location-dot"></i>{{fiestas.ubicacion}} </span>

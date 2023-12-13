@@ -1,19 +1,18 @@
 <div class="evento-seleccionado">
-
-    <div class="card-evento-seleccionado" *ngFor="let eventoSelected of eventoSelected">
-      <img src="{{eventoSelected.img}}" alt="" class="img-evento" />
-      <div class="card-evento-contenido">
-        <h3 (click)="mostrarDetallesArtista(eventoSelected)" class="enlace">{{eventoSelected.nombre}}</h3>
-        
-        <p class="parrafo-description-event">
-          {{eventoSelected.descripcion}}
-        </p>
-        <!-- <br> -->
-        <span><i class="fa-solid fa-location-dot"></i>{{eventoSelected.ubicacion}}</span> 
-    <div class="contenedor"> 
-             
-            <button class="btn-tech" ><a href="https://api.whatsapp.com/send/?phone=5492994535581&text&type=phone_number&app_absent=0" target="_blank" class="a-white">Comprar Entrada</a></button>
-          </div> 
+  <div class="card-evento-seleccionado" *ngFor="let evento of eventoSelected">
+    <img src="{{evento.img}}" alt="" class="img-evento" [routerLink]="['/eventos', evento.id]" />
+    <div class="card-evento-contenido">
+      <h3 (click)="mostrarDetalle(evento.id)" class="enlace">{{evento.nombre}}</h3>
+      <p class="parrafo-description-event">
+        {{evento.descripcion}}
+      </p>
+      <span><i class="fa-solid fa-check"></i>Organiza: {{evento.organiza}}</span> <br>
+      <span><i class="fa-solid fa-location-dot"></i>{{evento.ubicacion}}</span> <br>
+      <div class="contenedor"> 
+        <a href="https://api.whatsapp.com/send/?phone=5492994535581&text&type=phone_number&app_absent=0" class="btn-tech" target="_blank" class="a-white">
+          <button class="btn-tech">Comprar Entrada</button>
+        </a>
       </div> 
-    </div>
+    </div> 
   </div>
+</div>

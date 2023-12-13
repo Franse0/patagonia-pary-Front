@@ -74,6 +74,7 @@ ul{
 @media (min-width:700px){
     .show-evento{
         display: flex;
+        justify-content: center;
     }
     .info-evento-container{
         padding: 1rem;

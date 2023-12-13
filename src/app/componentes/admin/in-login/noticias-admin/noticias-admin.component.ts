@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, AbstractControl, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, AbstractControl, FormArray, Validators } from '@angular/forms';
 import { Noticia } from 'src/app/models/noticia';
 import { NoticiasService } from 'src/app/services/noticias.service';
 
@@ -13,24 +13,19 @@ export class NoticiasAdminComponent {
   formNumber:FormGroup
   forEdit:any;
 
-  get secciones() {
-    return (this.formAdmin.get('secciones') as FormArray).controls;
-  }
 
   constructor(private noticiaService:NoticiasService, private formBuilder:FormBuilder, private number:FormBuilder){
     this.formAdmin= this.formBuilder.group({
       id: ["", []],
-      titulo: ["", []],
-      resumen: ["", []],
-      // cuerpo:[this.decodeHtml(this.forEdit?.cuerpo), []],  
-      cuerpo:["", []],  
-      fecha_publi: ["", []],
+      titulo: ["", [Validators.required]],
+      resumen: ["", [Validators.required]],
+      cuerpo:["", [Validators.required]],  
+      fecha_publi: ["", [Validators.required]],
       url: ["", []],
-      img: ["", []],
+      img: ["", [Validators.required]],
     })
     this.formNumber=this.number.group({
     id_edit:["",[]],
-
     })
   }
 
@@ -41,6 +36,10 @@ export class NoticiasAdminComponent {
   }
 
   cargarNoticia(){
+    if (this.formAdmin.invalid) {
+      alert("Por favor, completa todos los campos obligatorios.");
+      return;
+    }
     const noticia:Noticia={
     id:this.formAdmin.value.id,
     titulo:this.formAdmin.value.titulo,
@@ -63,9 +62,28 @@ export class NoticiasAdminComponent {
       return
     }else{
       this.noticiaService.noticiasParticular(valueId).subscribe(data=>{
-        this.forEdit=data;
+        try{
+          this.forEdit=data;
+          this.formAdmin.patchValue({
+            id:this.forEdit.id,
+            titulo:this.forEdit.titulo,
+            cuerpo: this.forEdit.cuerpo,
+            resumen:this.forEdit.resumen,
+            fecha_publi:this.forEdit.fecha_publi,
+            url:this.forEdit.url,
+            img:this.forEdit.img,
+          })
+        } catch(e){
+          alert("no se encontro elemento con ese id")
+        }
       })
     }
-
+  }
+  deleteMapping(){
+    const valueId =this.formNumber.value.id_edit;
+    if(window.confirm(`Seguro deseas eliminar el item con el id:${valueId}`))
+    this.noticiaService.noticiasBorrar(valueId).subscribe()
+    this.formAdmin.reset()
+    this.formNumber.reset()
   }
 }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EventosService } from 'src/app/services/eventos.service';
 
 @Component({
@@ -12,22 +12,38 @@ export class EventosComponent implements OnInit{
   mostrarId:boolean=false
   eventos:any;
 
-  constructor(private eventosService:EventosService, private router:Router){
+  constructor(private eventosService:EventosService, private router:Router, private route:ActivatedRoute){
 
   }
   ngOnInit(): void {
-    if(this.router.url.includes("/eventos-admin")){
-      this.mostrarId=true;
+    // Obtener el id de los parámetros de ruta
+    // this.route.params.subscribe(params => {
+    //   const id = params['id'];
+    //   console.log(id);
+    // });
+  
+    this.route.params.subscribe(params => {
+      const id = params['id'];
+      console.log("id que llego",id)
+      if (id !== undefined) {
+        this.idSelected = +id; // Convertir a número
+        // Lógica adicional si es necesario hacer algo cuando hay un evento seleccionado
+      }
+    });
+
+    if (this.router.url.includes("/eventos-admin")) {
+      this.mostrarId = true;
     }
-  this.eventosService.fiestasTodos().subscribe(data=>{
-    this.eventos=data
-    console.log(this.eventos)
-  })
+
+    this.eventosService.fiestasTodos().subscribe(data => {
+      this.eventos = data;
+      console.log(this.eventos);
+    });
   }
 
-  capturarValor(event:Event){
-    const valor = (<HTMLImageElement>event.target).id;
-    this.idSelected=Number(valor)
-    console.log(this.idSelected)
+  capturarValor(id:number){
+ 
+    this.idSelected=Number(id)
+    console.log("funcion que cambia de fiesta:", this.idSelected)
   }
 }

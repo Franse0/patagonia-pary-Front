@@ -12,75 +12,16 @@
                         <span>01</span>
                         <span>vie</span>
                     </div>
-                    <img src="{{eventos.img}} " alt="" class="img-card-evento" (click)="capturarValor($event)" id="{{eventos.id}}">
+                    <img src="{{eventos?.img}} " alt="" class="img-card-evento"  id="{{eventos?.id}}" (click)="capturarValor(eventos.id)">
                 </div>
                 <div class="info-evento-card">
-                    <h3 class="link enlace" (click)="capturarValor($event)" id="{{eventos.id}}">{{eventos.nombre}} </h3>
+                    <h3 class="link enlace" (click)="capturarValor(eventos.id)" id="{{eventos?.id}}">{{eventos?.nombre}} </h3>
                     <span *ngIf="mostrarId">{{eventos.id}} </span> 
-                    <p>Por: <span class="resaltado link enlace">{{eventos.organiza}} </span></p>
-                    <span> <i class="fa-solid fa-location-dot"></i>{{eventos.ubicacion}} </span>
+                    <p>Por: <span class="resaltado link enlace">{{eventos?.organiza}} </span></p>
+                    <span> <i class="fa-solid fa-location-dot"></i>{{eventos?.ubicacion}} </span>
                 </div>
             </div> 
-             <!-- <div class="card-evento">
-                <div class="img-container">
-                    <div class="fecha">
-                        <span>Dic</span>
-                        <span>01</span>
-                        <span>vie</span>
-                    </div>
-                    <img src="/assets/fiestas/1.jpg" alt="" class="img-card-evento">
-                </div>
-                <div class="info-evento-card">
-                    <h3 class="link enlace">Titulo de la fiesta</h3>
-                    <p>Por: <span class="resaltado link enlace">Onfilter</span></p>
-                    <span> <i class="fa-solid fa-location-dot"></i>Terraza neuquen</span>
-                </div>
-            </div>
-            <div class="card-evento">
-                <div class="img-container">
-                    <div class="fecha">
-                        <span>Dic</span>
-                        <span>01</span>
-                        <span>vie</span>
-                    </div>
-                    <img src="/assets/fiestas/1.jpg" alt="" class="img-card-evento">
-                </div>
-                <div class="info-evento-card">
-                    <h3 class="link enlace">Titulo de la fiesta</h3>
-                    <p>Por: <span class="resaltado link enlace">Onfilter</span></p>
-                    <span> <i class="fa-solid fa-location-dot"></i>Terraza neuquen</span>
-                </div>
-            </div>
-            <div class="card-evento">
-                <div class="img-container">
-                    <div class="fecha">
-                        <span>Dic</span>
-                        <span>01</span>
-                        <span>vie</span>
-                    </div>
-                    <img src="/assets/fiestas/1.jpg" alt="" class="img-card-evento">
-                </div>
-                <div class="info-evento-card">
-                    <h3 class="link enlace">Titulo de la fiesta</h3>
-                    <p>Por: <span class="resaltado link enlace">Onfilter</span></p>
-                    <span> <i class="fa-solid fa-location-dot"></i>Terraza neuquen</span>
-                </div>
-            </div>
-            <div class="card-evento">
-                <div class="img-container">
-                    <div class="fecha">
-                        <span>Dic</span>
-                        <span>01</span>
-                        <span>vie</span>
-                    </div>
-                    <img src="/assets/fiestas/1.jpg" alt="" class="img-card-evento">
-                </div>
-                <div class="info-evento-card">
-                    <h3 class="link enlace">Titulo de la fiesta</h3>
-                    <p>Por: <span class="resaltado link enlace">Onfilter</span></p>
-                    <span> <i class="fa-solid fa-location-dot"></i>Terraza neuquen</span>
-                </div>
-            </div>  -->
+
         </div>
     </section>
 </div>

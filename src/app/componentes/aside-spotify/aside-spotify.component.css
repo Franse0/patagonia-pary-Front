@@ -32,17 +32,23 @@
   .aside-btn{
     background: transparent;
     padding: .5rem 1.5rem;
-    color:#0F9D58;
     /* color: white; */
     display: block;
     margin:7% auto;
     text-transform: uppercase;
     transition: .2s;
   }
- .aside-btn:hover{
+  .aside-btn:hover {
     background: #0F9D58;
+}
+
+.aside-btn:hover > a {
     color: white;
- }
+}
+ .aside-btn>a{
+  color:#0F9D58;
+}
+ 
   .aside-container{
     position: absolute;
     top:40%;

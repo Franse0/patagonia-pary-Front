@@ -1,0 +1,8 @@
+<div *ngIf="galeriaAbierta" class="galeria-completa">
+    <div class="boton-cerrar" (click)="cerrarGaleria()">Cerrar</div>
+    <div class="imagen-actual">
+      <img [src]="fotos[currentIndex]" alt="Foto del artista" class="img-galeria-completa">
+    </div>
+    <div class="boton-anterior" (click)="anterior()">&#8249;</div>
+    <div class="boton-siguiente" (click)="siguiente()">&#8250;</div>
+  </div>

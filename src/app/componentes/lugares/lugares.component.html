@@ -32,73 +32,29 @@
           </div>
           <div class="card-lugar-info-inferior">
             <div class="card-lugar-links">
-              <i class="fa-brands fa-tiktok"></i>
-              <i class="fa-brands fa-facebook"></i>
-              <i class="fa-brands fa-instagram"></i>
-              <i class="fa-brands fa-youtube"></i>
-              <i class="fa-regular fa-envelope"></i>
+              <a href="{{lugar?.instagram}}" target="_blank">
+                <i class="fa-brands fa-instagram"  *ngIf="lugar?.instagram"></i>
+            </a>
+            <a href="{{lugar?.facebook}} " target="_blank">
+                <i class="fa-brands fa-youtube"  *ngIf="lugar?.facebook"></i>
+            </a>
+            <a href="{{lugar?.telefono}}" target="_blank">
+                <i class="fa-solid fa-phone"  *ngIf="lugar?.telefono"></i>
+            </a>
             </div>
             <div class="card-lugar-ubicacion">
-              <iframe
+              <!-- <iframe
                 src="{{lugar.link_ubi}}"
                 class="iframe-card-lugar"
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
+              ></iframe> -->
             </div>
           </div>
         </div>
       </div>
-      <!-- <div class="card-lugar">
-        <div class="card-lugar-img">
-          <img
-            src="/assets/locaciones/zona_a.jpg"
-            alt=""
-            class="card-lugar-a"
-          />
-          <img
-            src="/assets/locaciones/zona_a.jpg"
-            alt=""
-            class="card-lugar-b"
-          />
-        </div>
-        <div class="card-lugar-info">
-          <h3>Zona drink</h3>
-          <div>
-            <p>
-              Zona drink es un bar de la ciudad de Nequen, donde Lorem ipsum
-              dolor sit amet, consectetur adipisicing elit. Explicabo accusamus
-              temporibus molestias reprehenderit excepturi recusandae iusto
-              molestiae expedita, quaerat labore.
-            </p>
-
-            <div class="div-card-lugar">
-              <span>lun-viernes 8 a 19hs</span>
-              <span>Ubicado en calle falsa 123</span>
-            </div>
-          </div>
-          <div class="card-lugar-info-inferior">
-            <div class="card-lugar-links">
-              <i class="fa-brands fa-tiktok"></i>
-              <i class="fa-brands fa-facebook"></i>
-              <i class="fa-brands fa-instagram"></i>
-              <i class="fa-brands fa-youtube"></i>
-              <i class="fa-regular fa-envelope"></i>
-            </div>
-            <div class="card-lugar-ubicacion">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3099.665448571628!2d-67.61131012495015!3d-39.02294450410701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a1cfc9d66ba0b%3A0x434c59635286224b!2sBartolom%C3%A9%20Mitre%203233%2C%20Gral.%20Roca%2C%20R%C3%ADo%20Negro!5e0!3m2!1ses!2sar!4v1699460819228!5m2!1ses!2sar"
-                class="iframe-card-lugar"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
+    
     </div>
   </section>
 </div>

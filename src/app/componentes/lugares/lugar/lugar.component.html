@@ -28,16 +28,17 @@
         <article *ngIf="seccionActiva === 'fotos'|| seccionActiva ==='bio'" class="fotos">
             <h4 class="h4">Fotos</h4>
             <div class="galeria">
-                <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
-                <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
-                <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
-                <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
-                <img src="/assets/artistas/guus.jpg" alt="" class="img-galeria">
-            </div>
+                <div class="img-container" *ngFor="let fotoUrl of lugarFotos; let i = index" (click)="abrirGaleriaDesdePrincipal(i)">
+                  <img [src]="fotoUrl" alt="Foto del lugar" class="img-galeria">
+                </div>
+              </div>
+    <app-galeria></app-galeria>
+
         </article>
-        <article *ngIf="seccionActiva === 'bio' || seccionActiva === 'multimedia'" class="video">
+        <article *ngIf='(lugar.video)&& (seccionActiva === "bio" || seccionActiva === "multimedia")'
+        class="video">
             <h4 class="h4">video</h4>
-            <iframe  src="https://www.youtube.com/embed/4M-I8jYrMFs?si=WcvoVAM3ALzL2hMs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe  [src]="sanitizedYoutubeVideoUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </article>
 
     </section>
@@ -49,15 +50,19 @@
 
       
         <div class="">        
-            <i class="fa-brands fa-tiktok"></i>
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-youtube"></i>
-            <i class="fa-regular fa-envelope"></i>
+            <a href="{{lugar?.instagram}}" target="_blank">
+                <i class="fa-brands fa-instagram"  *ngIf="lugar?.instagram"></i>
+            </a>
+            <a href="{{lugar?.facebook}} " target="_blank">
+                <i class="fa-brands fa-youtube"  *ngIf="lugar?.facebook"></i>
+            </a>
+            <a href="{{lugar?.telefono}}" target="_blank">
+                <i class="fa-solid fa-phone"  *ngIf="lugar?.telefono"></i>
+            </a>
         </div>
         <article>
            <h4 class="h4">ubicacion</h4>
-           <iframe src="{{lugar?.link_ubi}}" frameborder="0"></iframe>
+           <!-- <iframe src="{{lugar?.link_ubi}}" frameborder="0"></iframe> -->
         </article>
     </section>
 </div>

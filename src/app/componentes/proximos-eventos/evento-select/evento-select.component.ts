@@ -12,6 +12,7 @@ import { EventosService } from 'src/app/services/eventos.service';
 export class EventoSelectComponent implements OnInit{
   @Input() eventoId:number ;
   eventoSelected:any;
+  selectedFiesta:any;
 
   constructor(private eventoSerivce:EventosService, private router:Router){}
 
@@ -42,11 +43,10 @@ export class EventoSelectComponent implements OnInit{
     });
   }
 
-  
-  mostrarDetallesArtista(evento:Evento): void {
-    // Utiliza el servicio de enrutamiento para navegar al componente deseado
-    this.router.navigate(['/evento'], { queryParams: { id: evento.id } });
+  mostrarDetalle(id:number){
+    this.router.navigate(['/eventos', id]);;
   }
+  
   
 
 }

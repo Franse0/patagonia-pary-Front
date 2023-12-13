@@ -30,7 +30,7 @@ import { EventoComponent } from './componentes/eventos/evento/evento.component';
 import { EventoSelectComponent } from './componentes/proximos-eventos/evento-select/evento-select.component';
 import { AllLugaresComponent } from './componentes/lugares/all-lugares/all-lugares.component';
 import { LugarComponent } from './componentes/lugares/lugar/lugar.component';
-import { ProdcutorasComponent  } from './componentes/entidades/productoras.component';
+import { ProductorasComponent  } from './componentes/entidades/productoras.component';
 import { AdminComponent } from './componentes/admin/admin.component';
 import { LoginComponent } from './componentes/admin/login/login.component';
 import { InLoginComponent } from './componentes/admin/in-login/in-login.component';
@@ -39,10 +39,11 @@ import { EventosAdminComponent } from './componentes/admin/in-login/eventos-admi
 import { NoticiasAdminComponent } from './componentes/admin/in-login/noticias-admin/noticias-admin.component';
 import { ProductorasAdminComponent } from './componentes/admin/in-login/productoras-admin/productoras-admin.component';
 import { LugaresAdminComponent } from './componentes/admin/in-login/lugares-admin/lugares-admin.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductoraComponent } from './componentes/entidades/productora/productora.component';
+import { GaleriaComponent } from './componentes/galeria/galeria.component';
 
-// import { LightboxModule } from 'ngx-lightbox';
+// soundcloud
 
 
 
@@ -68,7 +69,7 @@ import { ProductoraComponent } from './componentes/entidades/productora/producto
     EventoSelectComponent,
     AllLugaresComponent,
     LugarComponent,
-    ProdcutorasComponent,
+    ProductorasComponent,
     ProductoraComponent,
     AdminComponent,
     LoginComponent,
@@ -78,6 +79,7 @@ import { ProductoraComponent } from './componentes/entidades/productora/producto
     NoticiasAdminComponent,
     ProductorasAdminComponent,
     LugaresAdminComponent,
+    GaleriaComponent,
     // MercadopagoComponent,
   ],
   imports: [
@@ -85,6 +87,7 @@ import { ProductoraComponent } from './componentes/entidades/productora/producto
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule
     // LightboxModule,
   ],
   exports:[ ArtistasComponent],

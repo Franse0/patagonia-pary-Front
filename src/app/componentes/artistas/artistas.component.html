@@ -3,7 +3,7 @@
 
     <div class="title-container">
       <h2>Artistas</h2>
-      <a routerLink="/all-artistas">ver todos</a>
+      <a (click)="mostrarTodosLosArtistas()" class="enlace">ver todos</a>
     </div>
     
     <div class="display-artistas-container" [ngClass]="{'display-artistas-container__active': cardGrandeActive}">
@@ -28,7 +28,7 @@
       <div class="show-artista" [ngClass]="{'show-artista__active': cardGrandeActive}" *ngIf="artistasService.artistaSeleccionado$ | async as selectedArtista">
         <div class="card-artista card-grande">
           <i class="fa-solid fa-xmark" (click)="cerrarCardMediana()"></i>
-          <img src="{{selectedArtista.img}}" alt="" class="img-card-artista img-artista-display" />
+          <img src="{{selectedArtista.img}}" alt="" class="img-card-artista img-artista-display" (click)="mostrarDetallesArtista(selectedArtista)"/>
           <div class="card-artista-container">
             <h3 class="title-artista" (click)="mostrarDetallesArtista(selectedArtista)" [id]="selectedArtista.id" >{{selectedArtista.seudonimo}}</h3>
             <div class="informacion-artista" [ngClass]="{'informacion-artista_active': showInfoArtista}">

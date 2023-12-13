@@ -7,36 +7,39 @@
         <div class="form-layout">
             <div>
                 <label for="id">Id</label>
-                <input type="number"formControlName="id" id="id" value="{{forEdit?.id}}">
+                <input type="number"formControlName="id" id="id" [value]="forEdit?.id">
                 <label for="nombre">Nombre</label>
-                <input type="text" formControlName="nombre" id="nombre" value="{{forEdit?.nombre}}"> 
+                <input type="text" formControlName="nombre" id="nombre" [value]="forEdit?.nombre"> 
                 <label for="fecha">Fecha</label>
-                <input type="text" formControlName="fecha" id="fecha" value="{{forEdit?.fecha}}">
+                <input type="text" formControlName="fecha" id="fecha" [value]="forEdit?.fecha">
                 <label for="djs">Djs</label>
-                <input type="text" formControlName="djs" id="djs" value="{{forEdit?.djs}}">
+                <input type="text" formControlName="djs" id="djs" [value]="forEdit?.djs">
                 <label for="ubicacio">Ubicacion</label>
-                <input type="text" formControlName="ubicacion" id="ubicacion" value="{{forEdit?.ubicacion}}">
+                <input type="text" formControlName="ubicacion" id="ubicacion" [value]="forEdit?.ubicacion">
             </div>
             <div>
                 <label for="ubicacion_link">Link Ubicacion</label>
-                <input type="text" formControlName="ubicacion_link" id="ubicacion_link" value="{{forEdit?.ubicacion_link}}">
+                <input type="text" formControlName="ubicacion_link" id="ubicacion_link" [value]="forEdit?.ubicacion_link">
                 <label for="img">Imagen</label>
-                <input type="text" formControlName="img" id="img" value="{{forEdit?.img}}">
+                <input type="text" formControlName="img" id="img" [value]="forEdit?.img">
                 <label for="precio">Precio</label>
-                <input type="text" formControlName="precio" id="precio" value="{{forEdit?.precio}}">
+                <input type="text" formControlName="precio" id="precio" [value]="forEdit?.precio">
                 <label for="organiza">Organiza</label>
-                <input type="text" formControlName="organiza" id="organiza" value="{{forEdit?.organiza}}">
+                <input type="text" formControlName="organiza" id="organiza" [value]="forEdit?.organiza">
             </div>
         </div>
         <label for="descripcion">Descripcion</label>
-        <textarea name="" id="descripcion" formControlName="descripcion" cols="30" rows="5" value="{{forEdit?.descripcion}}"></textarea>
+        <textarea name="" id="descripcion" formControlName="descripcion" cols="30" rows="5" [value]="forEdit?.descripcion"></textarea>
         <button type="submit">Cargar</button>
     </form>
     <form class="llamar-para-edicion" [formGroup]="formNumber">
         <label for="id_edit">Selecciona artista a editar</label>
         <div id="llamar" >
             <input type="number" formControlName="id_edit" id="id_edit">
+          <div>
             <button type="button"  (click)="getForEdit()">Seleccionar</button>
+            <button type="button"  (click)="deleteMapping()">borrar</button>
+          </div>
         </div>
     </form>
 </div>

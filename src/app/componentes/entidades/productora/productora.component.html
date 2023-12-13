@@ -16,22 +16,26 @@
 
             <article class="info-productora-container">
                 <div class="package-producer">
-                    <img src="{{entidad.img}}" alt="" class="logo">
+                    <img [src]="entidad?.img" alt="" class="logo">
                 </div>
                 <div class="acerca-de">
                     <div class="title-container">
-                        <h4>{{entidad.nombre}}</h4>
+                        <h4>{{entidad?.nombre}}</h4>
                     </div>
                     <p>
-                        {{entidad.descripcion}}
+                        {{entidad?.descripcion}}
                     </p>
                 </div>
                 <div class="redes">
-                        <i class="fa-brands fa-tiktok"></i>
-                        <i class="fa-brands fa-facebook"></i>
-                        <i class="fa-brands fa-instagram"></i>
-                        <i class="fa-brands fa-youtube"></i>
-                        <i class="fa-regular fa-envelope"></i>                  
+                    <a href="{{entidad?.instagram}}" target="_blank">
+                        <i class="fa-brands fa-instagram"  *ngIf="entidad?.instagram"></i>
+                    </a>
+                    <a href="{{entidad?.facebook}} " target="_blank">
+                        <i class="fa-brands fa-youtube"  *ngIf="entidad?.facebook"></i>
+                    </a>
+                    <a href="{{entidad?.youtube}}" target="_blank">
+                        <i class="fa-solid fa-phone"  *ngIf="entidad?.youtube"></i>
+                    </a>            
                 </div>
 
             </article>
@@ -39,13 +43,14 @@
     </section>
     <section class="section-galeria">
         <div class="title-container">
-            <h4>Fotos</h4>
+            <h4>Fotoss</h4>
         </div>
         <div class="galeria">
-            <img src="/assets/entidades/1.jpeg" alt="">
-            <img src="/assets/entidades/1.jpeg" alt="">
-            <img src="/assets/entidades/1.jpeg" alt="">
-        </div>
+            <div class="img-container" *ngFor="let fotoUrl of productorasFotos; let i = index" (click)="abrirGaleriaDesdePrincipal(i)">
+              <img [src]="fotoUrl" alt="Foto de Productora" class="img-galeria" width="200px">
+            </div>
+          </div>
+          <app-galeria></app-galeria>
     </section>
     <!-- <app-productoras></app-productoras> -->
 </div>

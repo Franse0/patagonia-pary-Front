@@ -24,20 +24,24 @@
       
       <!-- Buscador -->
       <div class="search">
-        <form class="searcher">
+        <form class="searcher" (ngSubmit)="buscar()" [formGroup]="busquedaForm">
           <div>
-            <label for="seachr-primary">
+            <label for="search-primary">
               <i class="fa-solid fa-magnifying-glass"></i>
             </label>
-            <input type="search" name="" id="seachr-primary" placeholder="Nombre de evento/artista">
-          </div>  
+            <input type="search" name="nombreEventoArtista" id="search-primary" placeholder="Nombre de evento/artista" formControlName="nombreEventoArtista">
+          </div>
           <div>
-            <label for="seacrh-localy">
+            <label for="search-locality">
               <i class="fa-solid fa-location-dot"></i>
             </label>
-            <input type="search" name="" id="seacrh-localy" placeholder="Locación (opcional)">
+            <input type="search" name="locacion" id="search-locality" placeholder="Locación (opcional)" formControlName="locacion">
           </div>
           <button type="submit">Buscar</button>
-        </form>
-      </div>  
+          <!-- <ul class="select" name="resultadoSeleccionado" id="resultadoSeleccionado" *ngIf="resultadoBusqueda && resultadoBusqueda.length > 0"> -->
+            <ul class="select">
+            <li *ngFor="let resultado of resultadoBusqueda" (click)="irADestino(resultado)" ><span>{{ resultado.nombre }}</span> <span> {{resultado.ubicacion}}</span><span> {{resultado.tipo}}</span></li>
+          </ul>
+        </form> 
+      </div> 
 </section> 

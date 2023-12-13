@@ -26,6 +26,9 @@ export class LocalesService {
   }
 
   lugarBorrar(id:number):Observable<any>{
-    return this.http.delete(this.url+"/lugar/borrar"+id);
+    return this.http.delete(this.url+"/lugar/borrar/"+id);
+  }
+  buscarLocales(parametro:String):Observable<any>{
+    return this.http.get<any[]>(`${this.url}/lugar/buscar/${parametro}`)
   }
 }

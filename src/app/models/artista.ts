@@ -5,6 +5,7 @@ export class Artista {
     pretskit:String=""
     seudonimo:String=""
     img:String=""
+    img_list:String=""
     soundcloud:String=""
     instagram:String=""
     spotify:String=""

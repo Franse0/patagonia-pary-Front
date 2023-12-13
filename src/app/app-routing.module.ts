@@ -19,6 +19,7 @@ import { ProductorasAdminComponent } from './componentes/admin/in-login/producto
 import { LoginComponent } from './componentes/admin/login/login.component';
 import { InLoginComponent } from './componentes/admin/in-login/in-login.component';
 import { AdminComponent } from './componentes/admin/admin.component';
+import { ProductorasComponent } from './componentes/entidades/productoras.component';
 
 const routes: Routes = [
   {path:"pagina-principal", component:PaginaPrincipalComponent},
@@ -26,12 +27,17 @@ const routes: Routes = [
   {path:"noticia/:id",component:NoticiaComponent},
   {path:"lugar/:id",component:LugarComponent},
   {path:"productora/:id",component:ProductoraComponent},
+  {path:"all-productoras",component:ProductorasComponent},
   {path:"artista", component:ArtistaComponent},
+  {path:"artista/:id", component:ArtistaComponent},
   {path:"all-noticias", component:AllNoticiasComponent},
   {path:"all-artistas", component:AllArtistasComponent},
   {path:"all-eventos", component:EventosComponent},
   {path:"all-lugares", component:AllLugaresComponent},
   {path:"evento", component:EventoComponent},
+  // En tu archivo de rutas (app-routing.module.ts o similar)
+{ path: 'eventos/:id', component: EventosComponent },
+
   {path:"aside", component:AsideSpotifyComponent},
   
   // rutas de login
@@ -45,6 +51,7 @@ const routes: Routes = [
   {path:"eventos-admin", component:EventosAdminComponent},
   {path:"noticias-admin", component:NoticiasAdminComponent},
   {path:"productoras-admin", component:ProductorasAdminComponent},
+  
 
 
   // {path:"**", redirectTo: "/", pathMatch:"full"},

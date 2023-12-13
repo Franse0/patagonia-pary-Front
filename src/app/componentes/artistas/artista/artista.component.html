@@ -25,15 +25,24 @@
             <p [innerHTML]="artista?.descripcion" *ngIf="seccionActiva === 'bio'">
             </p>
         </article>
-        <article *ngIf="seccionActiva === 'fotos' || seccionActiva==='bio'" class="fotos">
-            <h4 class="h4">Fotos</h4>
-            <div class="galeria">
-                <img src="/assets/artistas/tomas1.JPG" alt="" class="img-galeria">
-                <img src="/assets/artistas/tomas2.JPG" alt="" class="img-galeria">
-                <img src="/assets/artistas/tomas.jpg" alt="" class="img-galeria">
-            </div>
-        </article>
-        <article *ngif='(artista.youtube) && (seccionActiva === "multimedia" || seccionActiva==="bio")'class="fotos">
+
+
+<article *ngIf="seccionActiva === 'fotos' || seccionActiva === 'bio'" class="fotos">
+    <h4 class="h4">Fotos</h4>
+  
+    <!-- Miniaturas para abrir la galería -->
+    <div class="galeria">
+      <div class="img-container" *ngFor="let fotoUrl of artistaFotos; let i = index" (click)="abrirGaleriaDesdePrincipal(i)">
+        <img [src]="fotoUrl" alt="Foto del artista" class="img-galeria">
+      </div>
+    </div>
+  
+    <!-- Galería completa -->
+    <app-galeria></app-galeria>
+  </article>
+  
+        <article *ngIf='(artista?.youtube) && (seccionActiva === "multimedia" || seccionActiva==="bio")'class="fotos">
+        <!-- <article *ngIf="seccionActiva === 'bio' || seccionActiva === 'multimedia'"> -->
             <h4 class="h4">Videos</h4>
             <iframe [src]="sanitizedYoutubeVideoUrl" frameborder="0"></iframe>
         </article>
@@ -68,13 +77,7 @@
         </div>
     </section>
 </div>
-<!-- <article *ngIf="seccionActiva === 'multimedia'" class="musica"> -->
-<article *ngIf="seccionActiva === 'bio' || seccionActiva === 'multimedia'" class="musica">
-    <h4 class="h4">Que lo disfrutes</h4>
-    <iframe width="100%"  scrolling="no" frameborder="no" allow="autoplay"
-        src=" https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&amp;">
-    </iframe>
-</article>
+
 <app-artistas ></app-artistas>
 
 </div>

@@ -1,4 +1,4 @@
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { Evento } from 'src/app/models/evento';
 import { EventosService } from 'src/app/services/eventos.service';
@@ -16,21 +16,25 @@ export class EventosAdminComponent {
   constructor(private eventosService:EventosService, private formBuilder:FormBuilder, private number:FormBuilder){
     this.formAdmin= this.formBuilder.group({
       id:["",[]],
-    nombre:["",[]],
-    fecha:["",[]],
-    djs:["",[]],
+    nombre:["",[Validators.required]],
+    fecha:["",[Validators.required]],
+    djs:["",[Validators.required]],
     ubicacion:["",[]],
     ubicacion_link:["",[]],
-    img:["",[]],
+    img:["",[Validators.required]],
     precio:["",[]],
     descripcion:["",[]],
-    organiza:["",[]],
+    organiza:["",[Validators.required]],
     })
     this.formNumber=this.number.group({
     id_edit:["",[]],
     })
   }
   cargarEvento(){
+    if (this.formAdmin.invalid) {
+      alert("Por favor, completa todos los campos obligatorios.");
+      return;
+    }
     const evento:Evento={
     id:this.formAdmin.value.id,
     nombre:this.formAdmin.value.nombre,
@@ -57,9 +61,32 @@ export class EventosAdminComponent {
       return;
     }else{
       this.eventosService.fiestaParticular(valueId).subscribe(data=>{
-        console.log(data)
-        this.forEdit=data
+        try{
+          console.log(data)
+          this.forEdit=data
+          this.formAdmin.patchValue({
+            id:this.forEdit.id,
+            nombre:this.forEdit.nombre,
+            djs:this.forEdit.djs,
+            fecha:this.forEdit.fecha,
+            ubicacion:this.forEdit.ubicacion,
+            ubicacion_link:this.forEdit.ubicacion_link,
+            img:this.forEdit.img,
+            precio:this.forEdit.precio,
+            descripcion:this.forEdit.descripcion,
+            organiza:this.forEdit.organiza,
+          })
+        }catch(e){
+          alert("No se encotnro elemento con el id indicado")
+        }
       })
     }
+  }
+
+  deleteMapping(){
+    const valueId =this.formNumber.value.id_edit;
+    if(window.confirm(`Seguro deseas eliminar el item con el id:${valueId}`))
+    this.eventosService.fiestaBorrar(valueId).subscribe()
+    this.formNumber.reset()
   }
 }

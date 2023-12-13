@@ -20,19 +20,37 @@ export class ArtistasComponent  implements OnInit{
 
   ngOnInit() {
     const currentRoute = this.router.url;
-    if (this.router.url.includes('/artistas-admin')) {
-      this.mostrarid=true
-      console.log("hola")
-    }
-    this.artistasService.artistaTodos().subscribe(data=>{
-      if(data.length>=8 && currentRoute!=="/all-artistas"){
-        this.artistasList = data.slice(0,8)
-      } else{
-      this.artistasList=data;
+  
+    // Suscríbete a los resultados de búsqueda
+    this.artistasService.resultadosBusqueda$.subscribe(resultados => {
+      if (resultados && resultados.length > 0) {
+        // Si hay resultados de búsqueda, muestra los resultados.
+        this.artistasList = resultados;
+      } else {
+        if (currentRoute === '/') {
+          // Si estás en el home y no hay resultados de búsqueda,
+          // realiza la solicitud para obtener 8 artistas
+          this.artistasService.artistaTodos().subscribe(data => {
+            this.artistasList = (data.length >= 8) ? data.slice(0, 8) : data;
+          });
+        } else {
+          // Si estás en cualquier otro router y no hay resultados de búsqueda,
+          // realiza la solicitud para obtener todos los artistas
+          this.artistasService.artistaTodos().subscribe(data => {
+            this.artistasList = data;
+          });
+        }
       }
-    })
+    });
+  
+    if (this.router.url.includes('/artistas-admin')) {
+      this.mostrarid = true;
+      console.log("hola");
+    }
   }
-
+  
+  
+  
   cardGrandeActive =false;
   showInfoArtista = false;
 
@@ -80,6 +98,22 @@ cerrarCardMediana(){
   this.cardGrandeActive = false;
   this.showInfoArtista = false;
 }
+
+mostrarTodosLosArtistas() {
+  if(!this.router.url.includes("/all-artistas")){
+    this.router.navigate(["/all-artistas"])
+    this.artistasService.artistaTodos().subscribe(data => {
+      this.artistasList = data;
+    });
+  }
+
+    this.artistasService.artistaTodos().subscribe(data => {
+      this.artistasList = data;
+    });
+  
+
+}
+
 
 
     
