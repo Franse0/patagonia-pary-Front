@@ -29,10 +29,23 @@ ul{
 a{
     text-decoration: none;
 }
+.pagina-principal .all-container {
+    padding-top: 0;
+  }
 
 .all-container{
     margin: 0 auto;
     max-width: 1300px;
+    min-height: 80vh;
+}
+
+.pagina-principal .all-container {
+    min-height: auto;
+}
+
+
+:not(.pagina-principal) .all-container {
+    padding-top: 60px; /* Ajusta el valor según tus necesidades */
 }
 
 .title-container{
@@ -208,3 +221,4 @@ a{
     width:300px;
     color: white;
 }
+

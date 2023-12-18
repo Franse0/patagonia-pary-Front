@@ -5,6 +5,7 @@ export class Artista {
     pretskit:String=""
     seudonimo:String=""
     img:String=""
+    ubicacion:String=""
     img_list:String=""
     soundcloud:String=""
     instagram:String=""
@@ -13,7 +14,7 @@ export class Artista {
     mail:String=""
     telefono:String=""
     track:String;
-    video_yt:String;
+    video:String;
     tiktok:String;
     descripcion:String=""
 }

@@ -1,6 +1,5 @@
 .entidades{
     padding: 2rem;
-    min-height: 400px;
 }
 .card-entidad{
     width: 100%;
@@ -29,10 +28,7 @@
     width: 80%;
     cursor: pointer;
 }
-.all-container{
-    padding-top: 70px;
 
-}
 @media (min-width:600px){
     .all-entidades{
         display: grid;

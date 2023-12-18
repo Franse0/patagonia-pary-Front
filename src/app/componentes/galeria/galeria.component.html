@@ -1,5 +1,7 @@
 <div *ngIf="galeriaAbierta" class="galeria-completa">
-    <div class="boton-cerrar" (click)="cerrarGaleria()">Cerrar</div>
+    <!-- <div class="boton-cerrar" (click)="cerrarGaleria()">Cerrar</div> -->
+    <i class="fa-solid fa-xmark" (click)="cerrarGaleria()"></i>
+
     <div class="imagen-actual">
       <img [src]="fotos[currentIndex]" alt="Foto del artista" class="img-galeria-completa">
     </div>

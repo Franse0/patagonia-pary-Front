@@ -1,16 +1,36 @@
 <div class="all-container">
     <section class="login">
-        <form class="form">
+        <form class="form" [formGroup]="formUser" (submit)="iniciarSesion(formUser)" *ngIf="loginOrRegister">
             <legend>inicio de secion</legend>
             <div class="form-field">
                 <label for="username">Username</label>
-                <input type="text" class="form-input" id="usermanem">
+                <input type="text" class="form-input" id="username" formControlName="username" >
             </div>
             <div class="form-field">
                 <label for="password">Password</label>
-                <input type="password" class="form-input" id="password">
+                <input type="password" class="form-input" id="password" formControlName="password">
             </div>
             <button type="submit">Login</button>
+            <button (click)="toggleValor()">registrarme</button>
         </form>
+        <form class="form" [formGroup]="formRegistro" (submit)="registrarme()" *ngIf="!loginOrRegister">
+            <legend>registro</legend>
+            <div class="form-field">
+                <label for="username_registro">Username</label>
+                <input type="text" class="form-input" id="username_registro" formControlName="username_registro" >
+            </div>
+            <div class="form-field">
+                <label for="password_registro">Password</label>
+                <input type="password" class="form-input" id="password_registro" formControlName="password_registro">
+            </div>
+            <div class="form-field">
+                <label for="password_again">Password</label>
+                <input type="password" class="form-input" id="password_again" formControlName="password_again">
+            </div>
+            <button (click)="toggleValor()">Login</button>
+            <button  type="submit">registrarme</button>
+
+        </form>
+
     </section>
 </div>

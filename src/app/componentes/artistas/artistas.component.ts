@@ -1,7 +1,8 @@
+import { Subscription } from 'rxjs';
 import { Artista } from 'src/app/models/artista';
 import { ArtistasService } from './../../services/artistas.service';
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -13,13 +14,17 @@ export class ArtistasComponent  implements OnInit{
   artistasList:any;
   artistaId:any;
   mostrarid:boolean=false;
+  enlace:boolean=true
   
   @Output() emitirArtista= new EventEmitter<number>();
 
-  constructor(public artistasService:ArtistasService, private router:Router){}
+  constructor(public artistasService:ArtistasService, private router:Router, private route:ActivatedRoute){}
 
   ngOnInit() {
     const currentRoute = this.router.url;
+    if(this.router.url.includes('/all-artistas')){
+      this.enlace=false;
+    }
   
     // Suscríbete a los resultados de búsqueda
     this.artistasService.resultadosBusqueda$.subscribe(resultados => {
@@ -45,7 +50,6 @@ export class ArtistasComponent  implements OnInit{
   
     if (this.router.url.includes('/artistas-admin')) {
       this.mostrarid = true;
-      console.log("hola");
     }
   }
   
@@ -55,12 +59,12 @@ export class ArtistasComponent  implements OnInit{
   showInfoArtista = false;
 
   showArtista(artista: Artista): void {
+    let subscription:any;
   if (this.router.url.includes('/artista')) {
-      // Estás en la página de artista completo, navega directamente al componente deseado
       this.mostrarDetallesArtista(artista);
     } else {
       // Estás en la página de artistas, muestra la card mediana
-      const subscription = this.artistasService.artistaSeleccionado$.subscribe(selectedArtista => {
+       subscription= this.artistasService.artistaSeleccionado$.subscribe(selectedArtista => {
         const mismoArtista = selectedArtista?.id === artista.id;
   
         if (!mismoArtista) {
@@ -70,19 +74,18 @@ export class ArtistasComponent  implements OnInit{
           this.cardGrandeActive = false;
           this.showInfoArtista = false;
         }
-  
         this.cardGrandeActive = !this.cardGrandeActive;
-  
         if (this.cardGrandeActive) {
           setTimeout(() => {
             this.showInfoArtista = true;
-          }, 100);
+          }, 300);
         } else {
           this.showInfoArtista = false;
         }
-  
         // Desuscribirse después de completar el proceso
-        subscription.unsubscribe();
+        if(subscription){
+          subscription.unsubscribe();
+        }
       });
     }
   }

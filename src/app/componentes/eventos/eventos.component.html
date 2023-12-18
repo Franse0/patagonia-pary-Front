@@ -1,4 +1,6 @@
-<app-evento [eventoId]="idSelected"  *ngIf="idSelected !== undefined"></app-evento>
+<!-- <app-evento [eventoId]="idSelected"  *ngIf="idSelected !== undefined"></app-evento> -->
+<app-evento  [eventoId]="idSelected" *ngIf="idSelected"></app-evento>
+
 <div class="all-container">
     <section class="all-eventos">
         <div class="title-container">
@@ -8,10 +10,10 @@
             <div class="card-evento"  *ngFor="let eventos of eventos">
                 <div class="img-container">
                     <div class="fecha">
-                        <span>Dic</span>
-                        <span>01</span>
-                        <span>vie</span>
-                    </div>
+                        <span> {{ eventos.fecha.split('/')[0] }}</span>
+                        <span> {{ eventos.fecha.split('/')[1] }}</span>
+                        <span> {{ eventos.fecha.split('/')[2] }}</span>
+                    </div>                     
                     <img src="{{eventos?.img}} " alt="" class="img-card-evento"  id="{{eventos?.id}}" (click)="capturarValor(eventos.id)">
                 </div>
                 <div class="info-evento-card">

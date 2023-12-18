@@ -21,6 +21,7 @@ export class ArtistasAdminComponent {
     apellido:["",[Validators.required]],
     pretskit:["",[]],
     seudonimo:["",[Validators.required]],
+    ubicacion:["",[Validators.required]],
     img:["",[Validators.required]],
     img_list:["",[]],
     soundcloud:["",[]],
@@ -30,7 +31,7 @@ export class ArtistasAdminComponent {
     mail:["",[Validators.required]],
     telefono:["",[Validators.required]],
     track:["",[]],
-    video_yt:["",[]],
+    video:["",[]],
     descripcion:["",[Validators.required]],
     tiktok:["",[]],
     })
@@ -52,6 +53,7 @@ export class ArtistasAdminComponent {
     seudonimo:this.formAdmin.value.seudonimo,
     pretskit:this.formAdmin.value.pretskit,
     img:this.formAdmin.value.img,
+    ubicacion:this.formAdmin.value.ubicacion,
     img_list:this.formAdmin.value.img_list,
     soundcloud:this.formAdmin.value.soundcloud,
     spotify:this.formAdmin.value.spotify,
@@ -61,7 +63,7 @@ export class ArtistasAdminComponent {
     mail:this.formAdmin.value.mail,
     telefono:this.formAdmin.value.telefono,
     track:this.formAdmin.value.track,
-    video_yt:this.formAdmin.value.video_yt,
+    video:this.formAdmin.value.video,
     descripcion:this.formAdmin.value.descripcion,
     }
     this.artistaService.artistaAgregar(artista).subscribe()
@@ -77,7 +79,6 @@ export class ArtistasAdminComponent {
     }else{
       this.artistaService.artistaParticular(valueId).subscribe(data=>{
         try{
-          console.log(data)
           this.forEdit=data
           this.formAdmin.patchValue({
             id:this.forEdit.id,
@@ -86,6 +87,7 @@ export class ArtistasAdminComponent {
             seudonimo:this.forEdit.seudonimo,
             pretskit:this.forEdit.pretskit,
             img:this.forEdit.img,
+            ubicacion:this.forEdit.ubicacion,
             img_list:this.forEdit.img_list,
             soundcloud:this.forEdit.soundcloud,
             spotify:this.forEdit.spotify,
@@ -95,7 +97,7 @@ export class ArtistasAdminComponent {
             mail:this.forEdit.mail,
             telefono:this.forEdit.telefono,
             track:this.forEdit.track,
-            video_yt:this.forEdit.video_yt,
+            video:this.forEdit.video,
             descripcion:this.forEdit.descripcion,
           })
         }catch(e ){

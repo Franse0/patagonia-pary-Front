@@ -30,6 +30,9 @@ export class EventosAdminComponent {
     id_edit:["",[]],
     })
   }
+
+  
+
   cargarEvento(){
     if (this.formAdmin.invalid) {
       alert("Por favor, completa todos los campos obligatorios.");

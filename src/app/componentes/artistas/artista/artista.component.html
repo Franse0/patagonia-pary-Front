@@ -17,7 +17,6 @@
                 </div>
                 <div>
                     <span>{{artista?.ubicacion}} </span>
-                    <span>Neuquen, Argentina.</span>
                 </div>
             </div>
             <h4>{{artista?.seudonimo}} </h4>
@@ -41,10 +40,12 @@
     <app-galeria></app-galeria>
   </article>
   
-        <article *ngIf='(artista?.youtube) && (seccionActiva === "multimedia" || seccionActiva==="bio")'class="fotos">
+        <article *ngIf='(sanitizedYoutubeVideoUrl) && (seccionActiva === "multimedia" || seccionActiva==="bio")'class="fotos">
         <!-- <article *ngIf="seccionActiva === 'bio' || seccionActiva === 'multimedia'"> -->
             <h4 class="h4">Videos</h4>
-            <iframe [src]="sanitizedYoutubeVideoUrl" frameborder="0"></iframe>
+            <!-- <iframe [src]="sanitizedYoutubeVideoUrl" frameborder="0"></iframe> -->
+            <iframe [src]="sanitizedYoutubeVideoUrl ? sanitizedYoutubeVideoUrl : null" frameborder="0"></iframe>
+
         </article>
       
         

@@ -1,6 +1,9 @@
 <div class="all-container">
+
+    
     <section class="show-entidad " #showEvento >   
-        
+    
+          
             <div *ngIf="entidad" class="card-evento show-card" >
                     <div class="">
                         <iframe
@@ -41,7 +44,7 @@
             </article>
 
     </section>
-    <section class="section-galeria">
+    <section class="section-galeria" *ngIf="entidad?.img_list">
         <div class="title-container">
             <h4>Fotoss</h4>
         </div>
@@ -52,5 +55,5 @@
           </div>
           <app-galeria></app-galeria>
     </section>
-    <!-- <app-productoras></app-productoras> -->
+    <app-productoras></app-productoras>
 </div>

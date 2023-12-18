@@ -16,7 +16,9 @@ export class LugarComponent {
   lugarFotos: string[] = [];
   youtubeVideoId!:String; // ID del video de YouTube
   sanitizedYoutubeVideoUrl!: SafeResourceUrl|undefined;
+  sanitizedGoogleMapsUrl: SafeResourceUrl;
   
+
   constructor(private route: ActivatedRoute,
      private lugarService: LocalesService, 
     private viewportScroller: ViewportScroller,
@@ -32,6 +34,7 @@ export class LugarComponent {
         this.lugar=data
         this.procesarFotos()
         this.extractYoutubeVideoId();
+        this.sanitizeGoogleMapsUrl(this.lugar.link_ubi.toString())
         this.viewportScroller.scrollToPosition([0, 0]);
       });
     });
@@ -47,6 +50,10 @@ export class LugarComponent {
       }
 
     }
+  }
+
+  sanitizeGoogleMapsUrl(url: string): void {
+    this.sanitizedGoogleMapsUrl = this.sanitizer.bypassSecurityTrustHtml(url.toString());
   }
 
   sanitizeYoutubeVideoUrl(): void {
@@ -69,7 +76,6 @@ export class LugarComponent {
 
   procesarFotos(): void {
     // Verificar si el campo img_list está presente en el objeto artista
-    console.log(this.lugar)
     if (this.lugar && this.lugar.img_list) {
       // Dividir el string de fotos en un array usando la coma como delimitador
       this.lugarFotos = this.lugar.img_list.split(',');

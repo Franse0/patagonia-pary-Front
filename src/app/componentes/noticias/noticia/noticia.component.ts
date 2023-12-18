@@ -22,7 +22,6 @@ export class NoticiaComponent implements OnInit{
     this.route.params.subscribe(params=>{
       const noticiaId= params['id'];
       this.noticiaService.noticiasParticular(noticiaId).subscribe(data=>{
-        console.log(data)
         this.noticia=data
         this.noticiaAside = this.limitToMax3(this.noticiaAside.filter(noticia => noticia.id !== data.id));
       })
@@ -32,7 +31,6 @@ export class NoticiaComponent implements OnInit{
   getNoticiasAside() {
     this.noticiaService.noticiasTodos().subscribe((data: Noticia[]) => {
       this.noticiasMas=data.slice(0,4)
-      console.log(this.noticiasMas)
       // Limitar el número de noticiasAside y asegurarse de que no contenga la noticia actual
       this.noticiaAside = this.limitToMax3(this.shuffleArray(data.filter((noticia: Noticia) => noticia.id !== this.noticia?.id)));
     });
@@ -40,7 +38,6 @@ export class NoticiaComponent implements OnInit{
   capturarValor(event:Event){
     this.viewportScroller.scrollToPosition([0, 0]);
     const id = Number((event.target as HTMLElement).id);
-    console.log(id)
     this.noticiaService.noticiasParticular(id).subscribe(data=>{
       this.noticia=data;
       this.getNoticiasAside()

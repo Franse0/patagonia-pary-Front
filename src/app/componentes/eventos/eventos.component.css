@@ -95,6 +95,9 @@
     .card-evento h3{
         line-height: 1.4rem;
     }
+    .all-eventos{
+        padding: 2rem 2rem;
+    }
 }
 @media (min-width:890px){
     .all-eventos-container{

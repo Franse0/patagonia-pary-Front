@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 // cuestiones de funciones
 import { AppRoutingModule } from './app-routing.module';
+import { initializeApp} from "firebase/app";
+import { AngularFireModule } from '@angular/fire/compat';
 
 // MercadoPago
 // import { MercadopagoComponent } from './componentes/mercadopago/mercadopago.component';
@@ -42,6 +44,7 @@ import { LugaresAdminComponent } from './componentes/admin/in-login/lugares-admi
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductoraComponent } from './componentes/entidades/productora/productora.component';
 import { GaleriaComponent } from './componentes/galeria/galeria.component';
+import { enviroment } from 'src/enviroments/enviroments';
 
 // soundcloud
 
@@ -87,7 +90,8 @@ import { GaleriaComponent } from './componentes/galeria/galeria.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(enviroment.firebaseConfig)
     // LightboxModule,
   ],
   exports:[ ArtistasComponent],

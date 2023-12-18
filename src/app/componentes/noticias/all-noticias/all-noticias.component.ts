@@ -17,10 +17,10 @@ export class AllNoticiasComponent  implements OnInit{
   constructor(private noticiaService:NoticiasService,private viewportScroller: ViewportScroller, private router:Router){}
 
   ngOnInit(): void {
+    this.viewportScroller.scrollToPosition([0, 0]);
     if(this.router.url.includes("/noticias-admin")){
       this.mostrarId=true;
     }
-    this.viewportScroller.scrollToPosition([0, 0]);
     this.noticiaService.noticiasTodos().subscribe(data=>{
       this.noticias=data
     },(error)=>{

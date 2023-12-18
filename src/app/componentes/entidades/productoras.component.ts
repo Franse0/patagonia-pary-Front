@@ -18,12 +18,10 @@ export class ProductorasComponent implements OnInit{
     if(this.router.url.includes("productoras-admin")){
       this.mostrarId=true;
       this.productoraService.prodcutoraTodos().subscribe(data=>{
-        console.log("entidades: ",data)
         this.entidades=data
       })
     }
     this.productoraService.prodcutoraTodos().subscribe(data=>{
-      console.log("entidades: ",data)
       this.entidades=data.slice(0,3)
     })
   }

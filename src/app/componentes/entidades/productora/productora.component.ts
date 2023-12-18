@@ -22,7 +22,6 @@ export class ProductoraComponent {
     this.route.params.subscribe(params=>{
       const productoraId= params['id'];
       this.entidadService.productoraParticular(productoraId).subscribe(data=>{
-        console.log(data)
         this.entidad=data;
         this.procesarFotos()
       })
@@ -36,7 +35,6 @@ export class ProductoraComponent {
       this.productorasFotos = this.entidad.img_list.split(',');
   
       // Ahora tienes un array con las URLs de las fotos del artista
-      console.log("soy las fotos", this.productorasFotos);
     }
   }
 

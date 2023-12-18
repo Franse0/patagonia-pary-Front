@@ -3,8 +3,10 @@
 
     <div class="title-container">
       <h2>Artistas</h2>
-      <a (click)="mostrarTodosLosArtistas()" class="enlace">ver todos</a>
+      <a (click)="mostrarTodosLosArtistas()" class="enlace" *ngIf="enlace">ver todos</a>
     </div>
+ 
+ 
     
     <div class="display-artistas-container" [ngClass]="{'display-artistas-container__active': cardGrandeActive}">
       <div class="all-artistas" [ngClass]="{'all-artistas__active': cardGrandeActive}">

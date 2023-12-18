@@ -11,23 +11,18 @@ export class EventosComponent implements OnInit{
   idSelected:number;
   mostrarId:boolean=false
   eventos:any;
+  fecha:any[]=[];
+  // reloadComponent: boolean = false; // Nueva variable para controlar la recarga del componente hijo
+
 
   constructor(private eventosService:EventosService, private router:Router, private route:ActivatedRoute){
 
   }
   ngOnInit(): void {
-    // Obtener el id de los parámetros de ruta
-    // this.route.params.subscribe(params => {
-    //   const id = params['id'];
-    //   console.log(id);
-    // });
-  
     this.route.params.subscribe(params => {
       const id = params['id'];
-      console.log("id que llego",id)
       if (id !== undefined) {
-        this.idSelected = +id; // Convertir a número
-        // Lógica adicional si es necesario hacer algo cuando hay un evento seleccionado
+        this.idSelected =+ id; 
       }
     });
 
@@ -37,13 +32,13 @@ export class EventosComponent implements OnInit{
 
     this.eventosService.fiestasTodos().subscribe(data => {
       this.eventos = data;
-      console.log(this.eventos);
     });
   }
 
   capturarValor(id:number){
- 
     this.idSelected=Number(id)
-    console.log("funcion que cambia de fiesta:", this.idSelected)
+    console.log(this.idSelected)
   }
+
+
 }

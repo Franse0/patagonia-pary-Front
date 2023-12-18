@@ -13,9 +13,7 @@ export class NoticiasComponent implements OnInit {
   ngOnInit(): void {
     this.noticiasService.noticiasTodos().subscribe(data=>{
       if(data.length>4){
-        console.log(data)
         this.noticias=data.slice(0,4);
-        console.log(this.noticias)
       }
     })
   }

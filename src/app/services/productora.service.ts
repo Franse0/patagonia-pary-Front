@@ -9,7 +9,11 @@ import { Injectable } from '@angular/core';
 export class ProductoraService {
 
   
-  url: string = "http://localhost:8080";
+  // url: string = "http://localhost:8080";
+  // url: string = "http://62.72.26.208:8080/api";
+  url: string = "https://patagoniapary.ar/api";
+
+
 
   constructor(private http:HttpClient) { }
 

@@ -136,6 +136,9 @@ iframe{
     .profile-img{
         max-width: 300px;
     }
+    .ubicacion{
+        margin-top: 30px
+    }
 }
 
 

@@ -42,10 +42,10 @@ export class ArtistaComponent {
       });
     }
   loadData(id: any): void {
+    if(id===undefined || id===null)return
     this.youtubeVideoId = '';
     this.sanitizedYoutubeVideoUrl = undefined;
     this.artistasService.artistaParticular(id).subscribe(data => {
-      console.log("datos", data);
       this.artista = data;
       this.procesarFotos();
       this.extractYoutubeVideoId();
@@ -60,15 +60,14 @@ export class ArtistaComponent {
       this.artistaFotos = this.artista.img_list.split(',');
   
       // Ahora tienes un array con las URLs de las fotos del artista
-      console.log("soy las fotos", this.artistaFotos);
     }
   }
 
   extractYoutubeVideoId(): void {
     // Verificar si artista.youtube existe y no es null o undefined
-    if (this.artista && this.artista.youtube) {
+    if (this.artista && this.artista.video) {
       // Extraer el ID del video de la URL de YouTube
-      const match = this.artista.youtube.match(/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+      const match = this.artista.video.match(/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
       if (match && match[1]) {
         this.youtubeVideoId = match[1];
         this.sanitizeYoutubeVideoUrl();

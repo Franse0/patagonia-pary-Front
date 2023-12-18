@@ -4,10 +4,7 @@
     display: block;
     margin: 0 auto;
 }
-.evento-seleccionado{
-    /* width: 100%; */
-    padding: 1rem 0;
-}
+
 
 .contenedor{
     display: flex;
@@ -21,10 +18,12 @@
 @media (min-width:790px){
     .card-evento-contenido{
         padding: 1rem;
+        line-height: 20px;
         /* width: 90%; */
         margin: 0 auto;
     }
     .evento-seleccionado{
+        width: 100%;
         width: 50vw;
     }
     .contenedor{

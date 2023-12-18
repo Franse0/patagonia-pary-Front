@@ -2,23 +2,27 @@
 
 .proximos-eventos{
     padding:1rem 2rem;
+  
 }
 
 
+.eventos-home{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 .title-container>a{
     text-decoration: none;
 }
 
 .card-evento{
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
-    padding:  1rem 2rem;
     overflow: hidden;
 }
 
 .card-evento-img{
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 .card-evento h3{
@@ -41,24 +45,27 @@
         display: flex;
         flex-direction: row;
         height: auto;
+
     }
 
 
     .proximos-eventos{
-        padding: 0 2rem ;
+        padding: 2rem 2rem ;
+        margin: 0 auto;
     }
 
     .eventos-home{
         display: grid;
         grid-template-columns: 1fr 1fr;
-        height: 90%;
-        min-height: 680px;
+        height: 100%;
+        gap: 20px  10px;
+        width: 50%;
     }
     .evento-seleccionado {
         display: block;
     }    
     .card-evento h3{
-        line-height: 18pxpx;
+        line-height: 18px;
     }
     
     .card-evento{
@@ -68,6 +75,8 @@
         height: auto;
         line-height: 17px;
         width: 100%;
+        max-height: 500px;
+        /* justify-content: space-between; */
     }
 
     .card-evento-contenido{
@@ -82,7 +91,7 @@
     .img-evento{
         width: 100%;
         height: 60%;
-        max-height: 500px;
+        /* max-height: 500px; */
     }
 
     .card-evento-img{
@@ -90,6 +99,9 @@
         min-width: 100px;
     }
     
+    .eventos-home{
+        width: 100% !important ;
+    }
 }
 
 

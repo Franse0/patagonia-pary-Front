@@ -4,9 +4,7 @@
             <div   class="evento-seleccionado" >
                 <div class="img-container">
                     <div class="fecha">
-                        <span>Dic</span>
-                        <span>01</span>
-                        <span>vie</span>
+                        <span *ngFor="let fecha of fecha">{{fecha}}</span>
                     </div>
                     <img src="{{eventoSelected?.img}}" alt="" class="img-card-evento grande">
                 </div>
@@ -32,28 +30,24 @@
                         {{eventoSelected?.descripcion}}
                     </p>
 
-                    <div class="line-up">
+                    <div class="line-up" *ngIf="lineup">
                         <div class="title-container">
                             <h4>Line up</h4>
                         </div>
                         <ul>
-                            <li *ngFor="let item of enlacesDJs" class="enlace">
-                                <a [routerLink]="[item.enlace]">{{ item.seudonimo }}</a>
-                              </li>                       
-                        </ul>
+                            <li *ngFor="let dj of enlacesDJs" >
+                              <a *ngIf="dj.id" [class.enlace]="dj.id" class="enlace2" [routerLink]="['/artista', dj.id]">{{ dj.seudonimo }}</a>
+                              <span *ngIf="!dj.id">{{ dj.seudonimo }}</span>
+                            </li>
+                          </ul>
+                          
                     </div>
+                    
                     <div class="adquirir-entrada">
                         <a href="https://api.whatsapp.com/send/?phone=5492994535581&text&type=phone_number&app_absent=0" target="_blank" class="bnt-tech" ><button class="btn-tech" >Comprar Entrada</button></a>
                     </div>
-                    <div class="ubication">
-                        <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3099.665448571628!2d-67.61131012495015!3d-39.02294450410701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a1cfc9d66ba0b%3A0x434c59635286224b!2sBartolom%C3%A9%20Mitre%203233%2C%20Gral.%20Roca%2C%20R%C3%ADo%20Negro!5e0!3m2!1ses!2sar!4v1699460819228!5m2!1ses!2sar"
-                        class="iframe-card-lugar"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-                    </div>
+                     <div class="ubication" [innerHTML]="sanitizedGoogleMapsUrl" *ngIf="eventoSelected.ubicacion_link"></div>
+                   
                 </div>
 
             </article>

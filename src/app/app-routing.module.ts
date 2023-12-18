@@ -20,6 +20,7 @@ import { LoginComponent } from './componentes/admin/login/login.component';
 import { InLoginComponent } from './componentes/admin/in-login/in-login.component';
 import { AdminComponent } from './componentes/admin/admin.component';
 import { ProductorasComponent } from './componentes/entidades/productoras.component';
+import { AuthUserGuard } from './guards/auth-user.guard';
 
 const routes: Routes = [
   {path:"pagina-principal", component:PaginaPrincipalComponent},
@@ -41,20 +42,32 @@ const routes: Routes = [
   {path:"aside", component:AsideSpotifyComponent},
   
   // rutas de login
-  {path:"admin", component:AdminComponent},
   {path:"login", component:LoginComponent},
-  {path:"in-login", component:InLoginComponent},
+  {path:"in-login", 
+  component:InLoginComponent,
+  canMatch:[AuthUserGuard]},
+  {path:"admin", 
+  component:AdminComponent,
+  canMatch:[AuthUserGuard]},
 
   // formularios de edit
-  {path:"artistas-admin", component:ArtistasAdminComponent},
-  {path:"lugares-admin", component:LugaresAdminComponent},
-  {path:"eventos-admin", component:EventosAdminComponent},
-  {path:"noticias-admin", component:NoticiasAdminComponent},
-  {path:"productoras-admin", component:ProductorasAdminComponent},
+  {path:"artistas-admin", 
+  component:ArtistasAdminComponent,
+  canMatch:[AuthUserGuard]},
+  {path:"lugares-admin",
+   component:LugaresAdminComponent},
+  {path:"eventos-admin", 
+  component:EventosAdminComponent,
+  canMatch:[AuthUserGuard]},
+  {path:"noticias-admin", 
+  component:NoticiasAdminComponent,
+  canMatch:[AuthUserGuard]},
+  {path:"productoras-admin",
+   component:ProductorasAdminComponent,
+   canMatch:[AuthUserGuard]},
   
 
-
-  // {path:"**", redirectTo: "/", pathMatch:"full"},
+  {path:"**", redirectTo: "/pagina-principal", pathMatch:"full"},
   {path:"", redirectTo: "pagina-principal", pathMatch:"full"},
 ];
 
