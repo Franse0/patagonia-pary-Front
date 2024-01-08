@@ -1,53 +1,156 @@
-<div class="all-container" >
-  <section class="artistas" id="artistas">
-
+<div class="all-container" id="artistas">
+  <section class="artistas movil">
     <div class="title-container">
       <h2>Artistas</h2>
-      <a (click)="mostrarTodosLosArtistas()" class="enlace" *ngIf="enlace">ver todos</a>
+      <a (click)="mostrarTodosLosArtistas()" class="enlace" *ngIf="enlace"
+        >ver todos</a
+      >
     </div>
- 
- 
-    
-    <div class="display-artistas-container" [ngClass]="{'display-artistas-container__active': cardGrandeActive}">
-      <div class="all-artistas" [ngClass]="{'all-artistas__active': cardGrandeActive}">
-        <div class="card-artista" *ngFor="let artista of artistasList" (click)="showArtista(artista)">
-          <img
-          src="{{artista.img}}"
-          alt=""
-          class="img-card-artista"
-          (click)="showArtista(artista)"
-          />
-          <div class="card-artista-container">
-            <h3 class="title-artista" (click)="showArtista(artista)">{{artista.seudonimo}}  <span *ngIf="mostrarid">{{artista.id}} </span> </h3>
-          
-          </div>
-        </div>
-
+    <div
+    class="all-artistas">
+    <div
+      class="card-artista"
+      *ngFor="let artista of artistasList">
+      <img
+        src="{{ artista.img }}"
+        alt=""
+        class="img-card-artista"
+        (click)="mostrarCard(artista)"
+      />
+      <div class="card-artista-container">
+        <h3 class="title-artista" (click)="mostrarCard(artista)">
+          {{ artista.seudonimo }}
+          <span *ngIf="mostrarid">{{ artista.id }} </span>
+        </h3>
       </div>
 
+      <div
+      class="card-movil" *ngIf="artista.mostrarCard" [ngClass]="{'mostrar-card':artista.mostrarCard}">
+      <p
+        [innerHTML]="artista.descripcion"
+        class="parrafo-descrip-card-pequeña"
+      ></p>
+      <span
+        [routerLink]="['/artista', artista.id]"
+        class="enlace"
+        >Leer mas...</span
+      >
+      <div class="card-links">
+          <a href="{{ artista?.tiktok }}">
+            <i class="fa-brands fa-tiktok" *ngIf="artista.tiktok"></i>
+          </a>
+          <a href="{{ artista.instagram }}">
+            <i class="fa-brands fa-instagram"*ngIf="artista.instagram"></i>  
+          </a>
+          <a href="{{ artista.youtube }} ">
+            <i class="fa-brands fa-youtube" *ngIf="artista.youtube"></i>
+          </a>
+          <a href="{{ artista.spotify }}">
+            <i class="fa-brands fa-spotify" *ngIf="artista.spotify" ></i>
+          </a>
+          <a href="{{ artista.soundcloud }}">
+            <i class="fa-brands fa-soundcloud" *ngIf="artista.soundcloud"></i>
+          </a>
+      </div>
+    </div>
+    </div>
+  </div>
 
 
-      <div class="show-artista" [ngClass]="{'show-artista__active': cardGrandeActive}" *ngIf="artistasService.artistaSeleccionado$ | async as selectedArtista">
+  </section>
+
+  <section class="artistas desktop" >
+    <div class="title-container">
+      <h2>Artistas</h2>
+      <a (click)="mostrarTodosLosArtistas()" class="enlace" *ngIf="enlace"
+        >ver todos</a
+      >
+    </div>
+
+    <div
+      class="display-artistas-container"
+      [ngClass]="{ 'display-artistas-container__active': cardGrandeActive }"
+    >
+      <div
+        class="all-artistas"
+        [ngClass]="{ 'all-artistas__active': cardGrandeActive }"
+      >
+        <div
+          class="card-artista"
+          *ngFor="let artista of artistasList"
+          (click)="showArtista(artista)"
+        >
+          <img
+            src="{{ artista.img }}"
+            alt=""
+            class="img-card-artista"
+            (click)="showArtista(artista)"
+          />
+          <div class="card-artista-container">
+            <h3 class="title-artista" (click)="showArtista(artista)">
+              {{ artista.seudonimo }}
+              <span *ngIf="mostrarid">{{ artista.id }} </span>
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="show-artista"
+        [ngClass]="{ 'show-artista__active': cardGrandeActive }"
+        *ngIf="artistasService.artistaSeleccionado$ | async as selectedArtista"
+      >
         <div class="card-artista card-grande">
           <i class="fa-solid fa-xmark" (click)="cerrarCardMediana()"></i>
-          <img src="{{selectedArtista.img}}" alt="" class="img-card-artista img-artista-display" (click)="mostrarDetallesArtista(selectedArtista)"/>
+          <img
+            src="{{ selectedArtista.img }}"
+            alt=""
+            class="img-card-artista img-artista-display"
+            (click)="mostrarDetallesArtista(selectedArtista)"
+          />
           <div class="card-artista-container">
-            <h3 class="title-artista" (click)="mostrarDetallesArtista(selectedArtista)" [id]="selectedArtista.id" >{{selectedArtista.seudonimo}}</h3>
-            <div class="informacion-artista" [ngClass]="{'informacion-artista_active': showInfoArtista}">
-              <p [innerHTML]="selectedArtista.descripcion" class="parrafo-descrip-card-pequeña"></p>
-              <span (click)="mostrarDetallesArtista(selectedArtista)" [id]="selectedArtista.id" class="enlace">Leer mas...</span>
+            <h3
+              class="title-artista"
+              (click)="mostrarDetallesArtista(selectedArtista)"
+              [id]="selectedArtista.id"
+            >
+              {{ selectedArtista.seudonimo }}
+            </h3>
+            <div
+              class="informacion-artista"
+              [ngClass]="{ 'informacion-artista_active': showInfoArtista }"
+            >
+              <p
+                [innerHTML]="selectedArtista.descripcion"
+                class="parrafo-descrip-card-pequeña"
+              ></p>
+              <span
+                (click)="mostrarDetallesArtista(selectedArtista)"
+                [id]="selectedArtista.id"
+                class="enlace"
+                >Leer mas...</span
+              >
               <div class="card-links">
-                <i class="fa-brands fa-tiktok" *ngIf="selectedArtista.tiktok"> <a href="{{selectedArtista?.tiktok}}"></a></i>
-            <i class="fa-brands fa-instagram"  *ngIf="selectedArtista.instagram"><a href="{{selectedArtista.instagram}}"></a></i>
-            <i class="fa-brands fa-youtube"  *ngIf="selectedArtista.youtube"><a href="{{selectedArtista.youtube}} "></a></i>
-            <i class="fa-brands fa-spotify"  *ngIf="selectedArtista.spotify"><a href="{{selectedArtista.spotify}}"></a></i>
-            <i class="fa-brands fa-soundcloud"*ngIf="selectedArtista.soundcloud"><a href="{{selectedArtista.soundcloud}}"></a></i>
+                <a href="{{ selectedArtista?.tiktok }}">
+                  <i class="fa-brands fa-tiktok" *ngIf="selectedArtista.tiktok"></i>
+                </a>
+                <a href="{{ selectedArtista.instagram }}">
+                  <i class="fa-brands fa-instagram"*ngIf="selectedArtista.instagram"></i>  
+                </a>
+                <a href="{{ selectedArtista.youtube }} ">
+                  <i class="fa-brands fa-youtube" *ngIf="selectedArtista.youtube"></i>
+                </a>
+                <a href="{{ selectedArtista.spotify }}">
+                  <i class="fa-brands fa-spotify" *ngIf="selectedArtista.spotify" ></i>
+                </a>
+                <a href="{{ selectedArtista.soundcloud }}">
+                  <i class="fa-brands fa-soundcloud" *ngIf="selectedArtista.soundcloud"></i>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
     </div>
   </section>
 </div>

@@ -31,8 +31,9 @@ export class NoticiaComponent implements OnInit{
   getNoticiasAside() {
     this.noticiaService.noticiasTodos().subscribe((data: Noticia[]) => {
       this.noticiasMas=data.slice(0,4)
+      this.noticiaAside=data
       // Limitar el número de noticiasAside y asegurarse de que no contenga la noticia actual
-      this.noticiaAside = this.limitToMax3(this.shuffleArray(data.filter((noticia: Noticia) => noticia.id !== this.noticia?.id)));
+     // this.noticiaAside = this.limitToMax3(this.shuffleArray(data.filter((noticia: Noticia) => noticia.id !== this.noticia?.id)));
     });
   }
   capturarValor(event:Event){

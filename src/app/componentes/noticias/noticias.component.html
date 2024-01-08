@@ -5,11 +5,11 @@
       <a routerLink="/all-noticias">ver todos</a>
     </div>
   
-    <div class="all-noticias">
+    <div class="all-noticias" *ngIf="noticias">
 
-      <div class="card-noticia"  *ngFor="let noticias of noticias" >
-        <div>
-          <img src="{{noticias.img}}" alt="" class="img-card-noticia"  />
+      <div class="card-noticia"  *ngFor="let noticias of noticias"  >
+        <div class="div">
+          <img src="{{noticias.img}}" alt="" class="img-card-noticia"[routerLink]=" ['/noticia',noticias.id]"  />
           <p>{{noticias.fecha_publi}} </p>
         </div>
         <div class="container-card-noticia">
@@ -17,7 +17,7 @@
           <p>
             {{noticias.resumen}}
           </p>
-          <a href="">leer complea</a>
+          <a [routerLink]=" ['/noticia',noticias.id] " class="enlace">leer complea</a>
         </div>
       </div>
    

@@ -4,7 +4,7 @@
 }
 
 .carousel-item>img{
-    height:100vh;
+    height:90vh;
 }
 /* corregi los botones para que esten mas a la orilla */
 .carousel-control-prev {
@@ -100,4 +100,10 @@
 }
 ul{
     padding-left: 0;
+}
+
+
+.resultado-span{
+    display: flex;
+    justify-content: space-between;
 }

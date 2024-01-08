@@ -40,7 +40,7 @@
       <div class="list-noticias-container">
   
         <div class="card-noticia-a" *ngFor="let noticia of noticiasMas">
-          <span class="fecha-card-a">23 de noviembre</span>
+          <span class="fecha-card-a">{{noticia.fecha_publi}} </span>
           <div class="img-card-a-container">
             <img src="{{noticia.img}}" alt="" class="img-card-a link" (click)="capturarValor($event)" id="{{noticia.id}}" >
           </div>

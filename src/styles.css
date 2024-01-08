@@ -13,7 +13,7 @@
     --color1 : #000000;
     --color2 : #252635;
     --color3 : #565672;
-    --color4 : #8f8eb8;
+    --color4 : rgb(190, 190, 190);
     --color5 : #d1ccff;
 }
 
@@ -22,13 +22,20 @@ html{
     overflow-x: hidden;
 }
 
+
+body{
+    background-color:rgb(190, 190, 190);
+    color: black;
+}
 /* Para quitarle los estilos por defecto a las listas y los links */
 ul{
     list-style: none;
 }
 a{
     text-decoration: none;
+    color: black;
 }
+
 .pagina-principal .all-container {
     padding-top: 0;
   }
@@ -37,6 +44,7 @@ a{
     margin: 0 auto;
     max-width: 1300px;
     min-height: 80vh;
+    background-color: var(--color4);
 }
 
 .pagina-principal .all-container {
@@ -211,10 +219,6 @@ a{
         display: grid;   
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
-}
-
-a{
-    color: black;
 }
 
 .btn-tech{

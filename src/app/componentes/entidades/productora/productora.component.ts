@@ -1,5 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { GaleriaService } from 'src/app/services/galeria.service';
 import {  ProductoraService } from 'src/app/services/productora.service';
@@ -11,9 +12,10 @@ import {  ProductoraService } from 'src/app/services/productora.service';
 })
 export class ProductoraComponent {
   entidad:any;
-  
+  youtubeVideoId!:String; // ID del video de YouTube
+  sanitizedYoutubeVideoUrl!: SafeResourceUrl|undefined;  
 
-  constructor(private entidadService:ProductoraService ,private route:ActivatedRoute,private viewportScroller: ViewportScroller, private galeriaService:GaleriaService){}
+  constructor(private entidadService:ProductoraService, private sanitizer:DomSanitizer ,private route:ActivatedRoute,private viewportScroller: ViewportScroller, private galeriaService:GaleriaService){}
   productorasFotos: string[] = [];
 
   ngOnInit(): void {
@@ -24,6 +26,8 @@ export class ProductoraComponent {
       this.entidadService.productoraParticular(productoraId).subscribe(data=>{
         this.entidad=data;
         this.procesarFotos()
+        this.extractYoutubeVideoId();
+        console.log(this.sanitizedYoutubeVideoUrl)
       })
     })
   }
@@ -41,6 +45,29 @@ export class ProductoraComponent {
   
   abrirGaleriaDesdePrincipal(index: number): void {
     this.galeriaService.abrirGaleria(this.productorasFotos, index);
+  }
+
+
+  
+  extractYoutubeVideoId(): void {
+    // Verificar si artista.youtube existe y no es null o undefined
+    if (this.entidad && this.entidad.video_yt) {
+      console.log(this.entidad.video_yt)
+      // Extraer el ID del video de la URL de YouTube
+      const match = this.entidad.video_yt.match(/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+      if (match && match[1]) {
+        this.youtubeVideoId = match[1];
+        this.sanitizeYoutubeVideoUrl();
+      }
+    }
+  }
+
+  sanitizeYoutubeVideoUrl(): void {
+    if (this.youtubeVideoId) {
+      // Construir la URL segura del video de YouTube
+      const youtubeUrl = `https://www.youtube.com/embed/${this.youtubeVideoId}`;
+      this.sanitizedYoutubeVideoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(youtubeUrl);
+    }
   }
 
 

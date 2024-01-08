@@ -15,6 +15,7 @@ export class ArtistasComponent  implements OnInit{
   artistaId:any;
   mostrarid:boolean=false;
   enlace:boolean=true
+  cardMovil:boolean=false;
   
   @Output() emitirArtista= new EventEmitter<number>();
 
@@ -37,6 +38,9 @@ export class ArtistasComponent  implements OnInit{
           // realiza la solicitud para obtener 8 artistas
           this.artistasService.artistaTodos().subscribe(data => {
             this.artistasList = (data.length >= 8) ? data.slice(0, 8) : data;
+            this.artistasList.forEarch((artista:any)=>{
+              artista.mostrarCard = false;
+            })
           });
         } else {
           // Si estás en cualquier otro router y no hay resultados de búsqueda,
@@ -51,6 +55,7 @@ export class ArtistasComponent  implements OnInit{
     if (this.router.url.includes('/artistas-admin')) {
       this.mostrarid = true;
     }
+    console.log(this.artistasList)
   }
   
   
@@ -116,7 +121,26 @@ mostrarTodosLosArtistas() {
   
 
 }
+mostrarCard(artista: any) {
+  if(this.router.url.includes("/pagina-principal")){
+      // Cierra la tarjeta si ya está abierta
+  if (artista.mostrarCard === true) {
+    artista.mostrarCard = false;
+  } else {
+    // Cierra todas las demás tarjetas
+    this.artistasList.forEach((item: any) => {
+      item.mostrarCard = false;
+    });
 
+    // Abre la tarjeta seleccionada
+    artista.mostrarCard = true;
+  }
+}else{
+    this.mostrarDetallesArtista(artista)
+
+  }
+
+}
 
 
     

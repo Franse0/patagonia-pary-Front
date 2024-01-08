@@ -118,6 +118,9 @@
     line-height: 1.4;
 }
 
+.desktop{
+    display: none;
+}
 
 
 @media (min-width:700px){
@@ -129,6 +132,12 @@
     }
     .all-artistas__active{
         width: 50%;
+    }
+    .desktop{
+        display: block;
+    }
+    .movil{
+        display: none;
     }
 }
 
@@ -159,4 +168,15 @@
     font-size: 2rem;
     display: block;
   }
+  .card-movil{
+    opacity: 0  ;
+    transition: opacity .3s;
+}
+
+
+.mostrar-card{
+    opacity: 1;
+    transition: opacity .3s;
+
+}
   

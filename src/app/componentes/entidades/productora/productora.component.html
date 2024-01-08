@@ -3,57 +3,57 @@
     
     <section class="show-entidad " #showEvento >   
     
+        <article class="info-productora-container">
+            <div class="package-producer">
+                <img [src]="entidad?.img" alt="" class="logo" width="200px">
+            </div>
+            <div class="acerca-de">
+                <div >
+                    <h4>{{entidad?.nombre}}</h4>
+                </div>
+                <p>
+                    {{entidad?.descripcion}}
+                </p>
+            </div>
+            <div class="redes">
+                <a href="{{entidad?.instagram}}" target="_blank">
+                    <i class="fa-brands fa-instagram"  *ngIf="entidad?.instagram"></i>
+                </a>
+                <a href="{{entidad?.youtube}}" target="_blank">
+                    <i class="fa-solid fa-phone"  *ngIf="entidad?.youtube"></i>
+                </a>            
+            </div>
+
+        </article>
           
             <div *ngIf="entidad" class="card-evento show-card" >
                     <div class="">
-                        <iframe
-                        src="https://www.youtube.com/embed/PdBie2Aqwf0?si=KCYM8J4QKGnRSuKg"
-                        class="iframe-card-lugar"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                         ></iframe>
+                        <ng-container *ngIf="sanitizedYoutubeVideoUrl; else mostrarImagen">
+                            <iframe [src]="sanitizedYoutubeVideoUrl" frameborder="0"></iframe>
+                        </ng-container>
+                        <ng-template #mostrarImagen>
+                            <div class="img-container-not-video">
+                                <img [src]="entidad?.facebook" alt=""  class="img-show">
+                            </div>
+                        </ng-template>    
                     </div>
             </div>
 
 
-            <article class="info-productora-container">
-                <div class="package-producer">
-                    <img [src]="entidad?.img" alt="" class="logo">
-                </div>
-                <div class="acerca-de">
-                    <div class="title-container">
-                        <h4>{{entidad?.nombre}}</h4>
-                    </div>
-                    <p>
-                        {{entidad?.descripcion}}
-                    </p>
-                </div>
-                <div class="redes">
-                    <a href="{{entidad?.instagram}}" target="_blank">
-                        <i class="fa-brands fa-instagram"  *ngIf="entidad?.instagram"></i>
-                    </a>
-                    <a href="{{entidad?.facebook}} " target="_blank">
-                        <i class="fa-brands fa-youtube"  *ngIf="entidad?.facebook"></i>
-                    </a>
-                    <a href="{{entidad?.youtube}}" target="_blank">
-                        <i class="fa-solid fa-phone"  *ngIf="entidad?.youtube"></i>
-                    </a>            
-                </div>
-
-            </article>
+            
 
     </section>
     <section class="section-galeria" *ngIf="entidad?.img_list">
         <div class="title-container">
-            <h4>Fotoss</h4>
+            <h4>Fotos</h4>
         </div>
         <div class="galeria">
             <div class="img-container" *ngFor="let fotoUrl of productorasFotos; let i = index" (click)="abrirGaleriaDesdePrincipal(i)">
-              <img [src]="fotoUrl" alt="Foto de Productora" class="img-galeria" width="200px">
+              <img [src]="fotoUrl" alt="Foto de Productora" class="img-galeria">
             </div>
           </div>
           <app-galeria></app-galeria>
     </section>
     <app-productoras></app-productoras>
-</div>
+</div> 
+<iframe src="https://www.youtube.com/shorts/ydymZh4BBy0" frameborder="0"></iframe>

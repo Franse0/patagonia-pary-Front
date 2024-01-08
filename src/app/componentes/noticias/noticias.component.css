@@ -12,6 +12,9 @@
     border-bottom: 1px solid black;
     margin-bottom: 30px;
 }
+.div{
+    width: 40%;
+}
 
 .img-card-noticia{
     /* width: 50%; */
@@ -75,6 +78,10 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
+    }
+    .container-card-noticia{
+        margin: 0 15px;
+        width: 100%;
     }
     
 }

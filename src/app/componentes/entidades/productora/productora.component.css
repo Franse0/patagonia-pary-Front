@@ -3,11 +3,14 @@
     /* width: 80%; */
     margin: 0 auto;
     height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
 .package-producer img{
-    width: 100%;
+    width: 200px;
 }
 .package-producer span{
     font-weight: bold;
@@ -43,7 +46,8 @@
 
 .redes{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 20px;
     width: 80%;
     margin: 0 auto;
 }
@@ -55,17 +59,45 @@ iframe{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-.galeria>img{
-border-radius: 10px;
-}
+
 .section-galeria{
     padding-top: 1rem;
     border-top: .7px solid grey ;
 }
-@media (min-width:700px){
+
+.img-container{
+    width: 90%;
+    margin: 0 auto;
+    max-height: 300px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.img-galeria{
+    border-radius: 10px;
+    width: 100%;
+    display: block;
+    transition: .3s;
+}
+.img-show{
+    width: 80%;
+    margin: 0 auto;   
+    display: block;
+    max-width: 400px;
+}
+
+
+@media (min-width:800px){
+    .img-show{
+        width: 100%;
+        max-width: 500px;
+    }
     .show-entidad{
         display: flex;
+        flex-direction: row-reverse;
         padding: 2ren 1rem;
+        justify-content: center;
     }
     .info-productora-container{
         padding: 1rem;
@@ -73,7 +105,10 @@ border-radius: 10px;
     }
     
     .show-card{
+        display: flex;
         width: 50%;
+        justify-content: center;
+        align-items: center;
     }
 
     .package-producer{
@@ -101,13 +136,12 @@ border-radius: 10px;
   
 .galeria{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 100%;
     align-items: center;
     justify-content: center;
 }
 .img-container{
-    width: 100%;
     max-height: 300px;
     overflow: hidden;
     cursor: pointer;
@@ -121,6 +155,15 @@ border-radius: 10px;
 .img-galeria:hover{
     width: 110%;
     display: block;
+}
+.all-container{
+    padding-top: 60px;
 }   
 }
 
+.padding-none{
+    padding: none;
+}
+.img-container-not-video{
+    width: 100%;
+}
