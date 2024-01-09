@@ -1,4 +1,4 @@
-<div class="all-contianer">
+<div class="all-contaianer">
     <div class="panel-container">
         <div class="panel">
             <span (click)="mostrarSeccion('bio')" [ngClass]="{'is-selected': seccionActiva === 'bio' || (!seccionActiva && seccionPredeterminada === 'bio')}">Bio</span>
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <h4>{{artista?.seudonimo}} </h4>
-            <img src="{{artista?.img}}" alt="" class="profile-img" *ngIf="seccionActiva === 'bio'">
+            <img src="{{artista?.img}}" alt="{{artista?.nombre}}" class="profile-img" *ngIf="seccionActiva === 'bio'">
             <p [innerHTML]="artista?.descripcion" *ngIf="seccionActiva === 'bio'">
             </p>
         </article>
@@ -32,7 +32,7 @@
     <!-- Miniaturas para abrir la galería -->
     <div class="galeria">
       <div class="img-container" *ngFor="let fotoUrl of artistaFotos; let i = index" (click)="abrirGaleriaDesdePrincipal(i)">
-        <img [src]="fotoUrl" alt="Foto del artista" class="img-galeria">
+        <img [src]="fotoUrl" alt="{{artista.nombre}}- {{artista.ubicacion}}" class="img-galeria">
       </div>
     </div>
   
@@ -74,6 +74,12 @@
             </a>
             <a href="{{artista?.soundcloud}}" target="_blank">
                 <i class="fa-brands fa-soundcloud"*ngIf="artista?.soundcloud"></i>
+            </a>
+            <a href="{{artista?.pretskit}}" target="_blank">
+                <i class="fa-solid fa-share"*ngIf="artista?.pretskit"></i>
+            </a>
+            <a href="{{artista?.mail}}" target="_blank">
+                <i class="fa-solid fa-envelope"*ngIf="artista?.mail"></i>
             </a>
         </div>
     </section>

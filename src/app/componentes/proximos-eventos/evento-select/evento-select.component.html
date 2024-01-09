@@ -1,6 +1,6 @@
 <div class="evento-seleccionado">
   <div class="card-evento-seleccionado" *ngFor="let evento of eventoSelected">
-    <img src="{{evento.img}}" alt="" class="img-evento" [routerLink]="['/eventos', evento.id]" />
+    <img src="{{evento.img}}" alt="{{evento.nombre}}-{{evento.ubicacion}}" class="img-evento" [routerLink]="['/eventos', evento.id]" />
     <div class="card-evento-contenido">
       <h4 (click)="mostrarDetalle(evento.id)" class="enlace">{{evento.nombre}}</h4>
       <p class="parrafo-description-event">

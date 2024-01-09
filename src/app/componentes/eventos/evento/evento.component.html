@@ -10,7 +10,9 @@
                 </div>
                 <div class="info-evento-card">
                     <h3 class="link enlace">{{eventoSelected?.nombre}} </h3>
-                    <p>Por: <span class="resaltado link enlace2">{{eventoSelected?.organiza}}</span></p>
+                    <p class="celu">Por: 
+                         <a  *ngFor="let org of organiza" [routerLink]="['/productora', org?.id]"><span class="enlace2  link" *ngIf="organiza">{{org?.nombre}}</span></a>
+                    </p>
                     <span> <i class="fa-solid fa-location-dot"></i>{{eventoSelected?.ubicacion}}</span>
                 </div>
             </div>
@@ -18,9 +20,8 @@
 
             <article class="info-evento-container">
                 <h4 class="title-container">Ofrecido por</h4>
-                <div class="package-producer">
-                    <img src="/assets/entidades/ojo.png" alt="" class="logo">
-                    <span class="enlace2">{{eventoSelected?.organiza}}</span>
+                <div class="package-producer">                  
+                        <a  *ngFor="let org of organiza" [routerLink]="['/productora', org?.id]"><span class="enlace2" *ngIf="organiza">{{org?.nombre}}</span></a>
                 </div>
                 <div class="acerca-de">
                     <div class="title-container">

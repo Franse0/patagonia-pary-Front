@@ -2,6 +2,7 @@ import { ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { EventosService } from 'src/app/services/eventos.service';
 import { GaleriaService } from 'src/app/services/galeria.service';
 import {  ProductoraService } from 'src/app/services/productora.service';
 
@@ -14,8 +15,9 @@ export class ProductoraComponent {
   entidad:any;
   youtubeVideoId!:String; // ID del video de YouTube
   sanitizedYoutubeVideoUrl!: SafeResourceUrl|undefined;  
+  fechas:any;
 
-  constructor(private entidadService:ProductoraService, private sanitizer:DomSanitizer ,private route:ActivatedRoute,private viewportScroller: ViewportScroller, private galeriaService:GaleriaService){}
+  constructor(private entidadService:ProductoraService, private sanitizer:DomSanitizer ,private route:ActivatedRoute,private viewportScroller: ViewportScroller, private galeriaService:GaleriaService, private eventosService:EventosService){}
   productorasFotos: string[] = [];
 
   ngOnInit(): void {
@@ -26,8 +28,8 @@ export class ProductoraComponent {
       this.entidadService.productoraParticular(productoraId).subscribe(data=>{
         this.entidad=data;
         this.procesarFotos()
+        this.nextDates()
         this.extractYoutubeVideoId();
-        console.log(this.sanitizedYoutubeVideoUrl)
       })
     })
   }
@@ -70,5 +72,24 @@ export class ProductoraComponent {
     }
   }
 
+  seccionActiva: string = 'bio';
+  seccionPredeterminada: string = 'bio';
 
+  mostrarSeccion(seccion: string): void {
+    this.seccionActiva = seccion;
+  }
+
+
+
+  nextDates(){
+    if(this.entidad!==null && this.entidad!==undefined){
+      this.eventosService.buscarFiesta(this.entidad.nombre).subscribe(data=>{
+        this.fechas=data
+        console.log(this.entidad.nombre)
+        console.log("data de eventos", data)
+      })
+
+    }
+
+  }
 }

@@ -157,7 +157,7 @@ iframe{
     display: block;
 }
 .all-container{
-    padding-top: 60px;
+    padding-top: 0px;
 }   
 }
 
@@ -166,4 +166,56 @@ iframe{
 }
 .img-container-not-video{
     width: 100%;
+}
+
+
+
+.panel-container{
+    padding-top: 60px;
+}
+.panel{
+    height: 30px;
+    display: flex;
+    gap: 5%;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 100%;
+}
+
+.panel span{
+    color: white;
+    padding: 0 .5rem;
+    cursor: pointer;
+}
+
+.panel span:hover{
+    border-bottom: 2px solid white;
+}
+
+.is-selected{
+    border-bottom: 2px solid white;
+}
+
+.proximas-fechas{
+    background-color: black;
+}
+
+.div{
+    padding-top: 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.next-dates{
+    color: white;
+    transition: .2s;
+}
+
+.next-dates:hover{
+    text-decoration: underline;
+}
+
+.caja{
+    padding-top: 60px;
 }

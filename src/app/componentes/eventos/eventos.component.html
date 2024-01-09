@@ -19,7 +19,7 @@
                 <div class="info-evento-card">
                     <h3 class="link enlace" (click)="capturarValor(eventos.id)" id="{{eventos?.id}}">{{eventos?.nombre}} </h3>
                     <span *ngIf="mostrarId">{{eventos.id}} </span> 
-                    <p>Por: <span class="resaltado link enlace">{{eventos?.organiza}} </span></p>
+                    <p>Por: <span class="resaltado">{{eventos?.organiza}} </span></p>
                     <span> <i class="fa-solid fa-location-dot"></i>{{eventos?.ubicacion}} </span>
                 </div>
             </div> 

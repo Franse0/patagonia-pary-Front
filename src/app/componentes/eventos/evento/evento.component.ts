@@ -13,12 +13,14 @@ import { from } from 'rxjs';
 
 import { forkJoin } from 'rxjs';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ProductoraService } from 'src/app/services/productora.service';
 @Component({
   selector: 'app-evento',
   templateUrl: './evento.component.html',
   styleUrls: ['../eventos.component.css', './evento.component.css']
 })
 export class EventoComponent implements OnInit {
+
   @ViewChild('showEvento') showEventoElement: ElementRef;
   @Input() eventoId: number;
   eventoSelected$: Observable<Evento>;
@@ -26,13 +28,15 @@ export class EventoComponent implements OnInit {
   enlacesDJs:any[]=[]
   fecha:any[]=[]
   sanitizedGoogleMapsUrl: SafeResourceUrl;
+  organiza:any[]=[];
 
   constructor(
     private eventosServcie: EventosService,
     private viewportScroller: ViewportScroller,
     private route: ActivatedRoute,
     private artistaService:ArtistasService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private productoraService:ProductoraService
   ) {}
 
 
@@ -60,6 +64,8 @@ export class EventoComponent implements OnInit {
         this.sanitizeGoogleMapsUrl(data.ubicacion_link.toString());
       }if(data.fecha){
         this.procesarFecha(data.fecha.toString())
+      }  if(data.organiza !== null && data.organiza !== undefined){
+        this.procesarOrganizacion(data.organiza.toString())
       }
 
       this.viewportScroller.scrollToPosition([0, 0]);
@@ -88,6 +94,9 @@ export class EventoComponent implements OnInit {
         }
         if (data.fecha !== null && data.fecha !== undefined) {
           this.procesarFecha(data.fecha.toString());
+        } 
+        if(data.organiza !== null && data.organiza !== undefined){
+          this.procesarOrganizacion(data.organiza.toString())
         }
       } else {
         // Manejar el caso en el que data es null o undefined
@@ -98,15 +107,6 @@ export class EventoComponent implements OnInit {
     });
   }
  
-  procesarFecha(fecha:string){
-    this.fecha = fecha.split('/').map(item => item.trim());
-  }
-
-
-
-  sanitizeGoogleMapsUrl(url: string): void {
-    this.sanitizedGoogleMapsUrl = this.sanitizer.bypassSecurityTrustHtml(url.toString());
-  }
 
 
   procesarLineUp(djs: string): void {
@@ -144,10 +144,24 @@ export class EventoComponent implements OnInit {
         }
       );
     }
-  
   }
 
+  procesarOrganizacion(organiza:String){
+    this.productoraService.buscarProductora(organiza).subscribe(data=>{
+      this.organiza= data;
+      console.log( "organiza desde consola:", this.organiza)
+    })
+  }
 
+  procesarFecha(fecha:string){
+    this.fecha = fecha.split('/').map(item => item.trim());
+  }
+
+  sanitizeGoogleMapsUrl(url: string): void {
+    this.sanitizedGoogleMapsUrl = this.sanitizer.bypassSecurityTrustHtml(url.toString());
+  }
 }
+
+
  
 

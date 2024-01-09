@@ -1,7 +1,21 @@
+<div class="caja">
+    <div class="panel">
+        <span (click)="mostrarSeccion('bio')" [ngClass]="{'is-selected': seccionActiva === 'bio' || (!seccionActiva && seccionPredeterminada === 'bio')}">Bio</span>
+        <span (click)="mostrarSeccion('fotos')" [ngClass]="{'is-selected': seccionActiva === 'fotos'}">Fotos</span>
+        <span (click)="mostrarSeccion('proximas-fechas')" [ngClass]="{'is-selected': seccionActiva === 'proximas-fechas'}">Proximas fechas</span>
+    </div>
+</div>
+<section *ngIf="seccionActiva === 'proximas-fechas'" class="proximas-fechas">
+    <div class="div">
+        <ul *ngIf="fechas">
+            <a [routerLink]="['/eventos', fecha.id]" *ngFor="let fecha of fechas" class="next-dates"><li >{{fecha.nombre}}, {{fecha.ubicacion}} </li></a>
+        </ul>
+    </div>
+</section>
 <div class="all-container">
 
     
-    <section class="show-entidad " #showEvento >   
+    <section class="show-entidad " #showEvento  *ngIf="seccionActiva === 'bio'">   
     
         <article class="info-productora-container">
             <div class="package-producer">
@@ -43,7 +57,7 @@
             
 
     </section>
-    <section class="section-galeria" *ngIf="entidad?.img_list">
+    <section class="section-galeria" *ngIf="seccionActiva === 'fotos' || seccionActiva === 'bio'">
         <div class="title-container">
             <h4>Fotos</h4>
         </div>
@@ -54,6 +68,7 @@
           </div>
           <app-galeria></app-galeria>
     </section>
+
+
     <app-productoras></app-productoras>
 </div> 
-<iframe src="https://www.youtube.com/shorts/ydymZh4BBy0" frameborder="0"></iframe>

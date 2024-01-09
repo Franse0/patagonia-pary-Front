@@ -35,12 +35,10 @@ p{
 .negrita{
     font-weight: bold;
 }
-.h2{
-    padding:2rem 0;
-    font-size: 3.5rem;
-    
-}
 
+h2{
+    font-size: 2rem
+}
 /* aside */
 
 .aside{

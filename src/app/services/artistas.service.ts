@@ -11,6 +11,7 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class ArtistasService {
   // url: string = "http://localhost:8081/api";
+
   // url: string = "http://62.72.26.208:8080/api";
   url: string = "https://patagoniapary.ar/api";
 
