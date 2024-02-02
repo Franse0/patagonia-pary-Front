@@ -95,4 +95,7 @@ export class ArtistaComponent {
     this.galeriaService.abrirGaleria(this.artistaFotos, index);
   }
 
+  mostrarMail(mail:String){
+    alert(mail)
+  }
 }

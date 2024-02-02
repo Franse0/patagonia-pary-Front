@@ -7,7 +7,6 @@ export class Productoras{
     facebook:String=""
     tiktok:String=""
     mail:String=""
-    telefono:String=""
     youtube:String=""
     video_yt:String=""
     descripcion:String=""

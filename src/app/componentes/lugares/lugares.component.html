@@ -1,5 +1,5 @@
 <div class="all-container">
-  <section class="lugares" id="lugares">
+  <section class="lugares" id="lugares" *ngIf="lugares.length>1">
     <div class="title-container">
       <h2 class="noticia-title">Lugares</h2>
       <a routerLink="/all-lugares">ver todos</a>
@@ -32,6 +32,7 @@
           </div>
           <div class="card-lugar-info-inferior">
             <div class="card-lugar-links">
+              
               <a href="{{lugar?.instagram}}" target="_blank">
                 <i class="fa-brands fa-instagram"  *ngIf="lugar?.instagram"></i>
             </a>
@@ -42,8 +43,6 @@
                 <i class="fa-solid fa-phone"  *ngIf="lugar?.telefono"></i>
             </a>
             </div>
-            <!-- <div class="ubication" [innerHTML]="sanitizeGoogleMapsUrl(lugar.link_ubi.toString())" ></div> -->
-            
             <div class="ubi-link" [innerHTML]="sanitizedGoogleMapsUrl"></div>
 
           </div>

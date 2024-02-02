@@ -12,7 +12,6 @@ export class Artista {
     spotify:String=""
     youtube:String=""
     mail:String=""
-    telefono:String=""
     track:String;
     video:String;
     tiktok:String;

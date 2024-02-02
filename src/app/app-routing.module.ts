@@ -42,7 +42,7 @@ const routes: Routes = [
   {path:"aside", component:AsideSpotifyComponent},
   
   // rutas de login
-  {path:"login", component:LoginComponent},
+  {path:"41478834Zz", component:LoginComponent},
   {path:"in-login", 
   component:InLoginComponent,
   canMatch:[AuthUserGuard]},

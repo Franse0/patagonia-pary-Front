@@ -14,8 +14,6 @@
             <div class="location">
                 <div>
                     <i class="fa-solid fa-location-dot"></i> 
-                </div>
-                <div>
                     <span>{{artista?.ubicacion}} </span>
                 </div>
             </div>
@@ -78,7 +76,7 @@
             <a href="{{artista?.pretskit}}" target="_blank">
                 <i class="fa-solid fa-share"*ngIf="artista?.pretskit"></i>
             </a>
-            <a href="{{artista?.mail}}" target="_blank">
+            <a (click)="mostrarMail(artista.mail)" target="_blank">
                 <i class="fa-solid fa-envelope"*ngIf="artista?.mail"></i>
             </a>
         </div>

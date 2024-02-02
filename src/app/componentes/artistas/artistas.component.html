@@ -36,24 +36,27 @@
         >Leer mas...</span
       >
       <div class="card-links">
-          <a href="{{ artista?.tiktok }}">
-            <i class="fa-brands fa-tiktok" *ngIf="artista.tiktok"></i>
-          </a>
-          <a href="{{ artista.instagram }}">
-            <i class="fa-brands fa-instagram"*ngIf="artista.instagram"></i>  
-          </a>
-          <a href="{{ artista.youtube }} ">
-            <i class="fa-brands fa-youtube" *ngIf="artista.youtube"></i>
-          </a>
-          <a href="{{ artista.spotify }}">
-            <i class="fa-brands fa-spotify" *ngIf="artista.spotify" ></i>
-          </a>
-          <a href="{{ artista.soundcloud }}">
-            <i class="fa-brands fa-soundcloud" *ngIf="artista.soundcloud"></i>
-          </a>
-          <a href="{{artista?.pretskit}}" target="_blank">
-            <i class="fa-brands fa-share"*ngIf="artista?.pretskit"></i>
+        <a href="{{ artista?.tiktok }}" target="_blank">
+          <i class="fa-brands fa-tiktok" *ngIf="artista.tiktok"></i>
         </a>
+        <a href="{{ artista.youtube }} " target="_blank">
+          <i class="fa-brands fa-youtube" *ngIf="artista.youtube"></i>
+        </a>
+        <a href="{{ artista.spotify }}" target="_blank">
+          <i class="fa-brands fa-spotify" *ngIf="artista.spotify" ></i>
+        </a>
+        <a (click)="mostrarMail(artista.mail)" >
+          <i class="fa-solid fa-envelope"*ngIf="artista?.mail"></i>
+      </a>
+      <a href="{{ artista.instagram }}" target="_blank">
+        <i class="fa-brands fa-instagram"*ngIf="artista.instagram"></i>  
+      </a>
+      <a href="{{ artista.soundcloud }}" target="_blank"ng >
+        <i class="fa-brands fa-soundcloud" *ngIf="artista.soundcloud"></i>
+      </a>
+      <a href="{{artista?.pretskit}}" target="_blank">
+        <i class="fa-solid fa-share"*ngIf="artista?.pretskit"></i>
+    </a>
       </div>
     </div>
     </div>
@@ -143,10 +146,7 @@
                 <a href="{{ selectedArtista.spotify }}">
                   <i class="fa-brands fa-spotify" *ngIf="selectedArtista.spotify" ></i>
                 </a>
-                <a href="{{selectedArtista?.pretskit}}" target="_blank">
-                  <i class="fa-solid fa-share"*ngIf="selectedArtista?.pretskit"></i>
-              </a>
-                <a href="{{selectedArtista?.mail}}" target="_blank">
+                <a (click)="mostrarMail(selectedArtista.mail)" target="_blank">
                   <i class="fa-solid fa-envelope"*ngIf="selectedArtista?.mail"></i>
               </a>
               <a href="{{ selectedArtista.instagram }}">
@@ -155,6 +155,9 @@
               <a href="{{ selectedArtista.soundcloud }}">
                 <i class="fa-brands fa-soundcloud" *ngIf="selectedArtista.soundcloud"></i>
               </a>
+              <a href="{{selectedArtista?.pretskit}}" target="_blank">
+                <i class="fa-solid fa-share"*ngIf="selectedArtista?.pretskit"></i>
+            </a>
               </div>
             </div>
           </div>

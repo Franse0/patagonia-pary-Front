@@ -142,6 +142,8 @@ mostrarCard(artista: any) {
 
 }
 
-
+mostrarMail(mail:String){
+  alert(mail)
+}
     
 }
