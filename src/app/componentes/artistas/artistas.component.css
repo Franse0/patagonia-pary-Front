@@ -1,7 +1,13 @@
 /* Seccion de artistas */
 .artistas{
-    padding: 2rem 2rem;
     height: auto;
+    margin: 0 auto;
+    background-color: var(--rosa-brillante);
+    padding-top: 1rem;
+    color: white;
+}
+.enlace{
+    color: white;
 }
 
 .img-card-artista{
@@ -48,6 +54,29 @@
 
 
 @media (min-width:700px){
+    .img-card-artista{
+        width: 100%;
+        cursor: pointer;
+        transition: .1s;
+    }
+    .img-card-artista:hover{
+        width: 110%;
+        cursor: pointer;
+    }
+
+    .img-container{
+        border-radius: 45px;
+        overflow: hidden;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .artistas-container-all{
+        width: 80%;
+        margin: 0 auto;
+    }
     .all-artistas{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -108,10 +137,10 @@
     opacity: 1;
     transform: translateY(0);
 }
-
-.img-artista-display{
-    width: 80%;
-}
+    
+    .img-artista-display{
+        width: 80%;
+    }
 
 
 .parrafo-descrip-card-pequeña{

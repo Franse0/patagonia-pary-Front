@@ -8,14 +8,23 @@
     font-family: "Poppins", sans-serif;
 }
 
-
+:root {
+    --azul-electrico:rgb( 41, 128, 185); /* Azul eléctrico */
+    --morado: rgb(155, 89, 182); /* Morado */
+    --verde-neon: rgb(46, 204, 113); /* Verde neón */
+    --rosa-brillante: rgb(255, 64, 129); /* Rosa brillante */
+    --blanco-resplandeciente: rgb(255, 255, 255); /* Blanco resplandeciente */
+    --negro: rgb(0, 0, 0); /* Negro */
+  }
+  
+/* 
 :root{
     --color1 : #000000;
     --color2 : #252635;
     --color3 : #525285;
     --color4 : rgb(190, 190, 190);
     --color5 : #d1ccff;
-}
+} */
 
 html{
     scroll-behavior: smooth;
@@ -24,7 +33,7 @@ html{
 
 
 body{
-    background-color:rgb(190, 190, 190);
+    background-color:var(--blanco-resplandeciente);
     color: black;
 }
 /* Para quitarle los estilos por defecto a las listas y los links */
@@ -36,9 +45,7 @@ a{
     color: black;
 }
 
-.pagina-principal .all-container {
-    padding-top: 0;
-  }
+
 
 .all-container{
     margin: 0 auto;
@@ -48,21 +55,14 @@ a{
     width: 100%;
 }
 
-.pagina-principal .all-container {
-    min-height: auto;
-}
-
-
-:not(.pagina-principal) .all-container {
-    padding-top: 60px; /* Ajusta el valor según tus necesidades */
-}
-
 .title-container{
     display: flex;
+    padding: .5rem;
+    width: 100%;
     justify-content: space-between;
-    align-items: center;
-    padding: 0 1rem ;
 }
+
+
 
 /* Estilos generales de logos a redes sociales */
 

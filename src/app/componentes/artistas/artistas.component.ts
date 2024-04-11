@@ -13,6 +13,7 @@ import { ViewportScroller } from '@angular/common';
 })
 export class ArtistasComponent  implements OnInit{
   artistasList:any;
+  artistasListCel:any;
   artistaId:any;
   mostrarid:boolean=false;
   enlace:boolean=true
@@ -39,7 +40,9 @@ export class ArtistasComponent  implements OnInit{
           // Si estás en el home y no hay resultados de búsqueda,
           // realiza la solicitud para obtener 8 artistas
           this.artistasService.artistaTodos().subscribe(data => {
-            this.artistasList = (data.length >= 8) ? data.slice(-8) : data;
+            this.artistasList = data.slice(0, 12);
+            this.artistasListCel = data.slice(0, 8);
+
             this.artistasList.forEarch((artista:any)=>{
               artista.mostrarCard = false;
             })

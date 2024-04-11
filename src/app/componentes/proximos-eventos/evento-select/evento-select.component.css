@@ -23,17 +23,18 @@
 .card-evento-seleccionado{
     margin-bottom: 10px;
 }
+
+.card-evento-contenido{
+    padding: 0 .5rem;
+}
 @media (min-width:790px){
-    .card-evento-contenido{
-        padding: 0rem;
+    .card-evento-contenido{      
         line-height: 20px;
-        /* width: 90%; */
         margin: 0 auto;
-        max-width: 40vw;
     }
     .evento-seleccionado{
         width: 100%;
-        width: 45vw;
+        margin-left: 20px;
     }
     .contenedor{
         margin-top: 5px;
