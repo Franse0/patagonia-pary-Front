@@ -3,6 +3,7 @@ import { Artista } from 'src/app/models/artista';
 import { ArtistasService } from './../../services/artistas.service';
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 
 
 @Component({
@@ -18,8 +19,9 @@ export class ArtistasComponent  implements OnInit{
   cardMovil:boolean=false;
   
   @Output() emitirArtista= new EventEmitter<number>();
+  
 
-  constructor(public artistasService:ArtistasService, private router:Router, private route:ActivatedRoute){}
+  constructor(public artistasService:ArtistasService, private router:Router, private route:ActivatedRoute,private viewportScroller: ViewportScroller){}
 
   ngOnInit() {
     const currentRoute = this.router.url;
@@ -33,11 +35,11 @@ export class ArtistasComponent  implements OnInit{
         // Si hay resultados de búsqueda, muestra los resultados.
         this.artistasList = resultados;
       } else {
-        if (currentRoute === '/') {
+        if (this.router.url.includes('/pagina-principal')) {
           // Si estás en el home y no hay resultados de búsqueda,
           // realiza la solicitud para obtener 8 artistas
           this.artistasService.artistaTodos().subscribe(data => {
-            this.artistasList = (data.length >= 8) ? data.slice(0, 8) : data;
+            this.artistasList = (data.length >= 8) ? data.slice(-8) : data;
             this.artistasList.forEarch((artista:any)=>{
               artista.mostrarCard = false;
             })
@@ -55,7 +57,6 @@ export class ArtistasComponent  implements OnInit{
     if (this.router.url.includes('/artistas-admin')) {
       this.mostrarid = true;
     }
-    console.log(this.artistasList)
   }
   
   
@@ -64,16 +65,22 @@ export class ArtistasComponent  implements OnInit{
   showInfoArtista = false;
 
   showArtista(artista: Artista): void {
+  if (this.router.url.includes('/all-artistas')) {
+      this.viewportScroller.scrollToPosition([0, 0]);
+  }
     let subscription:any;
   if (this.router.url.includes('/artista')) {
       this.mostrarDetallesArtista(artista);
+
     } else {
       // Estás en la página de artistas, muestra la card mediana
        subscription= this.artistasService.artistaSeleccionado$.subscribe(selectedArtista => {
         const mismoArtista = selectedArtista?.id === artista.id;
+        
   
         if (!mismoArtista) {
           this.artistasService.actualizarArtistaSeleccionado(artista);
+
         } else {
           // Si haces clic en el mismo artista, cierra la card mediana
           this.cardGrandeActive = false;
@@ -83,6 +90,7 @@ export class ArtistasComponent  implements OnInit{
         if (this.cardGrandeActive) {
           setTimeout(() => {
             this.showInfoArtista = true;
+
           }, 300);
         } else {
           this.showInfoArtista = false;
@@ -99,6 +107,7 @@ export class ArtistasComponent  implements OnInit{
 
 mostrarDetallesArtista(artista: Artista): void {
   // Utiliza el servicio de enrutamiento para navegar al componente deseado
+  this.viewportScroller.scrollToPosition([0, 0]);
   this.router.navigate(['/artista'], { queryParams: { id: artista.id } });
 }
 
@@ -122,6 +131,7 @@ mostrarTodosLosArtistas() {
 
 }
 mostrarCard(artista: any) {
+
   if(this.router.url.includes("/pagina-principal")){
       // Cierra la tarjeta si ya está abierta
   if (artista.mostrarCard === true) {

@@ -22,7 +22,7 @@ export class AllNoticiasComponent  implements OnInit{
       this.mostrarId=true;
     }
     this.noticiaService.noticiasTodos().subscribe(data=>{
-      this.noticias=data
+      this.noticias=data.reverse()
     },(error)=>{
       console.error('Error al obtener noticias: ', error)
     })

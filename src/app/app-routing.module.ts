@@ -21,6 +21,7 @@ import { InLoginComponent } from './componentes/admin/in-login/in-login.componen
 import { AdminComponent } from './componentes/admin/admin.component';
 import { ProductorasComponent } from './componentes/entidades/productoras.component';
 import { AuthUserGuard } from './guards/auth-user.guard';
+import { SumarteComponent } from './componentes/sumarte/sumarte.component';
 
 const routes: Routes = [
   {path:"pagina-principal", component:PaginaPrincipalComponent},
@@ -36,6 +37,8 @@ const routes: Routes = [
   {path:"all-eventos", component:EventosComponent},
   {path:"all-lugares", component:AllLugaresComponent},
   {path:"evento", component:EventoComponent},
+  {path:"ser-parte", component:SumarteComponent},
+
   // En tu archivo de rutas (app-routing.module.ts o similar)
 { path: 'eventos/:id', component: EventosComponent },
 

@@ -15,7 +15,7 @@
             />
           </div>
           <div class="card-entidad-info">
-            <h4 class="h4 enlace"  [routerLink]="['/productora', entidad?.id]">{{entidad.nombre}} <span *ngIf="mostrarId">{{entidad?.id}}</span> </h4>
+            <h4 class="h4 enlace"  [routerLink]="['/productora', entidad?.id]" (click)="arriba()">{{entidad.nombre}} <span *ngIf="mostrarId">{{entidad?.id}}</span> </h4>
           </div>
         </div>
       </div>

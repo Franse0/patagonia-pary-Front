@@ -38,4 +38,5 @@ export class EventosService {
   buscarFiesta(parametro:String):Observable<any>{
     return this.http.get<any[]>(`${this.url}/fiesta/buscar/${parametro}`)
   }
+  
 }

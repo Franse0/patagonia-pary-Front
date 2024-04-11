@@ -1,50 +1,56 @@
 <div class="all-container">
-  <section class="lugares" id="lugares" *ngIf="lugares.length>1">
+
+  <section class="lugares" id="lugares" *ngIf="lugares">
     <div class="title-container">
       <h2 class="noticia-title">Lugares</h2>
-      <a routerLink="/all-lugares">ver todos</a>
+      <a routerLink="/all-lugares" *ngIf="currentUrl !== 'all-lugares'">Ver todos</a>
     </div>
     <div class="all-lugares">
+
+      
       <div class="card-lugar" *ngFor="let lugar of lugares">
-        <div class="card-lugar-img">
-          <img
+
+        <div class="card-lugar-imgs-container">
+            <img (click)="irALugar(lugar.id)"
             src="{{lugar.img1}}"
-            alt=""
-            class="card-lugar-a"
+            alt="{{lugar.nombre}}"
+            class="card-lugar-img"
           />
-          <img
+            <img (click)="irALugar(lugar.id)"
             src="{{lugar.img2}}"
-            alt=""
-            class="card-lugar-b"
+            alt="{{lugar.nombre}}"
+            class="card-lugar-img desktop"
           />
+  
+   
         </div>
         <div class="card-lugar-info">
           <h3 [routerLink]="['/lugar', this.lugar.id]" class="enlace">{{lugar.nombre}} </h3>
-          <div>
-            <p>
-              {{lugar.descripcion}}
+          <div  class="div">
+            <p [innerHTML]="lugar.descripcion" class="parrafo-descrip-card-pequeña">
             </p>
+            <a (click)="irALugar(lugar.id)" class="seguir-leyendo enlace">leer mas...</a>
 
-            <div class="div-card-lugar">
-              <span>lun-viernes 8 a 19hs</span>
-              <span>{{lugar.ubicacion}} </span>
-            </div>
+          </div>
+          <div class="div-card-lugar">
+            <span>{{lugar.horario}} </span>
+            <span>{{lugar.ubicacion}} </span>
           </div>
           <div class="card-lugar-info-inferior">
             <div class="card-lugar-links">
               
               <a href="{{lugar?.instagram}}" target="_blank">
                 <i class="fa-brands fa-instagram"  *ngIf="lugar?.instagram"></i>
-            </a>
-            <a href="{{lugar?.facebook}} " target="_blank">
-                <i class="fa-brands fa-youtube"  *ngIf="lugar?.facebook"></i>
-            </a>
-            <a href="{{lugar?.telefono}}" target="_blank">
+              </a>
+              <a href="{{lugar?.facebook}} " target="_blank">
+                <i class="fa-brands fa-facebook"  *ngIf="lugar?.facebook"></i>
+              </a>
+              <a (click)="mostrar(lugar.telefono)" target="_blank">
                 <i class="fa-solid fa-phone"  *ngIf="lugar?.telefono"></i>
-            </a>
+              </a>
             </div>
+            
             <div class="ubi-link" [innerHTML]="sanitizedGoogleMapsUrl"></div>
-
           </div>
         </div>
       </div>

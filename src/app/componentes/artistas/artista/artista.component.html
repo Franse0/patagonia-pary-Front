@@ -29,8 +29,10 @@
   
     <!-- Miniaturas para abrir la galería -->
     <div class="galeria">
-      <div class="img-container" *ngFor="let fotoUrl of artistaFotos; let i = index" (click)="abrirGaleriaDesdePrincipal(i)">
-        <img [src]="fotoUrl" alt="{{artista.nombre}}- {{artista.ubicacion}}" class="img-galeria">
+      <div  *ngFor="let fotoUrl of artistaFotos; let i = index" (click)="abrirGaleriaDesdePrincipal(i)">
+        <div class="img-container">
+            <img [src]="fotoUrl" alt="{{artista.nombre}}- {{artista.ubicacion}}" class="img-galeria">
+        </div>
       </div>
     </div>
   

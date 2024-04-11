@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Local } from 'src/app/models/local';
 import { LocalesService } from 'src/app/services/locales.service';
 
@@ -11,9 +12,12 @@ import { LocalesService } from 'src/app/services/locales.service';
 export class LugaresComponent implements OnInit{
   lugares:Local[];
   sanitizedGoogleMapsUrl: SafeResourceUrl;
+  currentUrl:string;
 
 
-  constructor(private localesService:LocalesService, private sanitizer:DomSanitizer){};
+  constructor(private localesService:LocalesService, private sanitizer:DomSanitizer, private router:Router, private route:ActivatedRoute){
+    this.currentUrl = this.route.snapshot.url.join("/")
+  };
 
   ngOnInit(): void {
     this.localesService.lugarTodos().subscribe(data=>{
@@ -28,5 +32,11 @@ export class LugaresComponent implements OnInit{
     this.sanitizedGoogleMapsUrl = this.sanitizer.bypassSecurityTrustHtml(html);
   }
   
+  irALugar(id:number){
+    this.router.navigate(["/lugar", id]) 
+  }
 
+  mostrar(telefono:String){
+    alert("Teléfono de atención al publico :"+ telefono)
+  }
 }

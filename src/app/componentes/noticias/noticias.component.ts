@@ -13,8 +13,7 @@ export class NoticiasComponent implements OnInit {
   ngOnInit(): void {
     this.noticiasService.noticiasTodos().subscribe(data=>{
     
-        this.noticias=data.slice(0,4);
-        console.log("noticias", this.noticias)
+        this.noticias=data.slice(-6).reverse();
       
     })
   }

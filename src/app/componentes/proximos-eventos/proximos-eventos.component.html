@@ -1,11 +1,12 @@
 <div class="all-container">
-  <section class="proximos-eventos" id="agenda">
+  <section class="proximos-eventos" id="agenda" >
     <div class="title-container">
       <h2>Proximos eventos</h2>
       <a routerLink="/all-eventos">Ver todos</a>
     </div>
-    <div class="eventos">
-      <div class="eventos-home" >
+
+    <div  class="eventos" [ngClass]="{'eventos-flex': idSeleccionado}">
+      <div class="eventos-home desktop" >
         <div class="card-evento"*ngFor="let fiestas of fiestas"  >
           <img
           src={{fiestas.img}}

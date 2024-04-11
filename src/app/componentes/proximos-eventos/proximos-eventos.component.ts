@@ -20,20 +20,14 @@ export class ProximosEventosComponent  implements OnInit{
 
   ngOnInit(): void {
     this.eventosService.fiestasTodos().subscribe(data=>{
-      if (data.length > 0) {
-        this.idSeleccionado = data[0].id;
-      }
-      if(data.length>4){
-        this.fiestas=data.slice(0,4);
-      } else{
-        this.fiestas=data
-      }
+      this.fiestas=data
     })
   }
 
   capturarValor(event:Event){
     const valor = (<HTMLImageElement>event.target).id;
     this.idSeleccionado=Number(valor)
+    console.log(this.idSeleccionado)
   }
 
   

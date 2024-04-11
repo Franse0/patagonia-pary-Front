@@ -1,5 +1,6 @@
 .entidades{
     padding: 2rem;
+    width: 100vw;
 }
 .card-entidad{
     width: 100%;
@@ -7,7 +8,7 @@
     width: 80%;
     margin: 0 auto;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
-    padding: 2rem;
+    padding: 1rem 2rem;
     border-radius: 20px;
 }
 .all-entidades{
@@ -19,7 +20,7 @@
 
 .card-entidad-img-container{
     width: 100%;
-    height: 100px;
+    height: 130px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,9 +28,14 @@
 .img-card-entidad{
     width: 80%;
     cursor: pointer;
+    max-height: 120px;
 }
 
 @media (min-width:600px){
+    .entidades{
+        width: 95vw;
+        margin: 0 auto;
+    }
     .all-entidades{
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -39,14 +45,15 @@
         margin: 5%;
     }
     .card-entidad-img-container{
-        width: 100%;
-        height: 100px;
+        width: 90%;
+        height: 150px;
         display: flex;
         align-items: center;
+        margin: 0 auto ;
         justify-content: center;
     }
     .img-card-entidad{
-        width: 80%;
+        max-height: 130px;
         transition: .2s;
         cursor: pointer;
     }

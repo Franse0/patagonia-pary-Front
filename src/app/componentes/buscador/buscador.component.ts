@@ -9,6 +9,7 @@ import { Local } from 'src/app/models/local';
 import { Productoras } from 'src/app/models/productoras';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-buscador',
@@ -19,7 +20,7 @@ export class BuscadorComponent {
   busquedaForm :FormGroup
   resultadoBusqueda:any[]=[];
 
-
+  enlacesDJs:any[]=[]
 
   constructor(
     private artistasService:ArtistasService,
@@ -31,7 +32,6 @@ export class BuscadorComponent {
     ){
       this.busquedaForm= this.formbuilder.group({
         nombreEventoArtista: ['', []],
-        locacion: ['',[]],
       })
     }
 
@@ -61,9 +61,9 @@ export class BuscadorComponent {
     
 
   async buscar() {
-    if(this.busquedaForm.value.nombreEventoArtista==0&&this.busquedaForm.value.locacion==0)return;
+    if(this.busquedaForm.value.nombreEventoArtista==0)return;
     this.resultadoBusqueda=[];
-    const busqueda = this.busquedaForm.value.nombreEventoArtista||this.busquedaForm.value.locacion;
+    const busqueda = this.busquedaForm.value.nombreEventoArtista;
     console.log("estas buscando", busqueda)
   
     try {
@@ -73,6 +73,9 @@ export class BuscadorComponent {
         this.resultadoBusqueda = this.resultadoBusqueda.concat(dataArtistas.map((item:Artista) => ({ ...item, tipo: "Dj" })));
       }
   
+      const dataLineUp = await this.fiestaService.fiestasTodos().subscribe(data=>{
+        console.log(data.djs)
+      })
       const dataFiestas = await this.fiestaService.buscarFiesta(busqueda).toPromise();
       console.log("Soy el resultado de la búsqueda de fiestas: ", dataFiestas);
       if (dataFiestas) {
@@ -97,5 +100,42 @@ export class BuscadorComponent {
       console.error("Error en la búsqueda:", error);
     }
   }
+
+
+  procesarLineUp(djs: string): void {
+    let lineup =[] 
+    // Dividir el string de djs en un array usando la coma como delimitador
+    lineup = djs.split(',').map(item => item.trim());    
+    // Ahora tienes un array con los nombres de los DJs
+    this.verificarSiDjEstaCargado(lineup)
+  }
   
+  verificarSiDjEstaCargado(lineup: any[]): void {
+    const djsEncontrados: any[] = [];
+    const djsNoEncontrados: any[] = [];
+  
+    if (lineup && lineup.length > 0) {
+      const observables = lineup.map(item => this.artistasService.buscarArtista(item));
+  
+      forkJoin(observables).subscribe(
+        resultados => {
+          resultados.forEach((data, index) => {
+            if (data.length > 0) {
+              // Si el DJ está en la base de datos, agregar a djsEncontrados
+              djsEncontrados.push(...data);
+            } else {
+              // Si el DJ no está en la base de datos, agregar a djsNoEncontrados
+              djsNoEncontrados.push({ seudonimo: lineup[index], id: null });
+            }
+          });
+          // Asignar tanto a los encontrados como a los no encontrados a enlacesDJs
+          this.enlacesDJs = djsEncontrados.concat(djsNoEncontrados);
+        },
+        error => {
+          // Manejar errores (opcional)
+          console.error('Error en forkJoin:', error);
+        }
+      );
+    }
+  }
 }

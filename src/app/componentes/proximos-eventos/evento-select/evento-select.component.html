@@ -1,16 +1,37 @@
-<div class="evento-seleccionado">
+<div class="evento-seleccionado desktop">
   <div class="card-evento-seleccionado" *ngFor="let evento of eventoSelected">
     <img src="{{evento.img}}" alt="{{evento.nombre}}-{{evento.ubicacion}}" class="img-evento" [routerLink]="['/eventos', evento.id]" />
     <div class="card-evento-contenido">
       <h4 (click)="mostrarDetalle(evento.id)" class="enlace">{{evento.nombre}}</h4>
-      <p class="parrafo-description-event">
+      <p class="parrafo-description-event ">
         {{evento.descripcion}}
       </p>
       <span><i class="fa-solid fa-check"></i>Organiza: {{evento.organiza}}</span> <br>
       <span><i class="fa-solid fa-location-dot"></i>{{evento.ubicacion}}</span> <br>
       <div class="contenedor"> 
         <a href="https://api.whatsapp.com/send/?phone=5492994535581&text&type=phone_number&app_absent=0" class="btn-tech" target="_blank" class="a-white">
-          <button class="btn-tech">Comprar Entrada</button>
+          <button class="btn-tech" *ngIf="evento.precio" >Comprar Entrada</button>
+          <span style="color: black;" *ngIf="!evento.precio"><strong>Entrada libre y gratuita</strong></span>
+        </a>
+      </div> 
+    </div> 
+  </div>
+</div>
+
+<div class="evento-seleccionado  movil">
+  <div class="card-evento-seleccionado" *ngFor="let evento of eventos">
+    <img src="{{evento.img}}" alt="{{evento.nombre}}-{{evento.ubicacion}}" class="img-evento" [routerLink]="['/eventos', evento.id]" />
+    <div class="card-evento-contenido">
+      <h4 (click)="mostrarDetalle(evento.id)" class="enlace">{{evento.nombre}}</h4>
+      <p class="parrafo-description-event desktop">
+        {{evento.descripcion}}
+      </p>
+      <span><i class="fa-solid fa-check"></i>Organiza: {{evento.organiza}}</span> <br>
+      <span><i class="fa-solid fa-location-dot"></i>{{evento.ubicacion}}</span> <br>
+      <div class="contenedor"> 
+        <a href="https://api.whatsapp.com/send/?phone=5492994535581&text&type=phone_number&app_absent=0" class="btn-tech" target="_blank" class="a-white">
+          <button class="btn-tech" *ngIf="evento.precio" >Comprar Entrada</button>
+          <span style="color: black;" *ngIf="!evento.precio"><strong>Entrada libre y gratuita</strong></span>
         </a>
       </div> 
     </div> 

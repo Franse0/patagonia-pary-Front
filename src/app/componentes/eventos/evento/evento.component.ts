@@ -1,6 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Evento } from 'src/app/models/evento';
 import { ArtistasService } from 'src/app/services/artistas.service';
@@ -14,6 +14,7 @@ import { from } from 'rxjs';
 import { forkJoin } from 'rxjs';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ProductoraService } from 'src/app/services/productora.service';
+import { LocalesService } from 'src/app/services/locales.service';
 @Component({
   selector: 'app-evento',
   templateUrl: './evento.component.html',
@@ -36,7 +37,9 @@ export class EventoComponent implements OnInit {
     private route: ActivatedRoute,
     private artistaService:ArtistasService,
     private sanitizer: DomSanitizer,
-    private productoraService:ProductoraService
+    private productoraService:ProductoraService,
+    private lugaresService:LocalesService,
+    private router:Router
   ) {}
 
 
@@ -114,6 +117,7 @@ export class EventoComponent implements OnInit {
     this.lineup = djs.split(',').map(item => item.trim());    
     // Ahora tienes un array con los nombres de los DJs
     this.verificarSiDjEstaCargado(this.lineup)
+    console.log(this.lineup)
   }
 
     
@@ -128,8 +132,15 @@ export class EventoComponent implements OnInit {
         resultados => {
           resultados.forEach((data, index) => {
             if (data.length > 0) {
+              const nombreMinuscula = lineup[index].toLowerCase();
+              const djEncontrado = data.find((dj:any) => dj.seudonimo.toLowerCase() === nombreMinuscula);
+              if(!djEncontrado){
+              djsNoEncontrados.push({ seudonimo: lineup[index], id: null });
+              }
               // Si el DJ está en la base de datos, agregar a djsEncontrados
-              djsEncontrados.push(...data);
+              if(djEncontrado){
+                djsEncontrados.push(...data);
+              }
             } else {
               // Si el DJ no está en la base de datos, agregar a djsNoEncontrados
               djsNoEncontrados.push({ seudonimo: lineup[index], id: null });
@@ -137,6 +148,7 @@ export class EventoComponent implements OnInit {
           });
           // Asignar tanto a los encontrados como a los no encontrados a enlacesDJs
           this.enlacesDJs = djsEncontrados.concat(djsNoEncontrados);
+
         },
         error => {
           // Manejar errores (opcional)
@@ -146,12 +158,23 @@ export class EventoComponent implements OnInit {
     }
   }
 
-  procesarOrganizacion(organiza:String){
-    this.productoraService.buscarProductora(organiza).subscribe(data=>{
-      this.organiza= data;
-      console.log( "organiza desde consola:", this.organiza)
+  procesarOrganizacion(organiza: string) {
+    this.productoraService.buscarProductora(organiza).subscribe(data =>{
+      if(data && data.length>0 ){
+        this.organiza = [{...data[0], tipo:"productora"}];
+        console.log("organiza prod desde consola:", this.organiza)
+      }else{
+        this.buscarEnLugares(organiza)
+      }
     })
-  }
+}
+
+buscarEnLugares(organiza: string) {
+  this.lugaresService.buscarLocales(organiza).subscribe((data) => {
+    this.organiza = [{...data[0], tipo:"local"}];
+    console.log("organiza lugar desde consola:", this.organiza);
+  });
+}
 
   procesarFecha(fecha:string){
     this.fecha = fecha.split('/').map(item => item.trim());
@@ -159,6 +182,21 @@ export class EventoComponent implements OnInit {
 
   sanitizeGoogleMapsUrl(url: string): void {
     this.sanitizedGoogleMapsUrl = this.sanitizer.bypassSecurityTrustHtml(url.toString());
+  }
+
+  irA(organiza:any){
+    console.log("daleee")
+    console.log(organiza[0].tipo)
+
+    if(organiza[0].tipo==="productora"){
+      console.log(organiza[0].tipo)
+      console.log(organiza[0].id, "ruta")
+      this.router.navigate(["/productora", organiza[0].id])
+    } else{
+      this.router.navigate(["/lugar", organiza[0].id])
+      console.log(organiza.tipo)
+
+    }
   }
 }
 

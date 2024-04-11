@@ -1,13 +1,12 @@
-.card-noticia-a{
-    height: 300px;
-}
 
-.list-noticias-container{
-    gap: 0 15px;
-}
 
 @media(min-width:790px){
     .div{
         padding: 2rem 2rem;
     }
+}
+.parrafo-descrip-card-pequeña{
+    max-height: 157px;
+    overflow: hidden;
+    line-height: 1.4;
 }

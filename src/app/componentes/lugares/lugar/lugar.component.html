@@ -20,7 +20,10 @@
                 </div>
             </div>
             <h4>{{lugar?.nombre}} </h4>
-            <img src="{{lugar?.img1}}" alt="" class="profile-img" *ngIf="seccionActiva === 'bio'">
+            <div class="imgs-container">
+                <img src="{{lugar?.img1}}" alt="" class="profile-img" *ngIf="seccionActiva === 'bio'">
+                <img src="{{lugar?.img2}}" alt="" class="profile-img" *ngIf="seccionActiva === 'bio'">
+            </div>
             <p [innerHTML]="lugar?.descripcion" *ngIf="seccionActiva === 'bio'">
                
             <!-- </p> -->
@@ -32,7 +35,7 @@
                   <img [src]="fotoUrl" alt="Foto del lugar" class="img-galeria">
                 </div>
               </div>
-    <app-galeria></app-galeria>
+            <app-galeria></app-galeria>
 
         </article>
         <article *ngIf='(lugar.video)&& (seccionActiva === "bio" || seccionActiva === "multimedia")'
@@ -54,11 +57,11 @@
                 <i class="fa-brands fa-instagram"  *ngIf="lugar?.instagram"></i>
             </a>
             <a href="{{lugar?.facebook}} " target="_blank">
-                <i class="fa-brands fa-youtube"  *ngIf="lugar?.facebook"></i>
-            </a>
-            <a href="{{lugar?.telefono}}" target="_blank">
+                <i class="fa-brands fa-facebook"  *ngIf="lugar?.facebook"></i>
+              </a>
+              <a (click)="mostrar(lugar.telefono)" target="_blank">
                 <i class="fa-solid fa-phone"  *ngIf="lugar?.telefono"></i>
-            </a>
+              </a>
         </div>
         <article *ngIf="lugar.link_ubi" class="ubicacion">
            <h4 class="h4">Ubicación</h4>

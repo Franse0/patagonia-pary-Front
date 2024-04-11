@@ -4,7 +4,7 @@
 }
 
 .carousel-item>img{
-    height:90vh;
+    height:70vh;
 }
 /* corregi los botones para que esten mas a la orilla */
 .carousel-control-prev {
@@ -21,6 +21,9 @@
     .section-carrousel{
         height: 90vh;
         /* border: 1px solid red; */
+    }
+    .carousel-item>img{
+        height:90vh;
     }
 }
 
@@ -64,7 +67,7 @@
 .searcher>button{
     padding: .3rem 0;
     width: 100%;
-    border-radius: 2px;
+    border-radius: 10px;
     background: var(--color3);
     color: white;
     transition: .3s;
@@ -84,7 +87,10 @@
     flex-direction: column;
     justify-content: center;
     /* height: 20px; */
-    position: relative;
+    position: absolute;
+    top: 110px;
+    background-color: black;
+    color: white;
 
 }
 .select>li{
@@ -94,9 +100,12 @@
     transition: .1s;
     margin: 0 auto;
     width: 100%;
+    border: .3px solid black;
+    transition: border .2s ease-in-out;
 }
 .select>li:hover{
-    border: .3px solid black;
+    border: .3px solid white;
+
 }
 ul{
     padding-left: 0;

@@ -86,4 +86,7 @@ export class LugarComponent {
   abrirGaleriaDesdePrincipal(index: number): void {
     this.galeriaService.abrirGaleria(this.lugarFotos, index);
   }
+  mostrar(telefono:String){
+    alert("Teléfono de atención al publico :"+ telefono)
+  }
 }

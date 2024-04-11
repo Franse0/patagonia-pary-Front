@@ -10,14 +10,10 @@
       <div class="card-noticia"  *ngFor="let noticias of noticias"  >
         <div class="div">
           <img src="{{noticias.img}}" alt="" class="img-card-noticia"[routerLink]=" ['/noticia',noticias.id]"  />
-          <p>{{noticias.fecha_publi}} </p>
         </div>
         <div class="container-card-noticia">
           <h4 class="enlace" [routerLink]="['/noticia', noticias.id]">{{noticias.titulo}}</h4>
-          <p>
-            {{noticias.resumen}}
-          </p>
-          <a [routerLink]=" ['/noticia',noticias.id] " class="enlace">leer complea</a>
+            <p class="fecha">{{noticias.fecha_publi}} </p>
         </div>
       </div>
    

@@ -13,10 +13,17 @@ export class EventoSelectComponent implements OnInit{
   @Input() eventoId:number ;
   eventoSelected:any;
   selectedFiesta:any;
+  eventos:any[];
 
   constructor(private eventoSerivce:EventosService, private router:Router){}
 
   async ngOnInit(): Promise<void> {
+    this.eventoSerivce.fiestasTodos().subscribe(data=>{
+      this.eventos=data;
+    })
+    this.eventoSerivce.fiestaParticular(this.eventoId).subscribe(data=>{
+      this.eventoSelected=data
+    })
     await this.cargarEvento();
   }
   ngOnChanges(changes: SimpleChanges): void {

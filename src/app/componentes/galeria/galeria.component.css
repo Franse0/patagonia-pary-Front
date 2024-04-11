@@ -29,6 +29,7 @@
   
   .img-galeria-completa {
     max-width: 600px; /* Ajusta según sea necesario */
+    max-width: 95vw;
     max-height: 100vh; /* El 100vh es el 100% de la altura de la ventana */
   }
   

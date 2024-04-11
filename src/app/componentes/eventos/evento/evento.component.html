@@ -10,9 +10,9 @@
                 </div>
                 <div class="info-evento-card">
                     <h3 class="link enlace">{{eventoSelected?.nombre}} </h3>
-                    <p class="celu">Por: 
-                         <a  *ngFor="let org of organiza" [routerLink]="['/productora', org?.id]"><span class="enlace2  link" *ngIf="organiza">{{org?.nombre}}</span></a>
-                    </p>
+                    <span class="celu">Por: 
+                         <a  *ngFor="let org of organiza" (click)="irA(organiza)"><span class="enlace2  link" *ngIf="organiza">{{org?.nombre}}</span></a>
+                    </span>
                     <span> <i class="fa-solid fa-location-dot"></i>{{eventoSelected?.ubicacion}}</span>
                 </div>
             </div>
@@ -20,8 +20,8 @@
 
             <article class="info-evento-container">
                 <h4 class="title-container">Ofrecido por</h4>
-                <div class="package-producer">                  
-                        <a  *ngFor="let org of organiza" [routerLink]="['/productora', org?.id]"><span class="enlace2" *ngIf="organiza">{{org?.nombre}}</span></a>
+                <div class="package-producer"  >                  
+                        <a  *ngFor="let org of organiza" (click)="irA(organiza)"><span class="enlace2" *ngIf="organiza">{{org?.nombre}}</span></a>
                 </div>
                 <div class="acerca-de">
                     <div class="title-container">
@@ -45,7 +45,8 @@
                     </div>
                     
                     <div class="adquirir-entrada">
-                        <a href="https://api.whatsapp.com/send/?phone=5492994535581&text&type=phone_number&app_absent=0" target="_blank" class="bnt-tech" ><button class="btn-tech" >Comprar Entrada</button></a>
+                        <a href="https://api.whatsapp.com/send/?phone=5492994535581&text&type=phone_number&app_absent=0" target="_blank" class="bnt-tech" *ngIf="eventoSelected.precio"><button class="btn-tech" >Comprar Entrada</button></a>
+                        <span *ngIf="!eventoSelected.precio"><strong>Entrada libre y gratuita</strong></span>
                     </div>
                      <div class="ubication" [innerHTML]="sanitizedGoogleMapsUrl" *ngIf="eventoSelected.ubicacion_link"></div>
                    

@@ -7,6 +7,7 @@
 .img-card-artista{
     width: 100%;
     cursor: pointer;
+    border-radius: 15px;
 }
 
 .card-artista{
@@ -50,7 +51,7 @@
     .all-artistas{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 1%;
+        gap: 10px;
         /* height: auto; */
     }
     .card-artista{

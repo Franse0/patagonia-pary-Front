@@ -45,6 +45,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductoraComponent } from './componentes/entidades/productora/productora.component';
 import { GaleriaComponent } from './componentes/galeria/galeria.component';
 import { enviroment } from 'src/enviroments/enviroments';
+import { SumarteComponent } from './componentes/sumarte/sumarte.component';
 
 // soundcloud
 
@@ -83,6 +84,7 @@ import { enviroment } from 'src/enviroments/enviroments';
     ProductorasAdminComponent,
     LugaresAdminComponent,
     GaleriaComponent,
+    SumarteComponent,
     // MercadopagoComponent,
   ],
   imports: [

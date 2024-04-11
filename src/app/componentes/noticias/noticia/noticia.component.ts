@@ -17,8 +17,9 @@ export class NoticiaComponent implements OnInit{
   constructor(private noticiaService:NoticiasService ,private route:ActivatedRoute,private viewportScroller: ViewportScroller){}
   ngOnInit(): void {
 
-    this.getNoticiasAside()
     this.viewportScroller.scrollToPosition([0, 0]);
+    console.log("subiendo")
+    this.getNoticiasAside()
     this.route.params.subscribe(params=>{
       const noticiaId= params['id'];
       this.noticiaService.noticiasParticular(noticiaId).subscribe(data=>{
@@ -30,10 +31,10 @@ export class NoticiaComponent implements OnInit{
 
   getNoticiasAside() {
     this.noticiaService.noticiasTodos().subscribe((data: Noticia[]) => {
-      this.noticiasMas=data.slice(0,4)
+      this.noticiasMas=data.slice(-6).reverse()
       this.noticiaAside=data
       // Limitar el número de noticiasAside y asegurarse de que no contenga la noticia actual
-     // this.noticiaAside = this.limitToMax3(this.shuffleArray(data.filter((noticia: Noticia) => noticia.id !== this.noticia?.id)));
+     this.noticiaAside = this.limitToMax3(this.shuffleArray(data.filter((noticia: Noticia) => noticia.id !== this.noticia?.id)));
     });
   }
   capturarValor(event:Event){

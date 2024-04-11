@@ -15,36 +15,54 @@
 .a-white{
     color: white;
 }
+
+.desktop{
+    display: none;
+}
+
+.card-evento-seleccionado{
+    margin-bottom: 10px;
+}
 @media (min-width:790px){
     .card-evento-contenido{
-        padding: 1rem;
+        padding: 0rem;
         line-height: 20px;
         /* width: 90%; */
         margin: 0 auto;
+        max-width: 40vw;
     }
     .evento-seleccionado{
         width: 100%;
-        width: 50vw;
+        width: 45vw;
     }
     .contenedor{
         margin-top: 5px;
     }
     .img-evento{
-        max-width: 30vw;
+        max-width: 40vw;
     }
     
     .parrafo-description-event{
         padding: 0;
 
     }
+    .card-evento-contenido{
+        padding-top: .5rem;
+    }
+    .movil{
+        display: none;
+    }
+    .desktop{
+        display:block;
+    }
+    
 }
 
 
-
-
-.evento-seleccionado{
-    border: px solid red;
+.card-evento-contenido{
+    padding-top: .5rem;
 }
+
 
 .img-evento{
     transition: opacity .2s;
@@ -52,4 +70,9 @@
 }
 .img-evento:hover{
     opacity: .8;
+}
+
+.enlace{
+    padding: 0;
+    line-height: 17px;
 }

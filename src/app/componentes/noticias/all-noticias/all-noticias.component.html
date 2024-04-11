@@ -15,9 +15,11 @@
         </div>
         <span class="enlace" [routerLink]="['/noticia', noticias.id]"> {{noticias.titulo}} </span>
         <span *ngIf="mostrarId"> {{noticias.id}} </span>
-        <p class="description noticia">
+        <p class="description noticia parrafo-descrip-card-pequeña">
           {{noticias.resumen}}
         </p>
+        <a class="enlace" [routerLink]="['/noticia', noticias.id]">Leer completa...</a>
+
       </div>
     
 

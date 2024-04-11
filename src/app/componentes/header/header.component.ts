@@ -38,7 +38,7 @@ export class HeaderComponent {
         // Esperar un breve momento antes de desplazar
         setTimeout(() => {
           this.waitForRenderAndScroll(targetId);
-        }, 100);
+        }, 500);
       });
       return;  // Retorna aquí para evitar ejecutar el código de scroll dos veces
     }

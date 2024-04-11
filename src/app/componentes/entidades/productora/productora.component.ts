@@ -22,15 +22,17 @@ export class ProductoraComponent {
 
   ngOnInit(): void {
 
-    this.viewportScroller.scrollToPosition([0, 0]);
     this.route.params.subscribe(params=>{
       const productoraId= params['id'];
+      this.sanitizedYoutubeVideoUrl="";
       this.entidadService.productoraParticular(productoraId).subscribe(data=>{
+        this.viewportScroller.scrollToPosition([0, 0]);
         this.entidad=data;
         this.procesarFotos()
         this.nextDates()
         this.extractYoutubeVideoId();
       })
+      console.log("cambio")
     })
   }
 
@@ -90,6 +92,10 @@ export class ProductoraComponent {
       })
 
     }
+  }
 
+
+  mostrarMail(mail:String){
+    alert("El mail de la productora es: "+mail)
   }
 }

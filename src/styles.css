@@ -12,7 +12,7 @@
 :root{
     --color1 : #000000;
     --color2 : #252635;
-    --color3 : #565672;
+    --color3 : #525285;
     --color4 : rgb(190, 190, 190);
     --color5 : #d1ccff;
 }
@@ -45,6 +45,7 @@ a{
     max-width: 1300px;
     min-height: 80vh;
     background-color: var(--color4);
+    width: 100%;
 }
 
 .pagina-principal .all-container {
@@ -170,7 +171,7 @@ a{
 .list-noticias-container{
     display: flex;
     justify-content: center;
-    gap: 5%;
+    gap: 1%;
     display: grid;
     grid-template-columns: 1fr 1fr ;
     padding: 0 1rem;
@@ -186,7 +187,11 @@ a{
     opacity: .7;
 }
 
-
+.enlace-noticia{
+    color: var(--color3);
+    text-decoration: underline;
+    cursor: pointer;
+}
 .enlace:hover{
     color: var(--color3);
 }
