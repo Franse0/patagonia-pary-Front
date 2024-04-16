@@ -5,7 +5,9 @@
     height: auto;
 }
 
-
+.show-evento{
+    padding-top: 4rem;
+}
 .package-producer img{
     width: 10%;
 }
@@ -47,11 +49,14 @@ ul{
     cursor: pointer;
 }
 
-.img-card-evento{
-    width: 400px;
+.img-card{
+    height: auto;
+    width: 100%;
 }
 
-
+.title{
+    padding: 0 1rem;
+}
 
 .title-container {
     font-size: 1rem 1rem;
@@ -63,9 +68,13 @@ ul{
     width: 90%;
     margin: 0 auto;
 }
-.info-evento-container{
-    padding: 1rem 1rem;
+.info-evento-card{
+    padding: 0 .5rem;
 }
+.info-evento-container{
+    margin-top: 10px;
+}
+
 
 .celu{
     display: none;
@@ -75,6 +84,8 @@ ul{
     .show-evento{
         display: flex;
         justify-content: center;
+        width: 80%;
+        margin: 0 auto;
     }
     .info-evento-container{
         padding: 1rem;
@@ -109,3 +120,6 @@ ul{
     }
 }
 
+h4, h5{
+    margin-bottom: 0;
+}

@@ -1,0 +1,44 @@
+<section class="resultado-busqueda">
+    <div class="div">
+      <div class="searched">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <h3 class="searched-text">{{parametroBusqueda}} </h3>
+      </div>
+    </div>
+    <div class="bsuqueda-container">
+      <div class="cantindad-resultados">
+        <!-- <span>Se {{index}} rsultados para {{sarchText}}</span> -->
+        <span
+          >Se encontraron <strong>{{busquedaList.length}} </strong> rsultados para
+          <strong>{{parametroBusqueda}}</strong></span
+        >
+      </div>
+      <div class="resultados-container" *ngIf="siResultados">
+       
+  
+        <div class="card-search" *ngFor="let noticia of busquedaList" >
+          <div class="img-container">
+              <img [src]="noticia.url_img" alt="" class="img">
+          </div>
+          <div class="info-sarch-container">
+            <!-- <h4>{{titulo}} </h4> -->
+            <h3 class="enlace" (click)="ira(noticia.id)" >{{noticia.titulo}} </h3    >
+            <!-- <p>{{resumen}} </p> -->
+            <div class="description-card-peque">
+              <p>
+                {{noticia.resumen}}
+            </p>
+            </div>
+            <!-- <span>{{fecha}} </span> -->
+            <span class="fecha"> {{noticia.fecha_publi}} </span>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </section>
+  <section class="resultados-container" *ngIf="noResultados">
+    <h2 class="h2">No se encontraron resultados</h2>
+  </section>
+  
+  

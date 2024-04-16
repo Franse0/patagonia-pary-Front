@@ -19,7 +19,7 @@
           (click)="mostrarCard(artista)"
         />
         <div class="card-artista-container">
-          <h4 class="title-artista" (click)="mostrarCard(artista)">
+          <h4 class="title-artista enlace" (click)="mostrarCard(artista)">
             {{ artista.seudonimo }}
           </h4>
         </div>
@@ -95,7 +95,7 @@
           />
            </div>
             <div class="card-artista-container">
-              <h4 class="title-artista" (click)="showArtista(artista)">
+              <h4 class="title-artista enlace" (click)="showArtista(artista)">
                 {{ artista.seudonimo }}
               </h4>
             </div>
@@ -103,16 +103,17 @@
         </div>
   
         <div
+          (window:scroll)="onScroll($event)"
           class="show-artista"
           [ngClass]="{ 'show-artista__active': cardGrandeActive }"
           *ngIf="artistasService.artistaSeleccionado$ | async as selectedArtista"
         >
-          <div class="card-artista card-grande">
+          <div class="card-artista card-grande" *ngIf="showCard">
             <i class="fa-solid fa-xmark" (click)="cerrarCardMediana()"></i>
             <img
               src="{{ selectedArtista.img }}"
               alt={{selectedArtista.nombre}}
-              class="img-card-artista img-artista-display"
+              class="img-card img-artista-display"
               (click)="mostrarDetallesArtista(selectedArtista)"
             />
             <div class="card-artista-container">

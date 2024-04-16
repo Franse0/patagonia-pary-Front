@@ -1,13 +1,13 @@
 <!-- <app-evento [eventoId]="idSelected"  *ngIf="idSelected !== undefined"></app-evento> -->
 <app-evento  [eventoId]="idSelected" *ngIf="idSelected"></app-evento>
 
-<div class="all-container">
+
     <section class="all-eventos">
         <div class="title-container">
             <h2>Eventos</h2>
         </div>
         <div class="all-eventos-container" >
-            <div class="card-evento"  *ngFor="let eventos of eventos">
+            <a class="card-evento"  *ngFor="let eventos of eventos" [routerLink]="['/eventos/', eventos.id]">
                 <div class="img-container">
                     <div class="fecha">
                         <span> {{ eventos.fecha.split('/')[0] }}</span>
@@ -22,8 +22,7 @@
                     <p>Por: <span class="resaltado">{{eventos?.organiza}} </span></p>
                     <span> <i class="fa-solid fa-location-dot"></i>{{eventos?.ubicacion}} </span>
                 </div>
-            </div> 
+            </a> 
 
         </div>
     </section>
-</div>

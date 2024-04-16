@@ -1,7 +1,6 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, ElementRef, HostListener, Inject, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Inject, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { BuscadorComponent } from '../buscador/buscador.component';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +11,7 @@ export class HeaderComponent {
   enHome:boolean=false;
 
 
-  constructor(private router:Router, private renderer:Renderer2   ,@Inject(DOCUMENT) private document: Document // Inyecta el servicio Document
+  constructor(private router:Router   ,@Inject(DOCUMENT) private document: Document // Inyecta el servicio Document
     ,){}
 
 
@@ -80,15 +79,17 @@ export class HeaderComponent {
   }
 
   @ViewChild('buscador') buscador: ElementRef | undefined;
+  buscarValue:boolean=false;
 
   buscar() {
+    console.log("Buscando",this.buscador?.nativeElement.value)
     // Verifica si el elemento input existe y tiene un valor
     if (this.buscador && this.buscador.nativeElement.value) {
       console.log('estoy buscando', this.buscador.nativeElement.value);
       const busquedaValue = this.buscador.nativeElement.value;
       this.buscador.nativeElement.value=''  
       // Usar el servicio Router para navegar
-      this.router.navigate(['/resultados-busqueda'], { queryParams: { categoria: busquedaValue } });
+      this.router.navigate(['/resultados-busqueda'], { queryParams: { parametro: busquedaValue } });
     } else {
       this.buscarValue = !this.buscarValue;
       console.log(this.buscarValue);
@@ -99,6 +100,5 @@ export class HeaderComponent {
       this.buscar();
     }
   }
-  buscarValue:boolean=false;
 
 }

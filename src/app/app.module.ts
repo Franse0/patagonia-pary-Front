@@ -13,7 +13,6 @@ import { AngularFireModule } from '@angular/fire/compat';
 // Componentes de la pagina principal
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './componentes/header/header.component';
-import { BuscadorComponent } from './componentes/buscador/buscador.component';
 import { ProximosEventosComponent } from './componentes/proximos-eventos/proximos-eventos.component';
 import { ArtistasComponent } from './componentes/artistas/artistas.component';
 import { NoticiasComponent } from './componentes/noticias/noticias.component';
@@ -56,7 +55,6 @@ import { SumarteComponent } from './componentes/sumarte/sumarte.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    BuscadorComponent,
     ProximosEventosComponent,
     ArtistasComponent,
     NoticiasComponent,

@@ -2,7 +2,17 @@
 
 @media(min-width:790px){
     .div{
-        padding: 2rem 2rem;
+        padding: 0 2rem;
+        padding-top: 3.4rem;
+        display: flex;
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    
+    .list-noticias{
+        width: 85%;
+        margin: 0 auto;
     }
 }
 .parrafo-descrip-card-pequeña{

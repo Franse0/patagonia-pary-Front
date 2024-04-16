@@ -1,7 +1,7 @@
-<div class="all-container">
+
   <div class="div">
     <div class="title-container">
-      <h2 class="noticia-title">Noticias</h2>
+      <h2 class="">Noticias</h2>
     </div>
   </div>
   <section class="list-noticias">
@@ -9,10 +9,10 @@
 
 
       <div class="card-noticia-a" *ngFor="let noticias of noticias">
-        <span class="fecha-card-a">{{noticias.fecha_publi}}</span>
         <div class="img-card-a-container">
           <img src="{{noticias.img}}" alt="" class="img-card-a link" [routerLink]="['/noticia', noticias.id]">
         </div>
+        <span class="fecha-card-a">{{noticias.fecha_publi}}</span>
         <span class="enlace" [routerLink]="['/noticia', noticias.id]"> {{noticias.titulo}} </span>
         <span *ngIf="mostrarId"> {{noticias.id}} </span>
         <p class="description noticia parrafo-descrip-card-pequeña">
@@ -26,4 +26,3 @@
 
     </div>
    </section>
-</div>

@@ -1,6 +1,9 @@
 .all-eventos{
     /* padding: 1rem; */
     height: auto;
+
+    margin: 0 auto;
+    padding-top: 4rem
 }
 .card-evento{
     width: 90%;
@@ -14,7 +17,7 @@
 .img-card-evento{
     width:100%;
     transition: opacity .2s;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 .img-card-evento:hover{
     opacity: .8;
@@ -95,8 +98,9 @@
     .card-evento h3{
         line-height: 1.4rem;
     }
+
     .all-eventos{
-        padding: 2rem 2rem;
+        width: 80%;
     }
 }
 @media (min-width:890px){

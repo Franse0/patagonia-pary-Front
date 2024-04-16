@@ -1,6 +1,3 @@
-.noticias{
-    padding: 2rem 2rem;
-}
 
 .all-noticias{
     display: grid;
@@ -86,7 +83,11 @@
         align-items: center;
     }
     
-
+ .noticias{
+    padding-top: 2rem;
+    width: 80%;
+    margin: 0 auto;
+ }
 }
  
 

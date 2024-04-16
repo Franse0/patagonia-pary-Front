@@ -24,6 +24,10 @@
     margin-bottom: 10px;
 }
 
+.movil{
+    max-width: 500px;
+    margin: 0 auto;
+}
 .card-evento-contenido{
     padding: 0 .5rem;
 }

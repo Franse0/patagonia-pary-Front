@@ -12,16 +12,16 @@
             <i class="fa-solid fa-bars bars" id="bars-menu" (click)="toogleNav($event)" *ngIf="!buscarValue"></i>
             <div class="buscador "> 
               <i class="fa-solid fa-search" (keydown)="buscar()" (click)="buscar()"></i>
-                <input
-                  type="text"
-                  (keypress)="buscarConEnter($event)"
-                  name=""
-                  id=""
-                  *ngIf="buscarValue"
-                  class="input-search"
-                  #buscador
-                  autofocus
-                />
+              <input
+                type="text"
+                (keypress)="buscarConEnter($event)"
+                name=""
+                id=""
+                *ngIf="buscarValue"
+                class="input-search"
+                #buscador
+                autofocus
+              />
             </div>
           </div>
       

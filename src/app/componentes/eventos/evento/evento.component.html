@@ -1,4 +1,4 @@
-<div class="all-container">
+
     <section class="show-evento " #showEvento  *ngIf="eventoSelected$ | async as eventoSelected">   
         
             <div   class="evento-seleccionado" >
@@ -6,10 +6,10 @@
                     <div class="fecha">
                         <span *ngFor="let fecha of fecha">{{fecha}}</span>
                     </div>
-                    <img src="{{eventoSelected?.img}}" alt="" class="img-card-evento grande">
+                    <img src="{{eventoSelected?.img}}" alt="" class="img-card grande">
                 </div>
                 <div class="info-evento-card">
-                    <h3 class="link enlace">{{eventoSelected?.nombre}} </h3>
+                    <h3 class="">{{eventoSelected?.nombre}} </h3>
                     <span class="celu">Por: 
                          <a  *ngFor="let org of organiza" (click)="irA(organiza)"><span class="enlace2  link" *ngIf="organiza">{{org?.nombre}}</span></a>
                     </span>
@@ -19,20 +19,20 @@
 
 
             <article class="info-evento-container">
-                <h4 class="title-container">Ofrecido por</h4>
+                <h5 class="title">Organiza</h5>
                 <div class="package-producer"  >                  
                         <a  *ngFor="let org of organiza" (click)="irA(organiza)"><span class="enlace2" *ngIf="organiza">{{org?.nombre}}</span></a>
                 </div>
-                <div class="acerca-de">
-                    <div class="title-container">
-                        <h4>Acerca de</h4>
+                <div class="acerca-de" >
+                    <div class="" *ngIf="eventoSelected.descripcion">
+                        <h5>Acerca de</h5>
                     </div>
                     <p>
                         {{eventoSelected?.descripcion}}
                     </p>
 
                     <div class="line-up" *ngIf="lineup">
-                        <div class="title-container">
+                        <div class="">
                             <h4>Line up</h4>
                         </div>
                         <ul>
@@ -56,4 +56,3 @@
 
     </section>
    
-</div>

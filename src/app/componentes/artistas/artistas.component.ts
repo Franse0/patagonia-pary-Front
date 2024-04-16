@@ -1,7 +1,7 @@
 import { Subscription } from 'rxjs';
 import { Artista } from 'src/app/models/artista';
 import { ArtistasService } from './../../services/artistas.service';
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 
@@ -24,52 +24,67 @@ export class ArtistasComponent  implements OnInit{
 
   constructor(public artistasService:ArtistasService, private router:Router, private route:ActivatedRoute,private viewportScroller: ViewportScroller){}
 
+ 
+  
   ngOnInit() {
     const currentRoute = this.router.url;
-    if(this.router.url.includes('/all-artistas')){
-      this.enlace=false;
-    }
-  
-    // Suscríbete a los resultados de búsqueda
-    this.artistasService.resultadosBusqueda$.subscribe(resultados => {
-      if (resultados && resultados.length > 0) {
-        // Si hay resultados de búsqueda, muestra los resultados.
-        this.artistasList = resultados;
-      } else {
-        if (this.router.url.includes('/pagina-principal')) {
-          // Si estás en el home y no hay resultados de búsqueda,
-          // realiza la solicitud para obtener 8 artistas
-          this.artistasService.artistaTodos().subscribe(data => {
-            this.artistasList = data.slice(0, 12);
-            this.artistasListCel = data.slice(0, 8);
 
-            this.artistasList.forEarch((artista:any)=>{
-              artista.mostrarCard = false;
-            })
-          });
-        } else {
-          // Si estás en cualquier otro router y no hay resultados de búsqueda,
-          // realiza la solicitud para obtener todos los artistas
-          this.artistasService.artistaTodos().subscribe(data => {
-            this.artistasList = data;
-          });
-        }
-      }
-    });
-  
+    if (this.router.url.includes('/all-artistas')) {
+      this.enlace = false;
+    }
+
     if (this.router.url.includes('/artistas-admin')) {
       this.mostrarid = true;
     }
+
+    // Suscríbete a los resultados de búsqueda
+    this.artistasService.resultadosBusqueda$.subscribe(resultados => {
+      if (resultados && resultados.length > 0) {
+        this.artistasList = resultados;
+        this.artistasListCel = resultados.slice(0, 8);
+      } else {
+        this.updateArtistList();
+      }
+    });
   }
-  
-  
+
+  updateArtistList(): void {
+    this.artistasService.artistaTodos().subscribe(data => {
+      if (this.router.url.includes('/pagina-principal')) {
+        this.updateDisplayedArtists(data);
+      } else {
+        this.artistasList = data;
+        this.artistasListCel = data;
+      }
+    });
+  }
+
+  updateDisplayedArtists(data: any[]): void {
+    const weekNumber = this.getCurrentWeek();
+    const artistsPerWeek = 12;
+    const startIndex = (weekNumber * artistsPerWeek) % data.length;
+    this.artistasList = data.slice(startIndex, startIndex + artistsPerWeek);
+    this.artistasListCel = data.slice(startIndex, startIndex + 8);
+
+    this.artistasList.forEach((artista: any) => {
+      artista.mostrarCard = false;
+    });
+  }
+
+  getCurrentWeek(): number {
+    const today = new Date();
+    const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+    const pastDaysOfYear = (today.valueOf() - firstDayOfYear.valueOf()) / 86400000;
+    return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+  }
+
   
   cardGrandeActive =false;
   showInfoArtista = false;
 
   showArtista(artista: Artista): void {
   if (this.router.url.includes('/all-artistas')) {
-      this.viewportScroller.scrollToPosition([0, 0]);
+      // this.viewportScroller.scrollToPosition([0, 0]);
   }
     let subscription:any;
   if (this.router.url.includes('/artista')) {
@@ -158,5 +173,22 @@ mostrarCard(artista: any) {
 mostrarMail(mail:String){
   alert(mail)
 }
-    
+
+showCard = true;
+  private upperScrollLimit = 100;  // Límite superior de scroll para cerrar la card
+  private lowerScrollLimit = 1200; // Límite inferior de scroll para cerrar la card
+@HostListener('window:scroll', ['$event'])
+onScroll(event: any) {
+  const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  if(!this.router.url.includes("/all-artistas")){
+  // Comprobar si el scroll está fuera de los límites establecidos
+  if (scrollPosition > this.lowerScrollLimit || scrollPosition < this.upperScrollLimit) {
+    this.showCard = false;
+    this.cardGrandeActive = false;
+    } else {
+    this.showCard = true;
+ 
+  }
+}
+}
 }
