@@ -1,0 +1,64 @@
+<section class="resultado-busqueda">
+    <div class="div">
+      <div class="searched">
+        <i class="fa-solid fa-magnifying-glass"  (keydown)="buscar()" (click)="buscar()"></i>
+        <input type="text" class="searched-text" [value]="parametroBusqueda" #buscador (keypress)="buscarConEnter($event)"> 
+      </div>
+    </div>
+    <div class="cantindad-resultados">
+      <span>Se encontraron <strong>{{busquedaListArtistas .length}}</strong> resultados para <strong>"{{parametroBusqueda}}"</strong></span>
+    </div>
+    <div class="bsuqueda-container">
+      <!-- Resultado Artistas -->
+      <div class="resultados-container aritstas">
+        <div class="card-search" *ngFor="let resultado of busquedaListArtistas">
+          <div class="img-container">
+            <img [src]="resultado.img" alt="" class="img">
+          </div>
+          <div class="info-sarch-container">
+            <h3 class="enlace" [routerLink]="['/artista', resultado.id]">{{resultado.seudonimo}}</h3>
+          </div>
+        </div>
+      </div>
+      <!-- Resultado fiestas -->
+      <div class="resultados-container aritstas">
+        <div class="card-search" *ngFor="let resultado of busquedaListProductoras">
+          <div class="img-container">
+            <img [src]="resultado.img" alt="" class="img">
+          </div>
+          <div class="info-sarch-container">
+            <h3 class="enlace" [routerLink]="['/productora', resultado.id]">{{resultado.nombre}}</h3>
+          </div> 
+        </div>
+      </div>
+      <!-- Resultado eventos -->
+      <div class="resultados-container aritstas">
+        <div class="card-search" *ngFor="let resultado of busquedaListEventos">
+          <div class="img-container">
+            <img [src]="resultado.img" alt="" class="img">
+          </div>
+          <div class="info-sarch-container">
+            <h3 class="enlace" [routerLink]="['/eventos', resultado.id]">{{resultado.nombre}}</h3>
+            <p>
+              {{resultado.fecha}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Resultado lugares -->
+      <div class="resultados-container aritstas">
+        <div class="card-search" *ngFor="let resultado of busquedaListLugares">
+          <div class="img-container">
+            <img [src]="resultado.img1" alt="" class="img">
+          </div>
+          <div class="info-sarch-container">
+            <h3 class="enlace" [routerLink]="['/lugar', resultado.id]">{{resultado.nombre}}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section *ngIf="noResultados">
+      <h2 class="h2">No se encontraron resultados</h2>
+    </section>
+  </section>
+  

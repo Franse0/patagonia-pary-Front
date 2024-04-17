@@ -3,12 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 // cuestiones de funciones
 import { AppRoutingModule } from './app-routing.module';
-import { initializeApp} from "firebase/app";
 import { AngularFireModule } from '@angular/fire/compat';
-
-// MercadoPago
-// import { MercadopagoComponent } from './componentes/mercadopago/mercadopago.component';
-// import { MercadoPagoConfig, Payment } from 'mercadopago';
 
 // Componentes de la pagina principal
 import { AppComponent } from './app.component';
@@ -45,6 +40,9 @@ import { ProductoraComponent } from './componentes/entidades/productora/producto
 import { GaleriaComponent } from './componentes/galeria/galeria.component';
 import { enviroment } from 'src/enviroments/enviroments';
 import { SumarteComponent } from './componentes/sumarte/sumarte.component';
+import { CommonModule } from '@angular/common';
+import { ResultadosComponent } from './componentes/resultados/resultados.component';
+import { BackHomeComponent } from './componentes/admin/back-home/back-home.component';
 
 // soundcloud
 
@@ -83,7 +81,9 @@ import { SumarteComponent } from './componentes/sumarte/sumarte.component';
     LugaresAdminComponent,
     GaleriaComponent,
     SumarteComponent,
-    // MercadopagoComponent,
+    ResultadosComponent,
+    BackHomeComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -91,6 +91,7 @@ import { SumarteComponent } from './componentes/sumarte/sumarte.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    CommonModule,
     AngularFireModule.initializeApp(enviroment.firebaseConfig)
     // LightboxModule,
   ],

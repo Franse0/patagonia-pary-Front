@@ -79,22 +79,36 @@ export class HeaderComponent {
   }
 
   @ViewChild('buscador') buscador: ElementRef | undefined;
+  @ViewChild('buscador2') buscador2: ElementRef | undefined;
   buscarValue:boolean=false;
 
   buscar() {
-    console.log("Buscando",this.buscador?.nativeElement.value)
-    // Verifica si el elemento input existe y tiene un valor
-    if (this.buscador && this.buscador.nativeElement.value) {
-      console.log('estoy buscando', this.buscador.nativeElement.value);
-      const busquedaValue = this.buscador.nativeElement.value;
-      this.buscador.nativeElement.value=''  
+    let busquedaValue: string | undefined;
+
+    // Intenta obtener el valor de 'buscador'
+    if (this.buscador?.nativeElement.value) {
+      busquedaValue = this.buscador.nativeElement.value;
+      this.buscador.nativeElement.value = '';
+    } 
+    // Si 'buscador' no tiene valor, intenta obtener el valor de 'buscador2'
+    else if (this.buscador2?.nativeElement.value) {
+      busquedaValue = this.buscador2.nativeElement.value;
+      this.buscador2.nativeElement.value = '';
+    }
+
+    // Verifica si se obtuvo algún valor de los buscadores
+    if (busquedaValue) {
+      console.log('Estoy buscando', busquedaValue);
       // Usar el servicio Router para navegar
-      this.router.navigate(['/resultados-busqueda'], { queryParams: { parametro: busquedaValue } });
+      this.router.navigate(['/resultado'], { queryParams: { parametro: busquedaValue } });
+      this.buscarValue=false
     } else {
+      // Si ninguno de los buscadores tiene valor, cambia el estado de buscarValue
       this.buscarValue = !this.buscarValue;
       console.log(this.buscarValue);
     }
   }
+
   buscarConEnter(event: KeyboardEvent) {
     if (event.key === 'Enter') {
       this.buscar();

@@ -1,61 +1,179 @@
-<div class="all-container">
-    <div >
-        <h3>En la siguiente seccion usted podra agregar o editar informacion acerca de los artistas</h3>
-        <h4>Luego mas abajo podras ver como quedaria en el layout</h4>
-    </div>
-    <form class="form-edit" [formGroup]="formAdmin" (submit)="cargarArtista()">
-        <div class="form-layout">
-            <div>
-                <label for="id">Id</label>
-                <input type="number"formControlName="id" id="id" [value]="forEdit?.id">
-                <label for="nombre">Nombre</label>
-                <input type="text"  formControlName="nombre" id="nombre" [value]="forEdit?.nombre">
-                <label for="apellido">Apellido</label>
-                <input type="text" formControlName="apellido" id="apellido" [value]="forEdit?.apellido">
-                <label for="pretskit">Pretskit</label>
-                <input type="text" formControlName="pretskit" id="pretskit" [value]="forEdit?.pretskit">
-                <label for="seudonimo">Seudonimo</label>
-                <input type="text" formControlName="seudonimo" id="seudonimo" [value]="forEdit?.seudonimo">
-                <label for="img">Imagen</label>
-                <input type="text" formControlName="img" id="img" [value]="forEdit?.img">
-                <label for="ubicacion">Ubicacion</label>
-                <input type="text" formControlName="ubicacion" id="ubicacion" [value]="forEdit?.ubicacion">
-                <label for="img_list">Imagenes varias</label>
-                <input type="text" formControlName="img_list" id="img_list" [value]="forEdit?.img_list">
-                <label for="soundcloud">Soundcloud</label>
-                <input type="text" formControlName="soundcloud" id="soundcloud" [value]="forEdit?.soundcloud">
-            </div>
-            <div>
-                <label for="tiktok">tiktok</label>
-                <input type="text" formControlName="tiktok" id="tiktok" [value]="forEdit?.tiktok">
-                <label for="instagram">Instagram</label>
-                <input type="text" formControlName="instagram" id="instagram" [value]="forEdit?.instagram">
-                <label for="spotify">Spotify</label>
-                <input type="text" formControlName="spotify" id="spotify" [value]="forEdit?.spotify">
-                <label for="youtube">Youtube</label>
-                <input type="text" formControlName="youtube" id="youtube" [value]="forEdit?.youtube">
-                <label for="mail">Mail</label>
-                <input type="text" formControlName="mail" id="mail" [value]="forEdit?.mail">
-                <label for="track">Track</label>
-                <input type="text" formControlName="track" id="track" [value]="forEdit?.track">
-                <label for="video">Video Yt</label>
-                <input type="text" formControlName="video" id="video" [value]="forEdit?.video">
-                
-            </div>
+<div class="contenedor">
+  <app-back-home></app-back-home>
+  <form class="form-admin" [formGroup]="formAdmin" (submit)="cargarArtista()">
+    <legend>Formulario de Artistas</legend>
+    
+        <div class="form-input">
+            <label for="id">Id</label>
+            <input
+              type="number"
+              formControlName="id"
+              id="id"
+              [value]="forEdit?.id"
+            />
         </div>
+        <div class="form-input">
+            <label for="nombre">Nombre</label>
+        <input
+          type="text"
+          formControlName="nombre"
+          id="nombre"
+          [value]="forEdit?.nombre"
+        />
+        </div>
+        <div class="form-input">
+            <label for="apellido">Apellido</label>
+        <input
+          type="text"
+          formControlName="apellido"
+          id="apellido"
+          [value]="forEdit?.apellido"
+        />
+        </div>
+        <div class="form-input">
+            <label for="pretskit">Pretskit</label>
+        <input
+          type="text"
+          formControlName="pretskit"
+          id="pretskit"
+          [value]="forEdit?.pretskit"
+        />
+        </div>
+        <div class="form-input">
+            <label for="seudonimo">Seudonimo</label>
+        <input
+          type="text"
+          formControlName="seudonimo"
+          id="seudonimo"
+          [value]="forEdit?.seudonimo"
+        />
+        </div>
+       
+          <div class="form-input">
+            <label for="img">Imagen</label>
+            <input
+              type="text"
+              formControlName="img"
+              id="img"
+              [value]="forEdit?.img"
+            />
+          </div>
+     
+        <div class="form-input">
+            <label for="ubicacion">Ubicacion</label>
+        <input
+          type="text"
+          formControlName="ubicacion"
+          id="ubicacion"
+          [value]="forEdit?.ubicacion"
+        />
+        </div>
+        <div class="form-input">
+            <label for="img_list">Imagenes varias</label>
+        <input
+          type="text"
+          formControlName="img_list"
+          id="img_list"
+          [value]="forEdit?.img_list"
+        />
+        </div>
+        <div class="form-input">
+            <label for="soundcloud">Soundcloud</label>
+        <input
+          type="text"
+          formControlName="soundcloud"
+          id="soundcloud"
+          [value]="forEdit?.soundcloud"
+        />
+        </div>
+     
+ 
+      <div class="form-input">
+        <label for="tiktok">tiktok</label>
+        <input
+          type="text"
+          formControlName="tiktok"
+          id="tiktok"
+          [value]="forEdit?.tiktok"
+        />
+      </div>
+        <div class="form-input">
+            <label for="instagram">Instagram</label>
+        <input
+          type="text"
+          formControlName="instagram"
+          id="instagram"
+          [value]="forEdit?.instagram"
+        />
+        </div>
+        <div class="form-input">
+            <label for="spotify">Spotify</label>
+        <input
+          type="text"
+          formControlName="spotify"
+          id="spotify"
+          [value]="forEdit?.spotify"
+        />
+        </div>
+        <div class="form-input">
+            <label for="youtube">Youtube</label>
+        <input
+          type="text"
+          formControlName="youtube"
+          id="youtube"
+          [value]="forEdit?.youtube"
+        />
+        </div>
+        <div class="form-input">
+            <label for="mail">Mail</label>
+        <input
+          type="text"
+          formControlName="mail"
+          id="mail"
+          [value]="forEdit?.mail"
+        />
+        </div>
+        <div class="form-input">
+            <label for="track">Track</label>
+        <input
+          type="text"
+          formControlName="track"
+          id="track"
+          [value]="forEdit?.track"
+        />
+        </div>
+        <div class="form-input">
+            <label for="video">Video Yt</label>
+        <input
+          type="text"
+          formControlName="video"
+          id="video"
+          [value]="forEdit?.video"
+        />
+        </div>
+
+    <div class="form-input">
         <label for="descripcion">Descripcion</label>
-        <textarea name="" id="descripcion" formControlName="descripcion" cols="30" rows="5" [value]="forEdit?.descripcion"></textarea>
-        <button type="submit">Cargar</button>
-    </form>
-    <form class="llamar-para-edicion" [formGroup]="formNumber">
-        <label for="id_edit">Selecciona artista a editar</label>
-        <div id="llamar" >
-            <input type="number" formControlName="id_edit" id="id_edit">
-            <div>
-                <button type="button"  (click)="getForEdit()">Seleccionar</button>
-                <button type="button"  (click)="deleteMapping()">borrar</button>
-              </div>
-        </div>
-    </form>
+    <textarea
+      name=""
+      id="descripcion"
+      formControlName="descripcion"
+      cols="30"
+      rows="5"
+      [value]="forEdit?.descripcion"
+    ></textarea>
+    </div>
+    <button type="submit">Cargar</button>
+  </form>
+  <form class="llamar-para-edicion" [formGroup]="formNumber">
+    <label for="id_edit">Selecciona artista a editar</label>
+    <div id="llamar">
+      <input type="number" formControlName="id_edit" id="id_edit" />
+      <div>
+        <button type="button" (click)="getForEdit()">Seleccionar</button>
+        <button type="button" (click)="deleteMapping()">borrar</button>
+      </div>
+    </div>
+  </form>
 </div>
-<app-artistas > </app-artistas>
+<app-artistas> </app-artistas>

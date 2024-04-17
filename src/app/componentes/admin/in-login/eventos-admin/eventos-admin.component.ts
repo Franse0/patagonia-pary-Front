@@ -6,7 +6,7 @@ import { EventosService } from 'src/app/services/eventos.service';
 @Component({
   selector: 'app-eventos-admin',
   templateUrl: './eventos-admin.component.html',
-  styleUrls: ['./eventos-admin.component.css', '../in-login.component.css']
+  styleUrls: ['./eventos-admin.component.css', '../../admin.component.css']
 })
 export class EventosAdminComponent {
   formAdmin:FormGroup

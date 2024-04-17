@@ -6,7 +6,7 @@ import { NoticiasService } from 'src/app/services/noticias.service';
 @Component({
   selector: 'app-noticias-admin',
   templateUrl: './noticias-admin.component.html',
-  styleUrls: ['./noticias-admin.component.css' , '../in-login.component.css']
+  styleUrls: ['./noticias-admin.component.css' , '../../admin.component.css']
 })
 export class NoticiasAdminComponent {
   formAdmin:FormGroup

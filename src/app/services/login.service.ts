@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { BehaviorSubject, Observable, shareReplay } from 'rxjs';
 import { Router } from '@angular/router';
@@ -36,7 +36,7 @@ export class LoginService {
         this.estadoSubject.next(true);
         localStorage.setItem('estado_autenticacion', JSON.stringify(true));
 
-        this.router.navigate(['in-login']);
+        this.router.navigate(['admin']);
       })
       .catch(error => {
         console.log("Error al iniciar sesión", error);

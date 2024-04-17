@@ -6,9 +6,10 @@ import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css', '../admin.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent{
+
   formUser: FormGroup;
   formRegistro: FormGroup;
   loginOrRegister: boolean = true;
@@ -35,23 +36,7 @@ export class LoginComponent implements OnInit{
     this.loginService.iniciarSesion(formUser);
   }
 
-  registrarme() {
-    const username = this.formRegistro.value.username_registro;
-    const password = this.formRegistro.value.password_registro;
-    const password_again = this.formRegistro.value.password_again;
-
-    if (password !== password_again) {
-      alert("Las contraseñas no coinciden");
-    } else {
-      this.afAuth.createUserWithEmailAndPassword(username, password)
-        .then(() => {
-          console.log("Usuario registrado con éxito");
-        })
-        .catch(error => {
-          console.log("Error al registrar usuario", error);
-        });
-    }
-  }
+ 
 
   toggleValor() {
     this.loginOrRegister = !this.loginOrRegister;

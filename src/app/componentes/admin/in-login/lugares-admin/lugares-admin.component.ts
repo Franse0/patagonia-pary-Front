@@ -6,7 +6,7 @@ import { LocalesService } from 'src/app/services/locales.service';
 @Component({
   selector: 'app-lugares-admin',
   templateUrl: './lugares-admin.component.html',
-  styleUrls: ['./lugares-admin.component.css', '../in-login.component.css']
+  styleUrls: ['./lugares-admin.component.css', '../../admin.component.css']
 })
 export class LugaresAdminComponent {
   formNumber:FormGroup

@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-artistas-admin',
   templateUrl: './artistas-admin.component.html',
-  styleUrls: ['./artistas-admin.component.css', '../in-login.component.css']
+  styleUrls: ['./artistas-admin.component.css', '../../admin.component.css']
 })
 export class ArtistasAdminComponent {
   formAdmin:FormGroup;

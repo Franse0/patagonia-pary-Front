@@ -1,9 +1,25 @@
-<div class="all-container">
+<section class="admin">
+    <form action="" class="form-admin">
+        <button (click)="logOut()">LogOut</button>
+    </form>
+    <form class="form-admin">
+        <a  [routerLink]="['/noticias-admin']">
+            <button>Noticias</button>
+        </a>
+        <a  [routerLink]="['/lugares-admin']">
+            <button>Lugares</button>
+        </a>
+        <a  [routerLink]="['/productoras-admin']">
+            <button>Productoras</button>
+        </a>
+        <a  [routerLink]="['/artistas-admin']">
+            <button>Artistas</button>
+        </a>
+        <a  [routerLink]="['/eventos-admin']">
+            <button>Eventos</button>
+        </a>
+    </form>
+</section>
+<div class="box">
     
-
-<div class="title-container">
-    <h1>Bienvenido al panel de administracion</h1>
-</div>
-<app-login></app-login>
-<!-- <app-in-login></app-in-login> -->
 </div>

@@ -1,54 +1,66 @@
-<div class="all-container">
-    <div class="">
-        <h3>En la siguiente seccion usted podra agregar o editar informacion acerca de los lugares</h3>
-        <h4>Luego mas abajo podras ver como quedaria en el layout</h4>
+<div class="contenedor">
+    
+    <app-back-home></app-back-home>
+    
+    <form action="" class="form-admin" [formGroup]="formAdmin" (submit)="cargarLocal()">
+        <legend>Formulario de Lugares</legend>
+        <div class="form-input">
+            <label for="id">Id</label>
+            <input type="number" placeholder="Id" id="id" formControlName="id">
+        </div>
+        <div class="form-input">
+            <label for="nombre">Nombre</label>
+            <input type="text" placeholder="Nombre" id="nombre" formControlName="nombre">
+        </div>
+        <div class="form-input">
+            <label for="telefono">Telefono</label>
+            <input type="phone" placeholder="Telefono" id="telefono" formControlName="telefono">
+        </div>
+        <div class="form-input">
+            <label for="ubicacion">Ubicacion</label>
+            <input type="text" placeholder="Ubicacion" id="ubicacion" formControlName="ubicacion">
+        </div>
+        <div class="form-input">
+            <label for="maps">Ubicacion Maps</label>
+            <input type="text" placeholder="Ubicacion Maps" id="maps" formControlName="ubicacion_map">
     </div>
-    <form class="form-edit" [formGroup]="formAdmin" (submit)="cargarLocal()">
-        <div class="form-layout">
-            <div>
-                <label for="id">Id</label>
-                <input type="number"formControlName="id" id="id" [value]="forEdit?.id">
-                <label for="nombre">Nombre</label>
-                <input type="text" formControlName="nombre" id="nombre" [value]="forEdit?.nombre">
-                <label for="img1">Img1</label>
-                <input type="text" formControlName="img1" id="img1" [value]="forEdit?.img1">
-                <label for="img2">img2</label>
-                <input type="text" formControlName="img2" id="img2" [value]="forEdit?.img2">
-                <label for="video">video</label>
-                <input type="text" formControlName="video" id="video" [value]="forEdit?.video">
-                <label for="instagram">Instagram</label>
-                <input type="text" formControlName="instagram" id="instagram" [value]="forEdit?.instagram">
-               
-            </div>
-            <div>
-                <label for="img_list">Imagenes varias</label>
-                <input type="text" formControlName="img_list" id="img_list" [value]="forEdit?.img_list">
-                <label for="ubicacion">Ubicacion</label>
-                <input type="text" formControlName="ubicacion" id="ubicacion" [value]="forEdit?.ubicacion">
-                <label for="facebook">Facebook</label>
-                <input type="text" formControlName="facebook" id="facebook" [value]="forEdit?.facebook">
-                <label for="telefono">Telefono</label>
-                <input type="text" formControlName="telefono" id="telefono" [value]="forEdit?.telefono">
-                <label for="horario">Horario</label>
-                <input type="text" formControlName="horario" id="horario" [value]="forEdit?.horario">
-                <label for="link_ubi">Link ubi</label>
-                <input type="text" formControlName="link_ubi" id="link_ubi" [value]="forEdit?.link_ubi">
-            </div>
-        </div>
-        <label for="descripcion">Descripcion</label>
-        <textarea name="" id="descripcion" formControlName="descripcion" cols="30" rows="10" [value]="forEdit?.descripcion"></textarea>
-        <button type="submit">Cargar</button>
-    </form>
-    <form class="llamar-para-edicion" [formGroup]="formNumber">
-        <label for="id_edit">Selecciona artista a editar</label>
-        <div id="llamar" >
-            <input type="number" formControlName="id_edit" id="id_edit">
-            <div>
-                <button type="button"  (click)="getForEdit()">Seleccionar</button>
-                <button type="button"  (click)="deleteMapping()">borrar</button>
-              </div>
-        </div>
-    </form>
+    <div class="form-input">
+        <label for="horario">Horario</label>
+        <input type="text" placeholder="Horario" id="Horario" formControlName="horario">
+    </div>
+ 
+    <!-- <app-upload></app-upload> -->
+    <div class="form-input">
+        <label for="ruta-img">Ruta de imagen</label>
+        <input type="text" placeholder="Ruta de imagen" id="ruta-img" formControlName="ruta_img">
+    </div>
+    
+    <!-- <app-upload></app-upload> -->
+    <div class="form-input">
+        <label for="ruta-img">Ruta de imagen 2</label>
+        <input type="text" placeholder="Ruta de imagen" id="ruta-img" formControlName="ruta_img2">
+    </div>
+    <div class="form-input">
+        <label for="instagram">Instagram</label>
+        <input type="text" placeholder="Instagram" id="instagram" formControlName="instagram">
+    </div>
+    <div class="form-input">
+        <label for="facebook">Facebook</label>
+        <input type="text" placeholder="Facebook" id="facebook" formControlName="facebook">
+    </div>
+    <div class="form-input">
+        <label for="categoria">Categoria</label>
+        <select type="" placeholder="Catgoria" id="categoria"  formControlName="categoria">
+            <option value="restaurante-bar">Bar Restaurante</option>
+            <option value="cafeteria">Cafeteria</option>
+            <option value="centro_deportivo">Centros Deportivos</option>    
+            <option value="correo">Correo</option>    
+            <option value="ferreteria">Ferreteria</option>
+            <option value="gomeria">Gomeria</option>    
+            <option value="pago-facil">Pago-facil/rapipago</option>    
+            <option value="veterinaria">Veterinaria</option>
+        </select>
+    </div>
+    <button type="submit">Ingresar</button>
+</form>
 </div>
-
-<app-lugares></app-lugares>

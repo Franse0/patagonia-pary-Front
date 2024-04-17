@@ -8,7 +8,10 @@
 <section *ngIf="seccionActiva === 'proximas-fechas'" class="proximas-fechas">
     <div class="div">
         <ul *ngIf="fechas">
-            <a [routerLink]="['/eventos', fecha.id]" *ngFor="let fecha of fechas" class="next-dates"><li >{{fecha.nombre}}, {{fecha.ubicacion}} </li></a>
+            <a [routerLink]="['/eventos', fecha.id]" *ngFor="let fecha of fechas" class="next-dates">
+                <img [src]="fecha.img" alt=""  class="img-next-date">
+                <li >{{fecha.nombre}}, {{fecha.ubicacion}} </li>
+            </a>
         </ul>
     </div>
 </section>

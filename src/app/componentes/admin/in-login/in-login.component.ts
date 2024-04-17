@@ -26,8 +26,4 @@ export class InLoginComponent implements OnInit{
     // });
   }
 
- cerrarSession(){
-  this.loginService.logOutService()
-  this.router.navigate(["/pagina-principal"])
- }
 }

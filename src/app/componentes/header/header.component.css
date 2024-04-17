@@ -85,16 +85,24 @@ nav{
 .buscador{
   display: flex;
   width: auto;
+  justify-content: center;
   align-items: center;
 }
 .input-search{
   width: 70%;
-
+  background-color: rgb(75, 75, 75);
+  color: white;
+  border: none;
+  padding:.2rem .5rem;
+  margin-left: 10px;
 }
 .celu{
   display: none;
 }
 @media (min-width:600px){
+  .fa-search{
+    transform: translateY(4px);
+  }
   
 .compu{
   display: none;

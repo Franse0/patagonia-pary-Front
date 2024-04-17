@@ -1,8 +1,79 @@
-.all-container{
-    padding-top:60px ;
+.form-admin{
+    flex-direction: row;
+}
+.form-admin>a>button{
+    border-radius: 20px;
+    padding: .4rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+    text-transform: uppercase;
+    background: none;
+    transition: .1s;
+}
+
+.form-admin>a>button:hover{
+    color: white;
+    background-color: brown;
+}
+.form-admin{
+    width: auto;
+    padding: 2rem;
+    border-radius: 20px;
+    background-color: blanchedalmond;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
+    width: 90%;
+    max-width: 500px;
     align-items: center;
     justify-content: center;
-    min-height: 80vh;
+    gap: 5px;
+    /* margin-top: 15px; */
+}
+.form-input{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    text-align: start;  
+}
+.form-input>input, .form-input>textarea,  .form-input>select{
+    padding: .2rem 1rem;
+    width: 90%;
+    border-radius: 5px;
+    border: .2px solid brown;
+}
+
+.form-admin>button{
+    border-radius: 20px;
+    padding: .4rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+    text-transform: uppercase;
+    background: none;
+    transition: .1s;
+}
+
+.form-admin>button:hover{
+    color: white;
+    background-color: brown;
+}
+
+input, label{
+    cursor: pointer;
+}
+
+.section-admin{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin{
+    padding-top: 6rem;
 }

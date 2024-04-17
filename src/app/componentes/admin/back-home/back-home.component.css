@@ -1,0 +1,30 @@
+.panel{
+    height: 40px;
+    background-color: thistle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.panel-options{
+    display: flex;
+    width: 80%;
+    max-width: 500px;
+    justify-content: space-between;
+    padding: 0rem 1rem;
+}
+
+.btn-admin{
+    padding: .2rem 1rem ;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: burlywood;
+    border: .2px;
+    transition: .1s;
+}
+
+.btn-admin:hover{
+    color: white;
+    background-color: hotpink;
+}
+

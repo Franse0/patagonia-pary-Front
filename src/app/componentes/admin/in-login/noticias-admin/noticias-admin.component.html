@@ -1,41 +1,45 @@
-<div class="all-container">
-    <div class="">
-        <h3>En la siguiente seccion usted podra agregar o editar informacion acerca de las noticias</h3>
-        <h4>Luego mas abajo podras ver como quedaria en el layout</h4>
-    </div>
-    <form class="form-edit" [formGroup]="formAdmin" (submit)="cargarNoticia()">
-        <div class="form-layout">
-            <div>
-                <label for="id">Id</label>
-                <input type="number"formControlName="id" id="id" [value]="forEdit?.id">
-                <label for="titulo">Titulo</label>
-                <input type="text"  formControlName="titulo" id="titulo" [value]="forEdit?.titulo">
-                <label for="resumen">Resumen</label>
-                <input type="text" formControlName="resumen" id="resumen" [value]="forEdit?.resumen">
-            </div>
-            <div>
-                <label for="fecha_publi">Fecha Publi</label>
-                <input type="text" formControlName="fecha_publi" id="fecha_publi" [value]="forEdit?.fecha_publi">
-                <label for="url">Url</label>
-                <input type="text" formControlName="url" id="url" [value]="forEdit?.url">
-                <label for="img">Imagen</label>
-                <input type="text" formControlName="img" id="img" [value]="forEdit?.img">
-            </div>
-        </div>
-        <label for="cuerpo">Cuerpo</label>
-        <textarea name="" id="cuerpo" formControlName="cuerpo" cols="30" rows="10" [value]="forEdit?.cuerpo"></textarea>
-        <button type="submit">Cargar</button>
-    </form>
-    <form class="llamar-para-edicion" [formGroup]="formNumber">
-        <label for="id_edit">Selecciona nnoticia a editar</label>
-        <div id="llamar" >
-            <input type="number" formControlName="id_edit" id="id_edit">
-            <div>
-                <button type="button"  (click)="getForEdit()">Seleccionar</button>
-                <button type="button"  (click)="deleteMapping()">borrar</button>
+<div class="contenedor">
+    <app-back-home></app-back-home>
 
-              </div>
-        </div>
-    </form>
+<form action="" class="form-admin" enctype="multipart/form-data" [formGroup]="formAdmin">
+    <legend>Formulario de Noticias</legend>
+    <div class="form-input">
+        <label for="id">Id</label>
+        <input type="number" placeholder="Id" id="id" formControlName="id" [value]="forEdit?.id">
+    </div>
+    <div class="form-input">
+        <label for="titulo">Titulo</label>
+        <input type="text" placeholder="Titulo" id="titulo" id="id" formControlName="titulo">
+    </div>
+    <div class="form-input">
+        <label for="cuerpo">Cuerpo</label>
+        <textarea name="cuerpo" id="cuerpo" cols="30" rows="8" id="id" formControlName="cuerpo"></textarea>
+    </div>
+    <div class="form-input">
+        <label for="resumen">Resumen</label>
+        <input type="text" name="resumen" id="" cols="10" rows="5" id="id" formControlName="resumen">
+    </div>
+    <div class="form-input">
+        <label for="fecha">Fecha</label>
+        <input type="text" placeholder="Fecha" id="fecha" id="id" formControlName="fecha_publi">
+    </div>
+    <!-- <app-upload></app-upload> -->
+    <div class="form-input">
+        <label for="ruta-img">Ruta imagen</label>
+        <input type="text" placeholder="Ruta imagen" id="ruta-img" id="id" formControlName="url_img">
+    </div>
+    <div class="form-input">
+        <label for="categoria">Categoria</label>
+        <select type="" placeholder="Catgoria" id="categoria"  formControlName="categoria">
+            <option value="educacion">Educacion</option>
+            <option value="salud">Salud</option>
+            <option value="seguridad">Seguridad</option>
+            <option value="cultura">Cultura</option>    
+        </select>
+    </div>
+    <button type="submit" (click)="cargarNoticia()">Cargar</button>
+</form>
+
+
 </div>
 <app-all-noticias></app-all-noticias>
