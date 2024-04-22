@@ -15,7 +15,7 @@ export class ArtistasComponent  implements OnInit{
   artistasList:any;
   artistasListCel:any;
   artistaId:any;
-  mostrarid:boolean=false;
+  mostrarId:boolean=false;
   enlace:boolean=true
   cardMovil:boolean=false;
   
@@ -34,7 +34,7 @@ export class ArtistasComponent  implements OnInit{
     }
 
     if (this.router.url.includes('/artistas-admin')) {
-      this.mostrarid = true;
+      this.mostrarId = true;
     }
 
     // Suscríbete a los resultados de búsqueda
@@ -53,38 +53,64 @@ export class ArtistasComponent  implements OnInit{
       if (this.router.url.includes('/pagina-principal')) {
         this.updateDisplayedArtists(data);
       } else {
-        this.artistasList = data;
-        this.artistasListCel = data;
+        const shuffledData = this.shuffleArray([...data]); // Usa una copia de 'data' para la mezcla
+            this.artistasList = shuffledData;
+            this.artistasListCel = shuffledData;
       }
     });
   }
+  shuffleArray(array: any[]): any[] {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Intercambia los elementos
+    }
+    return array;
+}
 
   updateDisplayedArtists(data: any[]): void {
     const weekNumber = this.getCurrentWeek();
     const artistsPerWeek = 12;
+    const artistsPerWeekCel = 8;
+
+    // Calcula el índice de inicio en base al número de semana y asegura que sea cíclico
     const startIndex = (weekNumber * artistsPerWeek) % data.length;
-    this.artistasList = data.slice(startIndex, startIndex + artistsPerWeek);
-    this.artistasListCel = data.slice(startIndex, startIndex + 8);
 
+    // Asegura que siempre haya suficientes artistas mostrados al hacer que el array sea circular
+    this.artistasList = [];
+    for (let i = 0; i < artistsPerWeek; i++) {
+        this.artistasList.push(data[(startIndex + i) % data.length]);
+    }
+    this.artistasListCel = [];
+    for (let i = 0; i < artistsPerWeekCel; i++) {
+        this.artistasListCel.push(data[(startIndex + i) % data.length]);
+    }
+
+    // Muestra en consola las listas de artistas
+    console.log(this.artistasList);
+    console.log(this.artistasListCel);
+
+    // Opcional: Configurar la propiedad mostrarCard a false
     this.artistasList.forEach((artista: any) => {
-      artista.mostrarCard = false;
+        artista.mostrarCard = false;
     });
-  }
+}
 
-  getCurrentWeek(): number {
+getCurrentWeek(): number {
     const today = new Date();
     const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
     const pastDaysOfYear = (today.valueOf() - firstDayOfYear.valueOf()) / 86400000;
     return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
-  }
+}
 
   
   cardGrandeActive =false;
   showInfoArtista = false;
 
   showArtista(artista: Artista): void {
-  if (this.router.url.includes('/all-artistas')) {
+  if (this.router.url.includes('/artistas-admin')) {
       // this.viewportScroller.scrollToPosition([0, 0]);
+      alert("estas en artistas")
+      return
   }
     let subscription:any;
   if (this.router.url.includes('/artista')) {
@@ -191,4 +217,5 @@ onScroll(event: any) {
   }
 }
 }
+
 }

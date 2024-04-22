@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Productoras } from 'src/app/models/productoras';
 import { ProductoraService } from 'src/app/services/productora.service';
@@ -8,7 +8,7 @@ import { ProductoraService } from 'src/app/services/productora.service';
   templateUrl: './productoras-admin.component.html',
   styleUrls: ['./productoras-admin.component.css' , '../../admin.component.css']
 })
-export class ProductorasAdminComponent {
+export class ProductorasAdminComponent implements OnInit{
   forEdit:any;
   formAdmin:FormGroup;
   formNumber:FormGroup;
@@ -29,6 +29,15 @@ export class ProductorasAdminComponent {
     this.formNumber=this.number.group({
       id_edit:["",[]]
     })
+  }
+  ngOnInit(): void {
+    this.productoraService.currentProductoraId.subscribe(id => {
+      // Aquí tienes el id, y puedes hacer algo con él.
+      console.log("id de edicion", id);
+      if(id){
+        this.getForEdit(id)
+      }
+    });
   }
 
   cargarProductora() {
@@ -55,43 +64,29 @@ export class ProductorasAdminComponent {
       this.formAdmin.reset();
     });
   }
-  getForEdit(){
-    const valueId=this.formNumber.value.id_edit;
-    if(valueId===""){
-      alert("debes seleccionar la productora a editar");
-      return;
-    }else{
-      this.productoraService.productoraParticular(valueId).subscribe(data=>{
-        try{
-          console.log(data)
-          this.forEdit=data
-          this.formAdmin.patchValue({
-            id:this.forEdit.id,
-            nombre:this.forEdit.nombre,
-            img:this.forEdit.img,
-            img_list:this.forEdit.img_list,
-            imgs:this.forEdit.imgs,
-            instagram:this.forEdit.instagram,
-            facebook:this.forEdit.facebook,
-            tiktok:this.forEdit.tiktok,
-            mail:this.forEdit.mail,
-            youtube:this.forEdit.youtube,
-            video_yt:this.forEdit.video_yt,
-            descripcion:this.forEdit.descripcion,  
-          })   
-        }catch(e){
-          alert("No se econtro elemento con el id indicado");
-        }
-      })
-    }
-    }
+  getForEdit(id:number){
+    
+    this.productoraService.productoraParticular(id).subscribe(data=>{
+      this.forEdit=data;
+      console.log(this.forEdit)
+      this.formAdmin.patchValue({
+        id:this.forEdit.id,
+        nombre:this.forEdit.nombre,
+        img:this.forEdit.img,
+        img_list:this.forEdit.img_list,
+        imgs:this.forEdit.imgs,
+        instagram:this.forEdit.instagram,
+        facebook:this.forEdit.facebook,
+        tiktok:this.forEdit.tiktok,
+        mail:this.forEdit.mail,
+        youtube:this.forEdit.youtube,
+        video_yt:this.forEdit.video_yt,
+        descripcion:this.forEdit.descripcion,  
+      })   
+    })
+}
 
-    deleteMapping(){
-      const valueId =this.formNumber.value.id_edit;
-      if(window.confirm(`Seguro deseas eliminar el item con el id:${valueId}`))
-      this.productoraService.prodcutroaBorrar(valueId).subscribe()
-    this.formNumber.reset();
-    this.formAdmin.reset()
-    }
+  
 
+  
 }

@@ -58,4 +58,9 @@ export class ArtistasService {
   }
   
 
+  private artistaIdSource = new BehaviorSubject<number | null>(null);
+  currentNoticiaId = this.artistaIdSource.asObservable();
+  changeNoticiaId(id: number) {
+    this.artistaIdSource.next(id);
+  }
 }

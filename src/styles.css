@@ -269,3 +269,17 @@ a{
 .is-selected{
     border-bottom: 2px solid white;
 }
+
+
+
+.title-container{
+    padding: .5rem;
+}
+.new-title{
+    font-size: 20px;
+}
+@media(min-width:700px){
+    .new-title{
+        
+    }
+}

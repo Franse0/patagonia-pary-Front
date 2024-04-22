@@ -1,7 +1,7 @@
 
     <section class="entidades" id="productoras">
       <div class="title-container">
-        <h3>Productoras</h3>
+        <h3 class="new-title">Productoras</h3>
         <a routerLink="/all-productoras">ver todos</a>
       </div>
       <div class="all-entidades">
@@ -17,6 +17,9 @@
           <div class="card-entidad-info">
             <h4 class="h4 enlace"  [routerLink]="['/productora', entidad?.id]" (click)="arriba()">{{entidad.nombre}} <span *ngIf="mostrarId">{{entidad?.id}}</span> </h4>
           </div>
+          <i class="fa-solid fa-pen-to-square" (click)="editar(entidad.id, $event)" *ngIf="mostrarId"></i>
+          <i class="fa-solid fa-trash link" (click)="borar(entidad.id, $event)" *ngIf="mostrarId"></i>
+
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Local } from 'src/app/models/local';
 import { LocalesService } from 'src/app/services/locales.service';
@@ -8,11 +8,12 @@ import { LocalesService } from 'src/app/services/locales.service';
   templateUrl: './lugares-admin.component.html',
   styleUrls: ['./lugares-admin.component.css', '../../admin.component.css']
 })
-export class LugaresAdminComponent {
+export class LugaresAdminComponent implements OnInit{
   formNumber:FormGroup
   formAdmin:FormGroup
   forEdit:any;
 
+  
   constructor(private localService:LocalesService, private formBuilder:FormBuilder, private number:FormBuilder){
     this.formAdmin= this.formBuilder.group({
       id:["",[]],
@@ -36,7 +37,15 @@ export class LugaresAdminComponent {
   }
 
 
-
+  ngOnInit(): void {
+    this.localService.currentLugarId.subscribe(id => {
+      // Aquí tienes el id, y puedes hacer algo con él.
+      console.log("id de edicion", id);
+      if(id){
+        this.getForEdit(id)
+      }
+    });
+  }
   cargarLocal(){
     if (this.formAdmin.invalid) {
       alert("Por favor, completa todos los campos obligatorios.");
@@ -62,36 +71,30 @@ export class LugaresAdminComponent {
     console.log("lugar cargado con exito")
   }
 
-  getForEdit(){
-    const valueId = this.formNumber.value.id_edit;
-    if(valueId==""){
-      console.log("debe elegir un lugar para editar");
-      return
-    }else{
-      this.localService.lugarParticular(valueId).subscribe(data=>{
-        this.forEdit=data;
-        this.formAdmin.patchValue({
-          id:this.forEdit.id,
-          nombre:this.forEdit.nombre,
-          descripcion:this.forEdit.descripcion,
-          img1:this.forEdit.img1,
-          img2:this.forEdit.img2,
-          img_list:this.forEdit.img_list,
-          video:this.forEdit.video,
-          instagram:this.forEdit.instagram,
-          ubicacion:this.forEdit.ubicacion,
-          facebook:this.forEdit.facebook,
-          telefono:this.forEdit.telefono,
-          horario:this.forEdit.horario,
-          link_ubi:this.forEdit.link_ubi,
-        })
+  
+  getForEdit(id:number){
+    
+    this.localService.lugarParticular(id).subscribe(data=>{
+      this.forEdit=data;
+      console.log(this.forEdit)
+      this.formAdmin.patchValue({
+        id:this.forEdit.id,
+        nombre:this.forEdit.nombre,
+        descripcion:this.forEdit.descripcion,
+        img1:this.forEdit.img1,
+        img2:this.forEdit.img2,
+        img_list:this.forEdit.img_list,
+        video:this.forEdit.video,
+        instagram:this.forEdit.instagram,
+        ubicacion:this.forEdit.ubicacion,
+        facebook:this.forEdit.facebook,
+        telefono:this.forEdit.telefono,
+        horario:this.forEdit.horario,
+        link_ubi:this.forEdit.link_ubi,
       })
-    }
-  }
+    })
+}
 
-  deleteMapping(){
-    const valueId =this.formNumber.value.id_edit;
-    if(window.confirm(`Seguro deseas eliminar el item con el id:${valueId}`))
-    this.localService.lugarBorrar(valueId).subscribe()
-  }
+
+
 }

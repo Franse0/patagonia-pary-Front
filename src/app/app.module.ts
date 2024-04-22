@@ -43,6 +43,7 @@ import { SumarteComponent } from './componentes/sumarte/sumarte.component';
 import { CommonModule } from '@angular/common';
 import { ResultadosComponent } from './componentes/resultados/resultados.component';
 import { BackHomeComponent } from './componentes/admin/back-home/back-home.component';
+import { UploadComponent } from './componentes/admin/upload/upload.component';
 
 // soundcloud
 
@@ -83,6 +84,7 @@ import { BackHomeComponent } from './componentes/admin/back-home/back-home.compo
     SumarteComponent,
     ResultadosComponent,
     BackHomeComponent,
+    UploadComponent,
     
   ],
   imports: [

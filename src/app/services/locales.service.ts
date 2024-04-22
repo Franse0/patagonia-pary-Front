@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Local } from '../models/local';
@@ -34,5 +34,10 @@ export class LocalesService {
   }
   buscarLocales(parametro:String):Observable<any>{
     return this.http.get<any[]>(`${this.url}/lugar/buscar/${parametro}`)
+  }
+  private lugarIdSource = new BehaviorSubject<number | null>(null);
+  currentLugarId = this.lugarIdSource.asObservable();
+  changeNoticiaId(id: number) {
+    this.lugarIdSource.next(id);
   }
 }

@@ -22,7 +22,7 @@
         </div>
         <div class="form-input">
             <label for="maps">Ubicacion Maps</label>
-            <input type="text" placeholder="Ubicacion Maps" id="maps" formControlName="ubicacion_map">
+            <input type="text" placeholder="Ubicacion Maps" id="maps" formControlName="link_ubi">
     </div>
     <div class="form-input">
         <label for="horario">Horario</label>
@@ -31,14 +31,14 @@
  
     <!-- <app-upload></app-upload> -->
     <div class="form-input">
-        <label for="ruta-img">Ruta de imagen</label>
-        <input type="text" placeholder="Ruta de imagen" id="ruta-img" formControlName="ruta_img">
+        <label for="img1">Ruta de imagen</label>
+        <input type="text" placeholder="Ruta de imagen" id="img1" formControlName="img1">
     </div>
     
     <!-- <app-upload></app-upload> -->
     <div class="form-input">
-        <label for="ruta-img">Ruta de imagen 2</label>
-        <input type="text" placeholder="Ruta de imagen" id="ruta-img" formControlName="ruta_img2">
+        <label for="img2">Ruta de imagen 2</label>
+        <input type="text" placeholder="Ruta de imagen" id="img2" formControlName="img2">
     </div>
     <div class="form-input">
         <label for="instagram">Instagram</label>
@@ -48,19 +48,8 @@
         <label for="facebook">Facebook</label>
         <input type="text" placeholder="Facebook" id="facebook" formControlName="facebook">
     </div>
-    <div class="form-input">
-        <label for="categoria">Categoria</label>
-        <select type="" placeholder="Catgoria" id="categoria"  formControlName="categoria">
-            <option value="restaurante-bar">Bar Restaurante</option>
-            <option value="cafeteria">Cafeteria</option>
-            <option value="centro_deportivo">Centros Deportivos</option>    
-            <option value="correo">Correo</option>    
-            <option value="ferreteria">Ferreteria</option>
-            <option value="gomeria">Gomeria</option>    
-            <option value="pago-facil">Pago-facil/rapipago</option>    
-            <option value="veterinaria">Veterinaria</option>
-        </select>
-    </div>
+  
     <button type="submit">Ingresar</button>
 </form>
 </div>
+<app-lugares></app-lugares>

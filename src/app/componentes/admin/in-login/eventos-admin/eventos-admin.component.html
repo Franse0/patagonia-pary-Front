@@ -22,158 +22,87 @@
           />
           </div>
           <div class="form-input">
-              <label for="apellido">Apellido</label>
+              <label for="fecha">Fecha</label>
           <input
             type="text"
-            formControlName="apellido"
-            id="apellido"
-            [value]="forEdit?.apellido"
+            formControlName="fecha"
+            id="fecha"
+            [value]="forEdit?.fecha"
           />
           </div>
           <div class="form-input">
-              <label for="pretskit">Pretskit</label>
+              <label for="djs">Djs</label>
           <input
             type="text"
-            formControlName="pretskit"
-            id="pretskit"
-            [value]="forEdit?.pretskit"
+            formControlName="djs"
+            id="djs"
+            [value]="forEdit?.djs"
           />
           </div>
-          <div class="form-input">
-              <label for="seudonimo">Seudonimo</label>
-          <input
-            type="text"
-            formControlName="seudonimo"
-            id="seudonimo"
-            [value]="forEdit?.seudonimo"
-          />
-          </div>
-         
-            <div class="form-input">
-              <label for="img">Imagen</label>
-              <input
-                type="text"
-                formControlName="img"
-                id="img"
-                [value]="forEdit?.img"
-              />
-            </div>
-       
           <div class="form-input">
               <label for="ubicacion">Ubicacion</label>
           <input
             type="text"
             formControlName="ubicacion"
-            id="ubicacion"
+            id="ubciacion"
             [value]="forEdit?.ubicacion"
           />
           </div>
+         
+            <div class="form-input">
+              <label for="ubicacion_link">Ubicacion Maps</label>
+              <input
+                type="text"
+                formControlName="ubicacion_link"
+                id="ubicacion_link"
+                [value]="forEdit?.ubicacion_link"
+              />
+            </div>
+       
+            <app-upload></app-upload>
           <div class="form-input">
-              <label for="img_list">Imagenes varias</label>
+              <label for="img">Ruta Img</label>
           <input
             type="text"
-            formControlName="img_list"
-            id="img_list"
-            [value]="forEdit?.img_list"
+            formControlName="img"
+            id="img"
+            [value]="forEdit?.img"
           />
           </div>
           <div class="form-input">
-              <label for="soundcloud">Soundcloud</label>
+              <label for="precio">Precio</label>
           <input
             type="text"
-            formControlName="soundcloud"
-            id="soundcloud"
-            [value]="forEdit?.soundcloud"
+            formControlName="precio"
+            id="precio"
+            [value]="forEdit?.precio"
+          />
+          </div>
+          <div class="form-input">
+              <label for="descripcion">Descripcion</label>
+          <input
+            type="text"
+            formControlName="descripcion"
+            id="descripcion"
+            [value]="forEdit?.descripcion"
           />
           </div>
        
    
         <div class="form-input">
-          <label for="tiktok">tiktok</label>
+          <label for="organiza">Organiza</label>
           <input
             type="text"
-            formControlName="tiktok"
-            id="tiktok"
-            [value]="forEdit?.tiktok"
+            formControlName="organiza"
+            id="organiza"
+            [value]="forEdit?.organiza"
           />
         </div>
-          <div class="form-input">
-              <label for="instagram">Instagram</label>
-          <input
-            type="text"
-            formControlName="instagram"
-            id="instagram"
-            [value]="forEdit?.instagram"
-          />
-          </div>
-          <div class="form-input">
-              <label for="spotify">Spotify</label>
-          <input
-            type="text"
-            formControlName="spotify"
-            id="spotify"
-            [value]="forEdit?.spotify"
-          />
-          </div>
-          <div class="form-input">
-              <label for="youtube">Youtube</label>
-          <input
-            type="text"
-            formControlName="youtube"
-            id="youtube"
-            [value]="forEdit?.youtube"
-          />
-          </div>
-          <div class="form-input">
-              <label for="mail">Mail</label>
-          <input
-            type="text"
-            formControlName="mail"
-            id="mail"
-            [value]="forEdit?.mail"
-          />
-          </div>
-          <div class="form-input">
-              <label for="track">Track</label>
-          <input
-            type="text"
-            formControlName="track"
-            id="track"
-            [value]="forEdit?.track"
-          />
-          </div>
-          <div class="form-input">
-              <label for="video">Video Yt</label>
-          <input
-            type="text"
-            formControlName="video"
-            id="video"
-            [value]="forEdit?.video"
-          />
-          </div>
+          
   
-      <div class="form-input">
-          <label for="descripcion">Descripcion</label>
-      <textarea
-        name=""
-        id="descripcion"
-        formControlName="descripcion"
-        cols="30"
-        rows="5"
-        [value]="forEdit?.descripcion"
-      ></textarea>
-      </div>
+     
       <button type="submit">Cargar</button>
     </form>
-    <form class="llamar-para-edicion" [formGroup]="formNumber">
-      <label for="id_edit">Selecciona artista a editar</label>
-      <div id="llamar">
-        <input type="number" formControlName="id_edit" id="id_edit" />
-        <div>
-          <button type="button" (click)="getForEdit()">Seleccionar</button>
-          <button type="button" (click)="deleteMapping()">borrar</button>
-        </div>
-      </div>
-    </form>
+   
   </div>
 <app-eventos></app-eventos>

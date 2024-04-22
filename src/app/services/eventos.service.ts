@@ -38,5 +38,9 @@ export class EventosService {
   buscarFiesta(parametro:String):Observable<any>{
     return this.http.get<any[]>(`${this.url}/fiesta/buscar/${parametro}`)
   }
-  
+  private eventoIdSource = new BehaviorSubject<number | null>(null);
+  currentNoticiaId = this.eventoIdSource.asObservable();
+  changeNoticiaId(id: number) {
+    this.eventoIdSource.next(id);
+  }
 }

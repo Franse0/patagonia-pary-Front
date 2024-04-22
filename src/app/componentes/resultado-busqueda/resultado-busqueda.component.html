@@ -1,0 +1,29 @@
+<section class="resultado-busqueda">
+  <div class="div">
+    <div class="searched">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <span class="searched-text">{{parametroBusqueda}}</span>
+    </div>
+  </div>
+  <div class="bsuqueda-container">
+    <div class="cantindad-resultados">
+      <span>Se encontraron <strong>{{busquedaList.length}}</strong> resultados para <strong>{{parametroBusqueda}}</strong></span>
+    </div>
+    <div class="resultados-container">
+      <div class="card-search" *ngFor="let resultado of busquedaList">
+        <div class="img-container">
+          <!-- <img [src]="resultado.img" alt="" class="img"> -->
+        </div>
+        <div class="info-sarch-container">
+          <h3 class="enlace">{{resultado.nombre}}</h3>
+          <div class="description-card-peque">
+            <p>{{resultado.nombre}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section *ngIf="noResultados">
+    <h2 class="h2">No se encontraron resultados</h2>
+  </section>
+</section>

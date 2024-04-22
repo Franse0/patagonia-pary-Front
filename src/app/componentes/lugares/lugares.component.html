@@ -1,8 +1,8 @@
 
 
   <section class="lugares" id="lugares" *ngIf="lugares">
-    <div class="title-container">
-      <h2 class="noticia-title">Lugares</h2>
+    <div class="flex">
+      <h2 class=" new-title">Lugares</h2>
       <a routerLink="/all-lugares" *ngIf="currentUrl !== 'all-lugares'">Ver todos</a>
     </div>
     <div class="all-lugares">
@@ -32,7 +32,11 @@
             <a (click)="irALugar(lugar.id)" class="seguir-leyendo enlace">leer mas...</a>
 
           </div>
-          <div class="div-card-lugar">
+          <div *ngIf="mostrarId"> 
+            <i class="fa-solid fa-pen-to-square link" (click)="editar(lugar.id, $event)" *ngIf="mostrarId"></i>
+            <i class="fa-solid fa-trash link" (click)="borar(lugar.id, $event)" *ngIf="mostrarId"></i>       
+          </div>
+          <div class="div-card-lugar" *ngIf="!mostrarId">
             <span>{{lugar.horario}} </span>
             <span>{{lugar.ubicacion}} </span>
           </div>

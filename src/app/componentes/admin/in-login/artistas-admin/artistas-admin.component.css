@@ -1,3 +1,20 @@
 .contenedor{
     padding-top:4rem ;
 }
+
+.img-container{
+    width: 100%;
+}
+.img-card{
+    max-width: 200px;
+    width: 100%;
+}
+
+.all-artista{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+}

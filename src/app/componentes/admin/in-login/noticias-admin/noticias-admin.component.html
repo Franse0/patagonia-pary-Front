@@ -20,23 +20,17 @@
         <input type="text" name="resumen" id="" cols="10" rows="5" id="id" formControlName="resumen">
     </div>
     <div class="form-input">
-        <label for="fecha">Fecha</label>
-        <input type="text" placeholder="Fecha" id="fecha" id="id" formControlName="fecha_publi">
+        <label for="fecha_publi">Fecha</label>
+        <input type="text" placeholder="Fecha" id="fecha_publi" id="id" formControlName="fecha_publi">
     </div>
-    <!-- <app-upload></app-upload> -->
+ 
+    <app-upload></app-upload>
     <div class="form-input">
-        <label for="ruta-img">Ruta imagen</label>
-        <input type="text" placeholder="Ruta imagen" id="ruta-img" id="id" formControlName="url_img">
+        <label for="url">Ruta imagen</label>
+        <input type="text" placeholder="Ruta imagen" id="img" id="id" formControlName="img">
     </div>
-    <div class="form-input">
-        <label for="categoria">Categoria</label>
-        <select type="" placeholder="Catgoria" id="categoria"  formControlName="categoria">
-            <option value="educacion">Educacion</option>
-            <option value="salud">Salud</option>
-            <option value="seguridad">Seguridad</option>
-            <option value="cultura">Cultura</option>    
-        </select>
-    </div>
+
+
     <button type="submit" (click)="cargarNoticia()">Cargar</button>
 </form>
 

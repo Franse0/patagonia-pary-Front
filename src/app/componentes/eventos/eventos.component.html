@@ -4,10 +4,10 @@
 
     <section class="all-eventos">
         <div class="title-container">
-            <h2>Eventos</h2>
+            <h2 class="new-title">Eventos</h2>
         </div>
         <div class="all-eventos-container" >
-            <a class="card-evento"  *ngFor="let eventos of eventos" [routerLink]="['/eventos/', eventos.id]">
+            <a class="card-evento"  *ngFor="let eventos of eventos" (click)="irA(eventos.id)" >
                 <div class="img-container">
                     <div class="fecha">
                         <span> {{ eventos.fecha.split('/')[0] }}</span>
@@ -18,7 +18,8 @@
                 </div>
                 <div class="info-evento-card">
                     <h3 class="link enlace" (click)="capturarValor(eventos.id)" id="{{eventos?.id}}">{{eventos?.nombre}} </h3>
-                    <span *ngIf="mostrarId">{{eventos.id}} </span> 
+                    <i class="fa-solid fa-pen-to-square" (click)="editar(eventos.id, $event)" *ngIf="mostrarId"></i>
+                    <i class="fa-solid fa-trash link" (click)="borar(eventos.id, $event)" *ngIf="mostrarId"></i>
                     <p>Por: <span class="resaltado">{{eventos?.organiza}} </span></p>
                     <span> <i class="fa-solid fa-location-dot"></i>{{eventos?.ubicacion}} </span>
                 </div>

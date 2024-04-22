@@ -34,4 +34,23 @@ export class ProductorasComponent implements OnInit{
   arriba(){
     this.viewportScroller.scrollToPosition([0, 0]);
   }
+
+  irA(id:number){
+    this.router.navigate(["/productora", id]) 
+  }
+  borar(id:number, event:Event){
+    event.preventDefault()
+    if(window.confirm(`Seguro deseas eliminar el item con el id:${id}`)){
+    this.productoraService.prodcutroaBorrar(id).subscribe(data=>
+      this.productoraService.prodcutoraTodos().subscribe(data=>{
+        this.entidades=data
+        console.log(data)
+      }))
+}} 
+
+editar(id: number,  event:Event) {
+  event.preventDefault()
+  console.log(id)
+  this.productoraService.changeNoticiaId(id);
+}
 }

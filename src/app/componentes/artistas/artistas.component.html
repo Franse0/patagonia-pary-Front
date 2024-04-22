@@ -2,7 +2,7 @@
   <div class="artistas-container-all">
     <section class="artistas movil">
       <div class="title-container">
-        <h2>Artistas</h2>
+        <h2 class="new-title">Artistas</h2>
         <a (click)="mostrarTodosLosArtistas()" class="enlace" *ngIf="enlace"
           >ver todos</a
         >
@@ -20,8 +20,9 @@
         />
         <div class="card-artista-container">
           <h4 class="title-artista enlace" (click)="mostrarCard(artista)">
-            {{ artista.seudonimo }}
-          </h4>
+            {{ artista.seudonimo }}  
+                     </h4>
+
         </div>
   
         <div
@@ -67,7 +68,7 @@
   
     <section class="artistas desktop" >
       <div class="title-container">
-        <h3>Artistas</h3>
+        <h3 class="new-title">Artistas</h3>
         <a (click)="mostrarTodosLosArtistas()" class="enlace" *ngIf="enlace"
           >ver todos</a
         >
@@ -98,6 +99,7 @@
               <h4 class="title-artista enlace" (click)="showArtista(artista)">
                 {{ artista.seudonimo }}
               </h4>
+          
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { Productoras } from './../models/productoras';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -36,5 +36,10 @@ export class ProductoraService {
 
   buscarProductora(parametro:String):Observable<any>{
     return this.http.get<any[]>(`${this.url}/entidad/buscar/${parametro}`)
+  }
+  private productoraIdSource = new BehaviorSubject<number | null>(null);
+  currentProductoraId = this.productoraIdSource.asObservable();
+  changeNoticiaId(id: number) {
+    this.productoraIdSource.next(id);
   }
 }

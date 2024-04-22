@@ -27,5 +27,27 @@ export class AllNoticiasComponent  implements OnInit{
       console.error('Error al obtener noticias: ', error)
     })
   }
+  editar(id: number,  event:Event) {
+    event.preventDefault()
+    console.log(id)
+    this.noticiaService.changeNoticiaId(id);
+  }
+
+   
+  borar(id:number, event:Event){
+    event.preventDefault()
+    if(window.confirm(`Seguro deseas eliminar el item con el id:${id}`)){
+    this.noticiaService.noticiasBorrar(id).subscribe(data=>
+      this.noticiaService.noticiasTodos().subscribe(data=>{
+        this.noticias=data
+        console.log(data)
+      }))
+}} 
+
+irA(id:number){
+  if(!this.router.url.includes("/noticias-admin")){
+    this.router.navigate(['/evento/', id])
+  }
+}
   
 }

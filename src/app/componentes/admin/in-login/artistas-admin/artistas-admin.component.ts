@@ -1,6 +1,6 @@
 import { Artista } from 'src/app/models/artista';
 import { ArtistasService } from './../../../../services/artistas.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,11 +8,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './artistas-admin.component.html',
   styleUrls: ['./artistas-admin.component.css', '../../admin.component.css']
 })
-export class ArtistasAdminComponent {
+export class ArtistasAdminComponent  implements OnInit{
   formAdmin:FormGroup;
   forEdit:any;
   formNumber:FormGroup;
-
+  artistas:any[]=[]
 
   constructor(private artistaService:ArtistasService, private formBuilder:FormBuilder, private number:FormBuilder){
     this.formAdmin=this.formBuilder.group({
@@ -31,11 +31,16 @@ export class ArtistasAdminComponent {
     mail:["",[Validators.required]],
     track:["",[]],
     video:["",[]],
-    descripcion:["",[Validators.required]],
+    descripcion:["",],
     tiktok:["",[]],
     })
     this.formNumber=this.number.group({
       id_edit:["",[]]
+    })
+  }
+  ngOnInit(): void {
+    this.artistaService.artistaTodos().subscribe(data =>{
+      this.artistas = data 
     })
   }
 
@@ -69,47 +74,42 @@ export class ArtistasAdminComponent {
     this.formAdmin.reset()
   }
 
-  getForEdit(){
-    const valueId=this.formNumber.value.id_edit;
-    if(valueId===""){
-      alert("debes seleccionar el artista a editar");
-      return;
-    }else{
-      this.artistaService.artistaParticular(valueId).subscribe(data=>{
-        try{
-          this.forEdit=data
-          this.formAdmin.patchValue({
-            id:this.forEdit.id,
-            nombre:this.forEdit.nombre,
-            apellido:this.forEdit.apellido,
-            seudonimo:this.forEdit.seudonimo,
-            pretskit:this.forEdit.pretskit,
-            img:this.forEdit.img,
-            ubicacion:this.forEdit.ubicacion,
-            img_list:this.forEdit.img_list,
-            soundcloud:this.forEdit.soundcloud,
-            spotify:this.forEdit.spotify,
-            instagram:this.forEdit.instagram,
-            tiktok:this.forEdit.tiktok,
-            youtube:this.forEdit.youtube,
-            mail:this.forEdit.mail,
-            track:this.forEdit.track,
-            video:this.forEdit.video,
-            descripcion:this.forEdit.descripcion,
-          })
-        }catch(e ){
-          alert("No se encontro elemento con el id indicado");
-          this.formNumber.reset()
-        }
-      })
-    }
-    }
-    
-    deleteMapping(){
-      const valueId =this.formNumber.value.id_edit;
-      if(window.confirm(`Seguro deseas eliminar el item con el id:${valueId}`))
-      this.artistaService.artistaBorrar(valueId).subscribe()
-      this.formAdmin.reset();
-      this.formNumber.reset()
-    }
+
+  borar(id:number, event:Event){
+    event.preventDefault()
+    if(window.confirm(`Seguro deseas eliminar el item con el id:${id}`)){
+    this.artistaService.artistaBorrar(id).subscribe(data=>
+      this.artistaService.artistaTodos().subscribe(data=>{
+        this.artistas=data
+        console.log(data)
+      }))
+}} 
+editar(id:number){
+    alert('vas a editar el artista con el id ' + id)
+  this.artistaService.artistaParticular(id).subscribe(data=>{
+    this.forEdit=data;
+    console.log(this.forEdit)
+    this.formAdmin.patchValue({
+      id:this.forEdit.id,
+      nombre:this.forEdit.nombre,
+      apellido:this.forEdit.apellido,
+      seudonimo:this.forEdit.seudonimo,
+      pretskit:this.forEdit.pretskit,
+      img:this.forEdit.img,
+      ubicacion:this.forEdit.ubicacion,
+      img_list:this.forEdit.img_list,
+      soundcloud:this.forEdit.soundcloud,
+      spotify:this.forEdit.spotify,
+      instagram:this.forEdit.instagram,
+      tiktok:this.forEdit.tiktok,
+      youtube:this.forEdit.youtube,
+      mail:this.forEdit.mail,
+      track:this.forEdit.track,
+      video:this.forEdit.video,
+      descripcion:this.forEdit.descripcion,
+    })
+  })
+}
+  
+
 }

@@ -1,0 +1,17 @@
+.img-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 400px;
+    overflow: hidden;
+    flex-direction: column  ;
+}
+
+.span{
+
+    width: 90%;
+    
+    margin: 0 auto;
+    max-width: 500px;
+}

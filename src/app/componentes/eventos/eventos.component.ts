@@ -40,5 +40,27 @@ export class EventosComponent implements OnInit{
     console.log(this.idSelected)
   }
 
+  editar(id: number,  event:Event) {
+    event.preventDefault()
+    console.log(id)
+    this.eventosService.changeNoticiaId(id);
+  }
 
+   
+  borar(id:number, event:Event){
+    event.preventDefault()
+    if(window.confirm(`Seguro deseas eliminar el item con el id:${id}`)){
+    this.eventosService.fiestaBorrar(id).subscribe(data=>
+      this.eventosService.fiestasTodos().subscribe(data=>{
+        this.eventos=data
+        console.log(data)
+      }))
+}} 
+
+
+irA(id:number){
+  if(!this.router.url.includes("/eventos-admin")){
+    this.router.navigate(['/eventos/', id])
+  }
+}
 }

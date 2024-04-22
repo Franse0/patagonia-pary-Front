@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Noticia } from '../models/noticia';
@@ -32,5 +32,10 @@ export class NoticiasService {
 
   noticiasBorrar(id:number):Observable<any>{
     return this.http.delete(this.url+"/noticia/borrar/"+id);
+  }
+  private noticiaIdSource = new BehaviorSubject<number | null>(null);
+  currentNoticiaId = this.noticiaIdSource.asObservable();
+  changeNoticiaId(id: number) {
+    this.noticiaIdSource.next(id);
   }
 }

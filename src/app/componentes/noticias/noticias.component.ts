@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NoticiasService } from 'src/app/services/noticias.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { NoticiasService } from 'src/app/services/noticias.service';
 })
 export class NoticiasComponent implements OnInit {
   noticias:any;
-  constructor(private noticiasService:NoticiasService){}
+  constructor(private noticiasService:NoticiasService, private router:Router){}
 
   ngOnInit(): void {
     this.noticiasService.noticiasTodos().subscribe(data=>{
@@ -18,5 +19,5 @@ export class NoticiasComponent implements OnInit {
     })
   }
 
-
+  
 }

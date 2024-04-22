@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, AbstractControl, FormArray, Validators } from '@angular/forms';
 import { Noticia } from 'src/app/models/noticia';
 import { NoticiasService } from 'src/app/services/noticias.service';
@@ -8,7 +8,7 @@ import { NoticiasService } from 'src/app/services/noticias.service';
   templateUrl: './noticias-admin.component.html',
   styleUrls: ['./noticias-admin.component.css' , '../../admin.component.css']
 })
-export class NoticiasAdminComponent {
+export class NoticiasAdminComponent implements OnInit{
   formAdmin:FormGroup
   formNumber:FormGroup
   forEdit:any;
@@ -28,6 +28,17 @@ export class NoticiasAdminComponent {
     id_edit:["",[]],
     })
   }
+
+  ngOnInit(): void {
+    this.noticiaService.currentNoticiaId.subscribe(id => {
+      // Aquí tienes el id, y puedes hacer algo con él.
+      console.log("id de edicion", id);
+      if(id){
+        this.getForEdit(id)
+      }
+    });
+  }
+
 
   decodeHtml(htmlString: string): string {
     const textarea = document.createElement('textarea');
@@ -55,35 +66,24 @@ export class NoticiasAdminComponent {
     this.formAdmin.reset();
   }
 
-  getForEdit(){
-    const valueId = this.formNumber.value.id_edit;
-    if(valueId==""){
-      console.log("debe elegir un lugar para editar");
-      return
-    }else{
-      this.noticiaService.noticiasParticular(valueId).subscribe(data=>{
-        try{
-          this.forEdit=data;
-          this.formAdmin.patchValue({
-            id:this.forEdit.id,
-            titulo:this.forEdit.titulo,
-            cuerpo: this.forEdit.cuerpo,
-            resumen:this.forEdit.resumen,
-            fecha_publi:this.forEdit.fecha_publi,
-            url:this.forEdit.url,
-            img:this.forEdit.img,
-          })
-        } catch(e){
-          alert("no se encontro elemento con ese id")
-        }
+  
+
+  getForEdit(id:number){
+    
+    this.noticiaService.noticiasParticular(id).subscribe(data=>{
+      this.forEdit=data;
+      console.log(this.forEdit)
+      this.formAdmin.patchValue({
+        id:this.forEdit.id,
+        titulo:this.forEdit.titulo,
+        cuerpo: this.forEdit.cuerpo,
+        resumen:this.forEdit.resumen,
+        fecha_publi:this.forEdit.fecha_publi,
+        img:this.forEdit.img,
       })
-    }
-  }
-  deleteMapping(){
-    const valueId =this.formNumber.value.id_edit;
-    if(window.confirm(`Seguro deseas eliminar el item con el id:${valueId}`))
-    this.noticiaService.noticiasBorrar(valueId).subscribe()
-    this.formAdmin.reset()
-    this.formNumber.reset()
-  }
+    })
+}
+
+ 
+
 }

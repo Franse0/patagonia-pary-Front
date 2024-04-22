@@ -10,11 +10,14 @@
 
       <div class="card-noticia-a" *ngFor="let noticias of noticias">
         <div class="img-card-a-container">
-          <img src="{{noticias.img}}" alt="" class="img-card-a link" [routerLink]="['/noticia', noticias.id]">
+          <img src="{{noticias.img}}" alt="" class="img-card-a link" (click)="irA(noticias.id)">
         </div>
         <span class="fecha-card-a">{{noticias.fecha_publi}}</span>
         <span class="enlace" [routerLink]="['/noticia', noticias.id]"> {{noticias.titulo}} </span>
-        <span *ngIf="mostrarId"> {{noticias.id}} </span>
+        <div *ngIf="mostrarId"> 
+          <i class="fa-solid fa-pen-to-square link" (click)="editar(noticias.id, $event)" *ngIf="mostrarId"></i>
+          <i class="fa-solid fa-trash link" (click)="borar(noticias.id, $event)" *ngIf="mostrarId"></i>       
+        </div>
         <p class="description noticia parrafo-descrip-card-pequeña">
           {{noticias.resumen}}
         </p>

@@ -1,0 +1,15 @@
+
+
+
+
+<div class="form-input">
+    <label for="file">File</label>
+    <input accept="image/*"  type="file"  id="image"  (change)="upload($event)">
+</div>
+<div class="img-container">
+    <img [src]="url" alt="" width="80%">
+    <br>
+</div>
+<div class="img-container">
+    <span class="span">{{url}} </span>
+</div>
