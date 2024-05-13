@@ -1,6 +1,10 @@
+<div *ngIf="loading">
+    <!-- Aquí va tu spinner -->
+    <app-spinner></app-spinner>
+  </div>
 
-<app-proximos-eventos></app-proximos-eventos>
-<app-artistas></app-artistas>
+ <app-proximos-eventos (loaded)="handleEventosLoaded()" ></app-proximos-eventos> 
+<app-artistas (loaded)="handleArtistasLoaded()"></app-artistas>
 <app-productoras></app-productoras>
 <app-noticias></app-noticias>
 <app-lugares></app-lugares>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -10,8 +11,10 @@ export class FooterComponent {
   mail(){
     alert("El contacto es patagoniapary@gmail.com")
   }
-  sumarme(event:Event){
-    event.preventDefault()
-    alert("Estamos trabajando en una interface grafica para volver esto un proceso mas simple. Mientras comunicate con el mail 'patagoniapary@gmail.com' para poder iniciar el proceso por medio de alguien del equipo")
+  constructor(private router:Router){}
+
+  sumarme(busquedaValue:string,e:Event){
+    e.preventDefault()
+    this.router.navigate(['/sumate'], { queryParams: { parametro: busquedaValue } });
   }
 }

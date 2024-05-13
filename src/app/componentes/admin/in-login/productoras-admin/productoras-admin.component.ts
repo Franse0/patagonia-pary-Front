@@ -33,7 +33,6 @@ export class ProductorasAdminComponent implements OnInit{
   ngOnInit(): void {
     this.productoraService.currentProductoraId.subscribe(id => {
       // Aquí tienes el id, y puedes hacer algo con él.
-      console.log("id de edicion", id);
       if(id){
         this.getForEdit(id)
       }
@@ -60,7 +59,6 @@ export class ProductorasAdminComponent implements OnInit{
     };
   
     this.productoraService.productoraAgregar(productora).subscribe(() => {
-      console.log("artista cargado con éxito");
       this.formAdmin.reset();
     });
   }
@@ -68,7 +66,6 @@ export class ProductorasAdminComponent implements OnInit{
     
     this.productoraService.productoraParticular(id).subscribe(data=>{
       this.forEdit=data;
-      console.log(this.forEdit)
       this.formAdmin.patchValue({
         id:this.forEdit.id,
         nombre:this.forEdit.nombre,

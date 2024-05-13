@@ -1,22 +1,35 @@
 <div class="panel">
-    <a href="" [routerLink]="['/admin']">
-        <i class="fa-solid fa-house"></i>
-    </a>
-    <div class="panel-options">
-        <a href="" [routerLink]="['/eventos-admin']">
-            <button class="btn-admin">Eventos</button>
-        </a>    
-        <a href="" [routerLink]="['/noticias-admin']">
-            <button class="btn-admin">Noticias</button>
+    <div class="div">
+        <div  class="form-admin">
+            <i (click)="logOut()" class="fa-solid fa-right-from-bracket w"></i>
+        </div>
+        <a href="" (click)="irA($event)" class="absolute">
+            <i class="fa-regular fa-bell w"></i>
+            <i class="fa-solid fa-info" *ngIf="hayCambios"></i>
         </a>
-        <a href="" [routerLink]="['/lugares-admin']">
-            <button class="btn-admin">Lugares</button>
+        <a href="" [routerLink]="['/admin']">
+            <i class="fa-solid fa-house w"></i>
         </a>
-        <a href="" [routerLink]="['/artistas-admin']">
-            <button class="btn-admin">Artistas</button>
-        </a>    
-        <a href="" [routerLink]="['/productoras-admin']">
-            <button class="btn-admin">Productoras</button>
-        </a>    
+        <i class="fa-solid fa-gear w"*ngIf="settingsOption"  (click)="settings()"></i>    
+    </div>
+    <div *ngIf="settingsState">
+        <div class="panel-options" *ngIf="!mostrarTodo " >
+            <a   (click)="settings()" href="" [routerLink]="['/eventos-admin']">
+                <button class="btn-admin">Eventos</button>
+            </a>    
+            <a href="" [routerLink]="['/noticias-admin']">
+                <button class="btn-admin">Noticias</button>
+            </a>
+            <a href="" [routerLink]="['/lugares-admin']">
+                <button class="btn-admin">Lugares</button>
+            </a>
+            <a href="" [routerLink]="['/artistas-admin']">
+                <button class="btn-admin">Artistas</button>
+            </a>    
+            <a href="" [routerLink]="['/productoras-admin']">
+                <button class="btn-admin">Productoras</button>
+            </a>    
+        </div>
+    
     </div>
 </div>

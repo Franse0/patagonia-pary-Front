@@ -10,8 +10,7 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ArtistasService {
-  // url: string = "http://localhost:8081/api";
-
+  // url: string = "http://localhost:8080/api";
   // url: string = "http://62.72.26.208:8080/api";
   url: string = "https://patagoniapary.ar/api";
 
@@ -45,6 +44,7 @@ export class ArtistasService {
   }
 
   buscarArtista(parametro: string): Observable<any> {
+    console.log("parametro: ", parametro)
     return this.http.get<any[]>(`${this.url}/artista/buscar/${parametro}`).pipe(
       catchError(error => {
         if (error.status === 404) {

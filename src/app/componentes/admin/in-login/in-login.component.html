@@ -1,0 +1,11 @@
+<div class="div">
+    <app-back-home></app-back-home>
+    <div class="lista-container">
+    <h2>Lista de registros</h2>
+        <ul>
+            <li *ngFor="let registro of registros">Email: {{registro.email}}, Categoria : {{registro.categoria}} <br>
+                <i class="fa-solid fa-trash link" (click)="borrar(registro.id, $event)" ></i>       
+            </li>
+        </ul>
+    </div>
+</div>

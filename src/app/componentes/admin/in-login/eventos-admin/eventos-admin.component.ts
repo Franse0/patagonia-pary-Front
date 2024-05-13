@@ -58,10 +58,8 @@ export class EventosAdminComponent  implements OnInit{
     descripcion:this.formAdmin.value.descripcion,
     organiza:this.formAdmin.value.organiza,
     }
-    console.log(evento);
     this.eventosService.fiestaaAgregar(evento).subscribe()
     this.formAdmin.reset()
-    console.log("evento cargado correctamente")
   }
 
 
@@ -70,7 +68,6 @@ export class EventosAdminComponent  implements OnInit{
     
     this.eventosService.fiestaParticular(id).subscribe(data=>{
       this.forEdit=data;
-      console.log(this.forEdit)
       this.formAdmin.patchValue({
         id:this.forEdit.id,
         nombre:this.forEdit.nombre,

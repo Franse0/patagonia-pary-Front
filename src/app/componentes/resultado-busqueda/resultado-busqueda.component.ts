@@ -25,10 +25,8 @@ export class ResultadoBusquedaComponent implements OnInit{
     this.noResultados=false
     this.route.queryParams.subscribe(params => {  
       this.parametroBusqueda = params['parametro'];
-      console.log("Este es el parametro", this.parametroBusqueda)
       this.artistaService.buscarArtista(this.parametroBusqueda).subscribe(data =>{
         this.busquedaList=data
-        console.log('esta es la bsuqueda list',this.busquedaList)
       })
     })
   }

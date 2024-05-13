@@ -40,7 +40,6 @@ export class LugaresAdminComponent implements OnInit{
   ngOnInit(): void {
     this.localService.currentLugarId.subscribe(id => {
       // Aquí tienes el id, y puedes hacer algo con él.
-      console.log("id de edicion", id);
       if(id){
         this.getForEdit(id)
       }
@@ -68,7 +67,6 @@ export class LugaresAdminComponent implements OnInit{
     }
     this.localService.lugarAgregar(lugar).subscribe()
     this.formAdmin.reset()
-    console.log("lugar cargado con exito")
   }
 
   
@@ -76,7 +74,6 @@ export class LugaresAdminComponent implements OnInit{
     
     this.localService.lugarParticular(id).subscribe(data=>{
       this.forEdit=data;
-      console.log(this.forEdit)
       this.formAdmin.patchValue({
         id:this.forEdit.id,
         nombre:this.forEdit.nombre,

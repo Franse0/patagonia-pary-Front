@@ -98,14 +98,12 @@ export class HeaderComponent {
 
     // Verifica si se obtuvo algún valor de los buscadores
     if (busquedaValue) {
-      console.log('Estoy buscando', busquedaValue);
       // Usar el servicio Router para navegar
       this.router.navigate(['/resultado'], { queryParams: { parametro: busquedaValue } });
       this.buscarValue=false
     } else {
       // Si ninguno de los buscadores tiene valor, cambia el estado de buscarValue
       this.buscarValue = !this.buscarValue;
-      console.log(this.buscarValue);
     }
   }
 

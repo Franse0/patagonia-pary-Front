@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { forkJoin ,of, Observable } from 'rxjs';
 import { Local } from 'src/app/models/local';
 import { LocalesService } from 'src/app/services/locales.service';
 
@@ -10,7 +11,7 @@ import { LocalesService } from 'src/app/services/locales.service';
   styleUrls: ['./lugares.component.css', ]
 })
 export class LugaresComponent implements OnInit{
-  lugares:Local[];
+  lugares:any[];
   sanitizedGoogleMapsUrl: SafeResourceUrl;
   currentUrl:string;
   mostrarId:boolean=false;
@@ -25,15 +26,28 @@ export class LugaresComponent implements OnInit{
       this.mostrarId=true;
     }
     this.localesService.lugarTodos().subscribe(data=>{
-      this.lugares=data.slice(0,4)
-      if (this.lugares.length > 0) {
-        const iframeCode = this.lugares[0].link_ubi; // Ajusta el nombre según tus datos reales
-        this.sanitizeHtmlContent(iframeCode.toString());
-      }
+      this.lugares = data
+      this,this.sanitizeLugares(this.lugares)      
     })
   }
-  sanitizeHtmlContent(html: string): void {
-    this.sanitizedGoogleMapsUrl = this.sanitizer.bypassSecurityTrustHtml(html);
+
+  sanitizeLugares(numeros: any[]): void {
+    const observables = numeros.map(numero => {
+      const ubicacionMap = numero.link_ubi.toString();
+      const sanitizedUrl = this.sanitizer.bypassSecurityTrustHtml(ubicacionMap);
+      return this.sanitizeUbicacionMap(sanitizedUrl);
+    });
+
+    forkJoin(observables).subscribe(sanitizedMaps => {
+      this.lugares = numeros.map((lugar, index) => ({
+        ...lugar,
+        ubicacion_map_sanitized: sanitizedMaps[index]
+      }));
+    });
+  }
+  sanitizeUbicacionMap(sanitizedUrl: SafeHtml): Observable<SafeHtml> {
+    // Aquí podrías realizar cualquier otra operación de sanitización necesaria
+    return of(sanitizedUrl);
   }
   
   irALugar(id:number){
@@ -51,13 +65,11 @@ export class LugaresComponent implements OnInit{
     this.localesService.lugarBorrar(id).subscribe(data=>
       this.localesService.lugarTodos().subscribe(data=>{
         this.lugares=data
-        console.log(data)
       }))
 }} 
 
 editar(id: number,  event:Event) {
   event.preventDefault()
-  console.log(id)
   this.localesService.changeNoticiaId(id);
 }
 

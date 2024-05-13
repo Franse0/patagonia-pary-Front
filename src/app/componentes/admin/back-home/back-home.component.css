@@ -1,9 +1,11 @@
+
 .panel{
     height: 40px;
     background-color: thistle;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
     width: 100%;
 }
 .panel-options{
@@ -28,3 +30,40 @@
     background-color: hotpink;
 }
 
+.absolute{
+    position: relative;
+}
+.fa-info{
+    background-color: red;
+    border-radius: 50%;
+    padding: .2rem .5rem;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 0;
+}
+.w{
+    font-size: 1.6rem;
+    z-index: 2;
+}
+.div{
+    display: flex;
+
+}
+
+
+@media (max-width:700px){
+    .panel-options{
+        flex-direction: column;
+        background-color: thistle;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        align-items: center;
+        top: 7rem;
+        justify-content: center;
+        gap:20px;
+    }
+}

@@ -32,7 +32,6 @@ export class NoticiasAdminComponent implements OnInit{
   ngOnInit(): void {
     this.noticiaService.currentNoticiaId.subscribe(id => {
       // Aquí tienes el id, y puedes hacer algo con él.
-      console.log("id de edicion", id);
       if(id){
         this.getForEdit(id)
       }
@@ -62,7 +61,6 @@ export class NoticiasAdminComponent implements OnInit{
 
     }
     this.noticiaService.noticiasAgregar(noticia).subscribe();
-    console.log("noticia cargada con exito");
     this.formAdmin.reset();
   }
 
@@ -72,7 +70,6 @@ export class NoticiasAdminComponent implements OnInit{
     
     this.noticiaService.noticiasParticular(id).subscribe(data=>{
       this.forEdit=data;
-      console.log(this.forEdit)
       this.formAdmin.patchValue({
         id:this.forEdit.id,
         titulo:this.forEdit.titulo,

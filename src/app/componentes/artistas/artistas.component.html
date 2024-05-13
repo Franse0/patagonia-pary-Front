@@ -1,4 +1,4 @@
-<div class=" artistas" id="artistas">
+<div class=" artistas" id="artistas" *ngIf="artistasListCel">
   <div class="artistas-container-all">
     <section class="artistas movil">
       <div class="title-container">
@@ -66,7 +66,7 @@
   
     </section>
   
-    <section class="artistas desktop" >
+    <section class="artistas desktop" *ngIf="artistasList">
       <div class="title-container">
         <h3 class="new-title">Artistas</h3>
         <a (click)="mostrarTodosLosArtistas()" class="enlace" *ngIf="enlace"

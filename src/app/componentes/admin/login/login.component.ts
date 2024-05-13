@@ -27,11 +27,6 @@ export class LoginComponent{
     });
   }
 
-
-  ngOnInit(): void {
-      console.log(this.loginService.estadoo$)
-  }
-
   iniciarSesion(formUser: FormGroup) {
     this.loginService.iniciarSesion(formUser);
   }

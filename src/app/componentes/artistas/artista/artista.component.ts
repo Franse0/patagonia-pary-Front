@@ -3,9 +3,9 @@ import { ArtistasService } from './../../../services/artistas.service';
 import { Component, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { GaleriaService } from 'src/app/services/galeria.service';
-
+import { forkJoin, Observable, of } from 'rxjs';
 // import { Lightbox } from 'ngx-lightbox';
 
 @Component({
@@ -41,18 +41,38 @@ export class ArtistaComponent {
         }
       });
     }
+  sanitizationCompleted: boolean = false;
+
+    
   loadData(id: any): void {
-    if(id===undefined || id===null)return
+    if (id === undefined || id === null) return;
     this.youtubeVideoId = '';
     this.sanitizedYoutubeVideoUrl = undefined;
     this.artistasService.artistaParticular(id).subscribe(data => {
       this.artista = data;
       this.procesarFotos();
       this.extractYoutubeVideoId();
+      this.sanitizeArtista(this.artista);
       this.viewportScroller.scrollToPosition([0, 0]);
     });
   }
-
+  
+  sanitizeArtista(artista: any): void {
+    const ubicacionMap = artista.track.toString();
+    const sanitizedUrl = this.sanitizer.bypassSecurityTrustHtml(ubicacionMap);
+    this.sanitizeUbicacionMap(sanitizedUrl).subscribe(sanitizedMap => {
+      const artistaSanitized = {
+        ...artista,
+        ubicacion_map_sanitized: sanitizedMap
+      };
+      this.artista = artistaSanitized;
+      this.sanitizationCompleted = true; // Marcar como completado después de sanitizar
+    });
+  }
+  sanitizeUbicacionMap(sanitizedUrl: SafeHtml): Observable<SafeHtml> {
+    // Aquí podrías realizar cualquier otra operación de sanitización necesaria
+    return of(sanitizedUrl);
+  }
   procesarFotos(): void {
     // Verificar si el campo img_list está presente en el objeto artista
     if (this.artista && this.artista.img_list) {
@@ -98,4 +118,5 @@ export class ArtistaComponent {
   mostrarMail(mail:String){
     alert(mail)
   }
+
 }

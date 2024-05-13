@@ -37,12 +37,10 @@ export class EventosComponent implements OnInit{
 
   capturarValor(id:number){
     this.idSelected=Number(id)
-    console.log(this.idSelected)
   }
 
   editar(id: number,  event:Event) {
     event.preventDefault()
-    console.log(id)
     this.eventosService.changeNoticiaId(id);
   }
 
@@ -53,7 +51,6 @@ export class EventosComponent implements OnInit{
     this.eventosService.fiestaBorrar(id).subscribe(data=>
       this.eventosService.fiestasTodos().subscribe(data=>{
         this.eventos=data
-        console.log(data)
       }))
 }} 
 

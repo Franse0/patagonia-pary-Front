@@ -14,6 +14,7 @@ export class ProximosEventosComponent  implements OnInit{
   fiestas:any;
   idSeleccionado:number;
   selectedFiesta:any;
+  @Output() loaded: EventEmitter<void> = new EventEmitter<void>()
 
  
   constructor(private eventosService:EventosService){}
@@ -21,13 +22,14 @@ export class ProximosEventosComponent  implements OnInit{
   ngOnInit(): void {
     this.eventosService.fiestasTodos().subscribe(data=>{
       this.fiestas=data
+      this.loaded.emit();
+
     })
   }
 
   capturarValor(event:Event){
     const valor = (<HTMLImageElement>event.target).id;
     this.idSeleccionado=Number(valor)
-    console.log(this.idSeleccionado)
   }
 
   

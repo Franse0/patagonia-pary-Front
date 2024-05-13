@@ -32,7 +32,6 @@ export class ProductoraComponent {
         this.nextDates()
         this.extractYoutubeVideoId();
       })
-      console.log("cambio")
     })
   }
 
@@ -56,7 +55,6 @@ export class ProductoraComponent {
   extractYoutubeVideoId(): void {
     // Verificar si artista.youtube existe y no es null o undefined
     if (this.entidad && this.entidad.video_yt) {
-      console.log(this.entidad.video_yt)
       // Extraer el ID del video de la URL de YouTube
       const match = this.entidad.video_yt.match(/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
       if (match && match[1]) {
@@ -87,8 +85,6 @@ export class ProductoraComponent {
     if(this.entidad!==null && this.entidad!==undefined){
       this.eventosService.buscarFiesta(this.entidad.nombre).subscribe(data=>{
         this.fechas=data
-        console.log(this.entidad.nombre)
-        console.log("data de eventos", data)
       })
 
     }

@@ -44,13 +44,11 @@ export class ProductorasComponent implements OnInit{
     this.productoraService.prodcutroaBorrar(id).subscribe(data=>
       this.productoraService.prodcutoraTodos().subscribe(data=>{
         this.entidades=data
-        console.log(data)
       }))
 }} 
 
 editar(id: number,  event:Event) {
   event.preventDefault()
-  console.log(id)
   this.productoraService.changeNoticiaId(id);
 }
 }

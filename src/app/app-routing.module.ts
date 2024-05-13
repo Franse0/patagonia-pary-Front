@@ -39,6 +39,7 @@ const routes: Routes = [
   {path:"evento", component:EventoComponent},
   {path:"ser-parte", component:SumarteComponent},
   {path:"resultado", component:ResultadosComponent},
+  {path:"sumate", component:SumarteComponent},
   // En tu archivo de rutas (app-routing.module.ts o similar)
 { path: 'eventos/:id', component: EventosComponent },
 
@@ -48,6 +49,8 @@ const routes: Routes = [
   {path:"login", component:LoginComponent},
   {path:"admin", 
   component:AdminComponent, canMatch:[AuthUserGuard]},
+  {path:"in-login", 
+  component:InLoginComponent, canMatch:[AuthUserGuard]},
  // formularios de edit
  {path:"artistas-admin", 
  component:ArtistasAdminComponent,

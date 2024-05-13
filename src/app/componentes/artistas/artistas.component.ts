@@ -18,7 +18,7 @@ export class ArtistasComponent  implements OnInit{
   mostrarId:boolean=false;
   enlace:boolean=true
   cardMovil:boolean=false;
-  
+  @Output() loaded: EventEmitter<void> = new EventEmitter<void>()
   @Output() emitirArtista= new EventEmitter<number>();
   
 
@@ -47,7 +47,6 @@ export class ArtistasComponent  implements OnInit{
       }
     });
   }
-
   updateArtistList(): void {
     this.artistasService.artistaTodos().subscribe(data => {
       if (this.router.url.includes('/pagina-principal')) {
@@ -86,8 +85,8 @@ export class ArtistasComponent  implements OnInit{
     }
 
     // Muestra en consola las listas de artistas
-    console.log(this.artistasList);
-    console.log(this.artistasListCel);
+
+    this.loaded.emit();
 
     // Opcional: Configurar la propiedad mostrarCard a false
     this.artistasList.forEach((artista: any) => {
@@ -208,7 +207,7 @@ onScroll(event: any) {
   const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
   if(!this.router.url.includes("/all-artistas")){
   // Comprobar si el scroll está fuera de los límites establecidos
-  if (scrollPosition > this.lowerScrollLimit || scrollPosition < this.upperScrollLimit) {
+  if (scrollPosition > this.lowerScrollLimit) {
     this.showCard = false;
     this.cardGrandeActive = false;
     } else {

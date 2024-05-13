@@ -47,15 +47,15 @@
             <iframe [src]="sanitizedYoutubeVideoUrl ? sanitizedYoutubeVideoUrl : null" frameborder="0"></iframe>
 
         </article>
-      
-        
- 
+        <article *ngIf=" (seccionActiva === 'multimedia' || seccionActiva === 'bio')">
+            <div [innerHTML]='artista.ubicacion_map_sanitized' ></div>
+          </article>
            
     </section>
     
 </div>
     <section class="redes">
-  
+        <!-- <iframe width="100%" height="200" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1369415644&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/galakatana" title="Gala Katana" target="_blank" style="color: #cccccc; text-decoration: none;">Gala Katana</a> · <a href="https://soundcloud.com/galakatana/gala-katana-clandestine-original-mix-iamt" title="Gala Katana - Clandestine (Original Mix) [IAMT]" target="_blank" style="color: #cccccc; text-decoration: none;">Gala Katana - Clandestine (Original Mix) [IAMT]</a></div> -->
             <h4 class="h4"> Redes</h4>
 
       
@@ -81,6 +81,22 @@
             <a (click)="mostrarMail(artista.mail)" target="_blank">
                 <i class="fa-solid fa-envelope"*ngIf="artista?.mail"></i>
             </a>
+        </div>
+
+        <div class="comparti">
+            <h4 class="h4"> Comparti</h4>
+
+            <div class="share">
+
+                <a href="https://twitter.com/intent/tweet?url=https://patagoniapary.ar/artista/{{artista.id}}&amp;text=Conoce a {{artista.seudonimo}} un/a DJ de {{artista.ubicacion}}. Entra al enlace para escuchar su música y descubrir más sobre él/ella." target="_blank" rel="noopener noreferrer">
+                   
+                             <img src="/assets/twitter.png" alt="Compartir en Twitter" width="30px">
+                 </a>
+                 <a href="https://web.whatsapp.com/send?text=Descubri%20a%20{{artista.seudonimo}}%20Dj%20de%20{{artista.ubicacion}}%20https%3A%2F%2Fwww.patagoniapary.ar%2Fartista%2F{{artista.id}}" target="_blank">
+                 <img src="/assets/whatsapp.png" alt="" width="30px">    
+               </a>
+            </div>
+
         </div>
     </section>
 </div>

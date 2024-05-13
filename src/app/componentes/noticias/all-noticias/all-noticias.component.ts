@@ -29,7 +29,6 @@ export class AllNoticiasComponent  implements OnInit{
   }
   editar(id: number,  event:Event) {
     event.preventDefault()
-    console.log(id)
     this.noticiaService.changeNoticiaId(id);
   }
 
@@ -40,13 +39,12 @@ export class AllNoticiasComponent  implements OnInit{
     this.noticiaService.noticiasBorrar(id).subscribe(data=>
       this.noticiaService.noticiasTodos().subscribe(data=>{
         this.noticias=data
-        console.log(data)
       }))
 }} 
 
 irA(id:number){
   if(!this.router.url.includes("/noticias-admin")){
-    this.router.navigate(['/evento/', id])
+    this.router.navigate(['/noticia/', id])
   }
 }
   

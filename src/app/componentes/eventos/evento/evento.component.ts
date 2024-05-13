@@ -78,7 +78,6 @@ export class EventoComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['eventoId'] && !changes['eventoId'].firstChange) {
       if (this.eventoId !== undefined) {
-        console.log('Nuevo valor de eventoId:', this.eventoId);
 
         this.cargarEvento(this.eventoId);
       }
@@ -117,7 +116,6 @@ export class EventoComponent implements OnInit {
     this.lineup = djs.split(',').map(item => item.trim());    
     // Ahora tienes un array con los nombres de los DJs
     this.verificarSiDjEstaCargado(this.lineup)
-    console.log(this.lineup)
   }
 
     
@@ -162,7 +160,6 @@ export class EventoComponent implements OnInit {
     this.productoraService.buscarProductora(organiza).subscribe(data =>{
       if(data && data.length>0 ){
         this.organiza = [{...data[0], tipo:"productora"}];
-        console.log("organiza prod desde consola:", this.organiza)
       }else{
         this.buscarEnLugares(organiza)
       }
@@ -172,7 +169,6 @@ export class EventoComponent implements OnInit {
 buscarEnLugares(organiza: string) {
   this.lugaresService.buscarLocales(organiza).subscribe((data) => {
     this.organiza = [{...data[0], tipo:"local"}];
-    console.log("organiza lugar desde consola:", this.organiza);
   });
 }
 
@@ -185,16 +181,11 @@ buscarEnLugares(organiza: string) {
   }
 
   irA(organiza:any){
-    console.log("daleee")
-    console.log(organiza[0].tipo)
 
     if(organiza[0].tipo==="productora"){
-      console.log(organiza[0].tipo)
-      console.log(organiza[0].id, "ruta")
       this.router.navigate(["/productora", organiza[0].id])
     } else{
       this.router.navigate(["/lugar", organiza[0].id])
-      console.log(organiza.tipo)
 
     }
   }

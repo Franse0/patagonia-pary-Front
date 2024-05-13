@@ -18,7 +18,6 @@ export class NoticiaComponent implements OnInit{
   ngOnInit(): void {
 
     this.viewportScroller.scrollToPosition([0, 0]);
-    console.log("subiendo")
     this.getNoticiasAside()
     this.route.params.subscribe(params=>{
       const noticiaId= params['id'];

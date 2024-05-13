@@ -34,21 +34,17 @@ export class ResultadosComponent implements OnInit{
       this.parametroBusqueda = params['parametro'];
       this.artistaService.buscarArtista(this.parametroBusqueda).subscribe(data =>{
         this.busquedaListArtistas=data
-        console.log(this.busquedaListArtistas)
       })
       this.lugaresService.buscarLocales(this.parametroBusqueda).subscribe(data =>{
         this.busquedaListLugares=data
-        console.log(this.busquedaListLugares)
 
       })
       this.productoraService.buscarProductora(this.parametroBusqueda).subscribe(data =>{
         this.busquedaListProductoras=data
-        console.log(this.busquedaListProductoras)
 
       })
       this.fiestaService.buscarFiesta(this.parametroBusqueda).subscribe(data =>{
         this.busquedaListEventos=data
-        console.log(this.busquedaListEventos)
       })
     })
   }
@@ -69,14 +65,12 @@ export class ResultadosComponent implements OnInit{
     
     // Verifica si se obtuvo algún valor de los buscadores
     if (busquedaValue) {
-      console.log('Estoy buscando', busquedaValue);
       // Usar el servicio Router para navegar
       this.router.navigate(['/resultado'], { queryParams: { parametro: busquedaValue } });
       this.buscarValue=false
     } else {
       // Si ninguno de los buscadores tiene valor, cambia el estado de buscarValue
       this.buscarValue = !this.buscarValue;
-      console.log(this.buscarValue);
     }
   }
 

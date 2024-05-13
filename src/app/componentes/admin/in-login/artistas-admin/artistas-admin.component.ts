@@ -68,9 +68,8 @@ export class ArtistasAdminComponent  implements OnInit{
     track:this.formAdmin.value.track,
     video:this.formAdmin.value.video,
     descripcion:this.formAdmin.value.descripcion,
-    }
+  }
     this.artistaService.artistaAgregar(artista).subscribe()
-    console.log("artista cargado con exito")
     this.formAdmin.reset()
   }
 
@@ -81,14 +80,12 @@ export class ArtistasAdminComponent  implements OnInit{
     this.artistaService.artistaBorrar(id).subscribe(data=>
       this.artistaService.artistaTodos().subscribe(data=>{
         this.artistas=data
-        console.log(data)
       }))
 }} 
 editar(id:number){
     alert('vas a editar el artista con el id ' + id)
   this.artistaService.artistaParticular(id).subscribe(data=>{
     this.forEdit=data;
-    console.log(this.forEdit)
     this.formAdmin.patchValue({
       id:this.forEdit.id,
       nombre:this.forEdit.nombre,

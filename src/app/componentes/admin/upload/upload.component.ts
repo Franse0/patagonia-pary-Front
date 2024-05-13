@@ -18,10 +18,7 @@ export class UploadComponent {
     if(file){
       const formData = new FormData()
       formData.append("file", file)
-      console.log("cargando img")
-      console.log(formData)
       this.uploadService.uploadFile(formData).subscribe(response=>{
-        console.log(response)
         this.url=response.url
       })
     }

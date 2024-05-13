@@ -8,11 +8,5 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
-  constructor(private authService:LoginService, private router:Router){}
-
   
-  logOut(){
-  this.authService.logOutService()
-  this.router.navigate(["/pagina-principal"])
- }
 }

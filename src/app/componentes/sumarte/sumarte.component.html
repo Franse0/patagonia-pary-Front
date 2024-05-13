@@ -1,25 +1,65 @@
-<div class="all-container">
+<section class="sumate">
   <div class="title">
-    <h3>Nos encantaria que seas parte</h3>
+    <h2>Nos encantaría que seas parte</h2>
   </div>
 
-  <section >
-    <ul>
-      <li>Djs</li>
-      <li>Productoras</li>
-      <li>Lugares</li>
-    </ul>
-  </section>
-
-  <section class="sumarte">
-    <p>PatagoniaPary es una pagina web creada con el objetivo de contribuir a la escena de la musica electronica Patagonica Argenginra. La regino posee grandes talentos  y excelentes lugares y fiestas que la gente que viene a disfrutar de la Patagonica e incluso la gente recidente merece conocer  y deleitarse con ello.
-    </p>
-    <p>
-        De ahi proviete su nombre PATAGONIAPARY.AR.  Nuestra meta es que las fiestas de aca sean un motivo mas para venir.  Este espacio busca que sea facil para el consumidor encontrar propuestas desde djs, hasta bares par conocer. Fiestas a las que salir o informacion para leer para que pueda acercarse mas y que su experiencia sea unica.
-    </p>
-
-    <p>
-        Pensada de manera comunitaria, la pagina busca que esto crezca de manera comunitaria. 
-    </p>
-  </section>
-</div>
+  <article class="layout">
+    <div class="img-container">
+      <img src="/assets/logo.png" alt="" class="img" />
+    </div>
+    <div class="presentation">
+      <h3>PATAGONIAPARY.AR</h3>
+      <p *ngIf="sumarte">
+        Patagonia Pary nació con la firme intención de enriquecer la escena de
+        la música electrónica en la región patagónica. Nuestro objetivo es
+        proporcionar un espacio de alta calidad donde los diferentes ambientes
+        donde se vive y se disfruta la música electrónica tengan la oportunidad
+        de destacarse. Queremos ofrecer a los amantes de la música electrónica
+        un lugar de referencia, donde puedan descubrir los mejores eventos y
+        nutrirse del impresionante talento local que nuestra zona tiene para
+        ofrecer. ¡Sumate y sé parte de esta vibrante comunidad!
+      </p>
+      <form *ngIf="!sumarte">
+        <div class="form-input" *ngIf="!notificarBoolean">
+          <div class="p">
+            ¡Para aparecer en la página, solo necesitas completar nuestro
+            formulario de Google! Este nos ayuda a recopilar la información
+            necesaria para mostrarte correctamente. Una vez enviado, nuestro
+            equipo revisará que todo esté en orden. Si todo está bien,
+            ¡aparecerás en la página pronto! Además, recibirás un correo de
+            bienvenida una vez que estés activo.
+          </div>
+          <button class="btn" (click)="notificar()">
+            Haz clic aquí para completar el formulario de Google
+          </button>
+        </div>
+        <form action="" *ngIf="notificarBoolean" [formGroup]="miFormulario">
+          <div class="form-input">
+            <legend class="legend">
+              Debes colocar aquí el mismo correo con el que completaras el
+              formulario de google
+            </legend>
+            <label for="email">Email</label>
+            <input
+              type="mail"
+              id="email"
+              formControlName="email"
+              placeholder="email"
+              #miInputRef
+            />
+            <!-- <input type="number" formArrayName="id" *ngIf=""> -->
+            <button (click)="enviar()">Enviar</button>
+            <br />
+            <a [href]="this.url" *ngIf="mostrarLinkGoogle" target="_blank"
+              >Click para ir al formulario de Google</a
+            >
+          </div>
+        </form>
+      </form>
+      <button class="btn-tech" (click)="sumar()" *ngIf="sumarte">
+        sumarme como {{this.parametroBusqueda}}
+      </button>
+      <button class="btn-tech" (click)="sumar()" *ngIf="!sumarte">atrás</button>
+    </div>
+  </article>
+</section>

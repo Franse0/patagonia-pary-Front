@@ -44,6 +44,7 @@ import { CommonModule } from '@angular/common';
 import { ResultadosComponent } from './componentes/resultados/resultados.component';
 import { BackHomeComponent } from './componentes/admin/back-home/back-home.component';
 import { UploadComponent } from './componentes/admin/upload/upload.component';
+import { SpinnerComponent } from './componentes/spinner/spinner.component';
 
 // soundcloud
 
@@ -85,6 +86,7 @@ import { UploadComponent } from './componentes/admin/upload/upload.component';
     ResultadosComponent,
     BackHomeComponent,
     UploadComponent,
+    SpinnerComponent,
     
   ],
   imports: [
