@@ -21,7 +21,6 @@ export class ProductoraComponent {
   productorasFotos: string[] = [];
 
   ngOnInit(): void {
-
     this.route.params.subscribe(params=>{
       const productoraId= params['id'];
       this.sanitizedYoutubeVideoUrl="";
@@ -29,8 +28,10 @@ export class ProductoraComponent {
         this.viewportScroller.scrollToPosition([0, 0]);
         this.entidad=data;
         this.procesarFotos()
+        this.fechas=""
         this.nextDates()
         this.extractYoutubeVideoId();
+        this.formatLocation(data.ubicacion)
       })
     })
   }
@@ -83,8 +84,11 @@ export class ProductoraComponent {
 
   nextDates(){
     if(this.entidad!==null && this.entidad!==undefined){
-      this.eventosService.buscarFiesta(this.entidad.nombre).subscribe(data=>{
+      this.eventosService.buscarFiesta(this.entidad.nombre.toLowerCase().trim()).subscribe(data=>{
         this.fechas=data
+        if(data!==""){
+            this.fechas=data
+        }
       })
 
     }
@@ -94,4 +98,8 @@ export class ProductoraComponent {
   mostrarMail(mail:String){
     alert("El mail de la productora es: "+mail)
   }
+  ubicacionTw:String;
+  formatLocation(ubicacion:String) {
+    this.ubicacionTw= ubicacion.replace(/\s+/g, '');
+}
 }

@@ -99,7 +99,7 @@ import { SpinnerComponent } from './componentes/spinner/spinner.component';
     AngularFireModule.initializeApp(enviroment.firebaseConfig)
     // LightboxModule,
   ],
-  exports:[ ArtistasComponent],
+  exports:[ ArtistasComponent,ProductorasComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

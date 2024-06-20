@@ -44,8 +44,7 @@ export class ArtistasService {
   }
 
   buscarArtista(parametro: string): Observable<any> {
-    console.log("parametro: ", parametro)
-    return this.http.get<any[]>(`${this.url}/artista/buscar/${parametro}`).pipe(
+    return this.http.get<any[]>(`${this.url}/artista/buscar/${parametro.trim()}`).pipe(
       catchError(error => {
         if (error.status === 404) {
           // Si el artista no se encuentra, lanzamos un error con un mensaje específico

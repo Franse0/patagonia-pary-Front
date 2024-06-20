@@ -2,7 +2,6 @@
     width: 100%;
     max-height: 500px;
     display: block;
-    margin: 0 auto;
 }
 
 
@@ -43,9 +42,7 @@
     .contenedor{
         margin-top: 5px;
     }
-    .img-evento{
-        max-width: 40vw;
-    }
+   
     
     .parrafo-description-event{
         padding: 0;
@@ -59,6 +56,18 @@
     }
     .desktop{
         display:block;
+    }
+    .img-evento{
+        width: 95%;
+   
+    }
+    .enlace2{
+        transition: .2s;
+        color: goldenrod;
+    }
+    .enlace2:hover{
+        color: rgb(255, 183, 0);
+        cursor: pointer;
     }
     
 }

@@ -16,20 +16,23 @@ export class ProductorasComponent implements OnInit{
   constructor(private productoraService:ProductoraService, private router:Router, private viewportScroller:ViewportScroller){}
 
   ngOnInit(): void {
-    if(this.router.url.includes("all-productoras")){
+    
       this.productoraService.prodcutoraTodos().subscribe(data=>{
-        this.entidades=data
+        this.entidades=data.reverse()
       })
-    }
+    
     if(this.router.url.includes("productoras-admin")){
       this.mostrarId=true;
       this.productoraService.prodcutoraTodos().subscribe(data=>{
         this.entidades=data
       })
     }
-    this.productoraService.prodcutoraTodos().subscribe(data=>{
-      this.entidades=data.slice(0, 6).reverse()
-    })
+    if(this.router.url.includes("pagina-principal")){
+      this.productoraService.prodcutoraTodos().subscribe(data=>{
+        this.entidades=data.slice(0, 6).reverse()
+      })
+    }
+
   }
   arriba(){
     this.viewportScroller.scrollToPosition([0, 0]);

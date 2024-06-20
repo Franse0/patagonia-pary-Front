@@ -2,12 +2,22 @@
   <div class="card-evento-seleccionado" *ngFor="let evento of eventoSelected">
     <img src="{{evento.img}}" alt="{{evento.nombre}}-{{evento.ubicacion}}" class="img-evento" [routerLink]="['/eventos', evento.id]" />
     <div class="card-evento-contenido">
-      <h4 (click)="mostrarDetalle(evento.id)" class="enlace">{{evento.nombre}}</h4>
-      <p class="parrafo-description-event ">
-        {{evento.descripcion}}
-      </p>
-      <span><i class="fa-solid fa-check"></i>Organiza: {{evento.organiza}}</span> <br>
-      <span><i class="fa-solid fa-location-dot"></i>{{evento.ubicacion}}</span> <br>
+      <h4 (click)="mostrarDetalle(evento.id)" style="text-align: center;" class="enlace">{{evento.nombre}}</h4>
+  
+      <div class="line-up" *ngIf="lineup">
+        <div class="">
+            <h5>Line up</h5>
+        </div>
+        <ul>
+            <li *ngFor="let dj of enlacesDJs" >
+              <a *ngIf="dj.id" [class.enlace]="dj.id" class="enlace2" [routerLink]="['/artista', dj.id]">{{ dj.seudonimo }}</a>
+              <span *ngIf="!dj.id">{{ dj.seudonimo }}</span>
+            </li>
+          </ul>
+          
+    </div>
+      <span><i class="fa-solid fa-check"></i><strong>Organiza: </strong> {{evento.organiza}}</span> <br>
+      <span><i class="fa-solid fa-location-dot"></i><strong>{{evento.ubicacion}}</strong></span> <br>
       <div class="contenedor"> 
         <a href="https://api.whatsapp.com/send/?phone=5492994535581&text&type=phone_number&app_absent=0" class="btn-tech" target="_blank" class="a-white">
           <button class="btn-tech" *ngIf="evento.precio" >Comprar Entrada</button>

@@ -1,65 +1,108 @@
+
 <div class="caja">
     <div class="panel">
-        <span (click)="mostrarSeccion('bio')" [ngClass]="{'is-selected': seccionActiva === 'bio' || (!seccionActiva && seccionPredeterminada === 'bio')}">Bio</span>
+        <span (click)="mostrarSeccion('bio')"
+            [ngClass]="{'is-selected': seccionActiva === 'bio' || (!seccionActiva && seccionPredeterminada === 'bio')}">Bio</span>
         <span (click)="mostrarSeccion('fotos')" [ngClass]="{'is-selected': seccionActiva === 'fotos'}">Fotos</span>
-        <span (click)="mostrarSeccion('proximas-fechas')" [ngClass]="{'is-selected': seccionActiva === 'proximas-fechas'}">Proximas fechas</span>
+        <span *ngIf="fechas.length>= 1" (click)="mostrarSeccion('proximas-fechas')"
+            [ngClass]="{'is-selected': seccionActiva === 'proximas-fechas'}">Proximas fechas</span>
     </div>
 </div>
 <section *ngIf="seccionActiva === 'proximas-fechas'" class="proximas-fechas">
     <div class="div">
         <ul *ngIf="fechas">
             <a [routerLink]="['/eventos', fecha.id]" *ngFor="let fecha of fechas" class="next-dates">
-                <img [src]="fecha.img" alt=""  class="img-next-date">
-                <li >{{fecha.nombre}}, {{fecha.ubicacion}} </li>
+                <img [src]="fecha.img" alt="" class="img-next-date">
+                <li>{{fecha.nombre}}, {{fecha.ubicacion}} </li>
             </a>
         </ul>
     </div>
 </section>
-<div class="all-container">
+<div >
 
-    
-    <section class="show-entidad " #showEvento  *ngIf="seccionActiva === 'bio'">   
-    
+
+    <section class="show-entidad " #showEvento *ngIf="seccionActiva === 'bio'" [ngClass]="entidad.video_yt ? 'clase-con-video' : 'clase-sin-video'">
+
         <article class="info-productora-container">
-            <div class="package-producer">
+            <div class="package-producer" *ngIf="entidad.video_yt">
                 <img [src]="entidad?.img" alt="" class="logo" width="200px">
             </div>
             <div class="acerca-de">
-                <div >
-                    <h4>{{entidad?.nombre}}</h4>
+               
+                <div>
+                    <h4 style="text-align: center;">{{entidad?.nombre}}</h4>
+                    <div class="ubi">
+                        <i class="fa-solid fa-location-dot"></i> 
+                        <span>{{entidad.ubicacion}} </span>
+                    </div>
                 </div>
-                <p [innerHTML]="entidad?.descripcion" >
+                <p [innerHTML]="entidad?.descripcion" style="text-align: center;">
                 </p>
+            
             </div>
             <div class="redes">
                 <a href="{{entidad?.instagram}}" target="_blank">
-                    <i class="fa-brands fa-instagram"  *ngIf="entidad?.instagram"></i>
+                    <i class="fa-brands fa-instagram" *ngIf="entidad?.instagram"></i>
                 </a>
                 <a href="{{entidad?.youtube}}" target="_blank">
-                    <i class="fa-solid fa-phone"  *ngIf="entidad?.youtube"></i>
-                </a>            
+                    <i class="fa-solid fa-phone" *ngIf="entidad?.youtube"></i>
+                </a>
                 <a (click)="mostrarMail(entidad?.mail)" target="_blank">
-                    <i class="fa-solid fa-envelope"  *ngIf="entidad?.mail"></i>
-                </a>            
-            </div>
+                    <i class="fa-solid fa-envelope" *ngIf="entidad?.mail"></i>
+                </a>
+            </div> 
+           
+            <div class="comparti" *ngIf="!entidad.video_yt">
+                <h5 class="" > Compartir</h5>
+    
+                <div class="share">
+    
+                    <a href="https://twitter.com/intent/tweet?text=%F0%9F%8E%89%20Descubrí%20a%20{{entidad.nombre}},%20una%20incre%C3%ADble%20productora%20de%20eventos%20en%20{{entidad.ubicacion}}!%20%F0%9F%8C%9F%20Haz%20clic%20en%20el%20enlace%20y%20conoce%20todo%20sobre%20sus%20propuestas%20innovadoras.%20%F0%9F%91%89%20https://patagoniapary.ar/productora/{{entidad.id}}%0A%23Eventos%20%23Producción%20%23{{ubicacionTw}}" target="_blank" rel="noopener noreferrer">
+                       
+                                 <img src="/assets/twitter.png" alt="Compartir en Twitter" width="30px">
+                     </a>
 
+                     <a href="https://wa.me/?text=%F0%9F%8E%89%20Descubri%20a%20{{entidad.nombre}},%20una%20incre%C3%ADble%20productora%20de%20eventos%20en%20{{entidad.ubicacion}}!%20%F0%9F%8C%9F%20Haz%20clic%20en%20el%20enlace%20y%20conoce%20todo%20sobre%20sus%20propuestas%20innovadoras.%20%F0%9F%91%89%20https%3A%2F%2Fpatagoniapary.ar%2Fproductora%2F{{entidad.id}}" target="_blank">
+                        <img src="/assets/whatsapp.png" alt="" width="30px">    
+                   </a>
+                </div>
+    
+            </div>
         </article>
-          
-            <div *ngIf="entidad" class="card-evento show-card" >
-                    <div class="">
-                        <ng-container *ngIf="sanitizedYoutubeVideoUrl; else mostrarImagen">
-                            <iframe [src]="sanitizedYoutubeVideoUrl" frameborder="0"></iframe>
-                        </ng-container>
-                        <ng-template #mostrarImagen>
-                            <div class="img-container-not-video">
-                                <img [src]="entidad?.facebook" alt=""  class="img-show">
-                            </div>
-                        </ng-template>    
+
+        <div *ngIf="entidad" class="card-evento show-card">
+            <div class="">
+                <ng-container *ngIf="sanitizedYoutubeVideoUrl; else mostrarImagen">
+                    <iframe  [src]="sanitizedYoutubeVideoUrl" frameborder="0"></iframe>
+                </ng-container>
+                <ng-template #mostrarImagen>
+                    <div class="img-container-not-video">
+                        <img [src]="entidad?.tiktok" alt="" class="img-show">
                     </div>
+                </ng-template>
+                <div class="comparti" *ngIf="entidad.video_yt">
+                    <h5 class="" > Compartir</h5>
+        
+                    <div class="share">
+        
+                        <a href="https://twitter.com/intent/tweet?text=%F0%9F%8E%89%20Descubrí%20a%20{{entidad.nombre}},%20una%20incre%C3%ADble%20productora%20de%20eventos%20en%20{{entidad.ubicacion}}!%20%F0%9F%8C%9F%20Haz%20clic%20en%20el%20enlace%20y%20conoce%20todo%20sobre%20sus%20propuestas%20innovadoras.%20%F0%9F%91%89%20https://patagoniapary.ar/productora/{{entidad.id}}%0A%23Eventos%20%23Producción%20%23{{ubicacionTw}}" target="_blank" rel="noopener noreferrer">
+                           
+                                     <img src="/assets/twitter.png" alt="Compartir en Twitter" width="30px">
+                         </a>
+    
+                         <a href="https://wa.me/?text=%F0%9F%8E%89%20Descubri%20a%20{{entidad.nombre}},%20una%20incre%C3%ADble%20productora%20de%20eventos%20en%20{{entidad.ubicacion}}!%20%F0%9F%8C%9F%20Haz%20clic%20en%20el%20enlace%20y%20conoce%20todo%20sobre%20sus%20propuestas%20innovadoras.%20%F0%9F%91%89%20https%3A%2F%2Fpatagoniapary.ar%2Fproductora%2F{{entidad.id}}" target="_blank">
+                            <img src="/assets/whatsapp.png" alt="" width="30px">    
+                       </a>
+                    </div>
+        
+                </div>
+               
             </div>
-
-
             
+        </div>
+
+
+
 
     </section>
     <section class="section-galeria" *ngIf="seccionActiva === 'fotos' || seccionActiva === 'bio'">
@@ -67,13 +110,16 @@
             <h4>Fotos</h4>
         </div>
         <div class="galeria">
-            <div class="img-container" *ngFor="let fotoUrl of productorasFotos; let i = index" (click)="abrirGaleriaDesdePrincipal(i)">
-              <img [src]="fotoUrl" alt="Foto de Productora" class="img-galeria">
+            <div class="img-container" *ngFor="let fotoUrl of productorasFotos; let i = index"
+                (click)="abrirGaleriaDesdePrincipal(i)">
+                <img [src]="fotoUrl" alt="Foto de Productora" class="img-galeria">
             </div>
-          </div>
-          <app-galeria></app-galeria>
+        </div>
+        <app-galeria></app-galeria>
     </section>
+    
+</div>
+<app-productoras></app-productoras>
 
 
-    <app-productoras></app-productoras>
-</div> 
+

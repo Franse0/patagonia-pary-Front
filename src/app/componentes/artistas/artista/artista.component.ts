@@ -28,6 +28,7 @@ export class ArtistaComponent {
   
 
     ngOnInit(): void {
+      this.viewportScroller.scrollToPosition([0, 0]);
       this.route.params.subscribe(params => {
         const id = params['id'];
         this.loadData(id);

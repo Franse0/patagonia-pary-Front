@@ -1,7 +1,8 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { take } from 'rxjs';
+import { forkJoin, take } from 'rxjs';
 import { Evento } from 'src/app/models/evento';
+import { ArtistasService } from 'src/app/services/artistas.service';
 import { EventosService } from 'src/app/services/eventos.service';
 
 @Component({
@@ -12,20 +13,20 @@ import { EventosService } from 'src/app/services/eventos.service';
 export class EventoSelectComponent implements OnInit{
   @Input() eventoId:number ;
   eventoSelected:any;
-  selectedFiesta:any;
   eventos:any[];
 
-  constructor(private eventoSerivce:EventosService, private router:Router){}
+  constructor(private eventoSerivce:EventosService, private router:Router,
+    private artistaService:ArtistasService
+  ){}
 
   async ngOnInit(): Promise<void> {
     this.eventoSerivce.fiestasTodos().subscribe(data=>{
       this.eventos=data;
     })
-    this.eventoSerivce.fiestaParticular(this.eventoId).subscribe(data=>{
-      this.eventoSelected=data
-    })
-    await this.cargarEvento();
+        await this.cargarEvento();
   }
+
+
   ngOnChanges(changes: SimpleChanges): void {
     // Verifica si ha cambiado el valor de eventoId
     if (changes['eventoId'] && !changes['eventoId'].firstChange) {
@@ -47,6 +48,8 @@ export class EventoSelectComponent implements OnInit{
     )
     .subscribe(data => {
       this.eventoSelected = [data];
+      this.enlacesDJs=[]
+      this.procesarLineUp(data.djs)
     });
   }
 
@@ -55,5 +58,53 @@ export class EventoSelectComponent implements OnInit{
   }
   
   
+  lineup:any[]=[]
+  enlacesDJs:any[]=[]
+
+  procesarLineUp(djs: string): void {
+    console.log(djs)
+    // Dividir el string de djs en un array usando la coma como delimitador
+    this.lineup = djs.split(',').map(item => item.trim());    
+    // Ahora tienes un array con los nombres de los DJs
+    this.verificarSiDjEstaCargado(this.lineup)
+  }
+
+    
+  verificarSiDjEstaCargado(lineup: any[]): void {
+    const djsEncontrados: any[] = [];
+    const djsNoEncontrados: any[] = [];
+  
+    if (lineup && lineup.length > 0) {
+      const observables = lineup.map(item => this.artistaService.buscarArtista(item));
+  
+      forkJoin(observables).subscribe(
+        resultados => {
+          resultados.forEach((data, index) => {
+            if (data.length > 0) {
+              const nombreMinuscula = lineup[index].toLowerCase();
+              const djEncontrado = data.find((dj:any) => dj.seudonimo.toLowerCase() === nombreMinuscula);
+              if(!djEncontrado){
+              djsNoEncontrados.push({ seudonimo: lineup[index], id: null });
+              }
+              // Si el DJ está en la base de datos, agregar a djsEncontrados
+              if(djEncontrado){
+                djsEncontrados.push(...data);
+              }
+            } else {
+              // Si el DJ no está en la base de datos, agregar a djsNoEncontrados
+              djsNoEncontrados.push({ seudonimo: lineup[index], id: null });
+            }
+          });
+          // Asignar tanto a los encontrados como a los no encontrados a enlacesDJs
+          this.enlacesDJs = djsEncontrados.concat(djsNoEncontrados);
+
+        },
+        error => {
+          // Manejar errores (opcional)
+          console.error('Error en forkJoin:', error);
+        }
+      );
+    }
+  }
 
 }

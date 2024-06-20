@@ -16,6 +16,7 @@ export class ProductorasAdminComponent implements OnInit{
     this.formAdmin=this.formBuilder.group({
     id:["",[]],
     nombre:["",[Validators.required]],
+    ubicacion:["",[Validators.required]],
     img:["",[Validators.required]],
     img_list:["",[]],
     instagram:["",[]],
@@ -47,6 +48,7 @@ export class ProductorasAdminComponent implements OnInit{
     const productora: Productoras = {
       id: this.formAdmin.value.id,
       nombre: this.formAdmin.value.nombre,
+      ubicacion: this.formAdmin.value.ubicacion,
       img: this.formAdmin.value.img,
       img_list: this.formAdmin.value.img_list,
       instagram: this.formAdmin.value.instagram,
@@ -69,6 +71,7 @@ export class ProductorasAdminComponent implements OnInit{
       this.formAdmin.patchValue({
         id:this.forEdit.id,
         nombre:this.forEdit.nombre,
+        ubicacion: this.forEdit.ubicacion,
         img:this.forEdit.img,
         img_list:this.forEdit.img_list,
         imgs:this.forEdit.imgs,

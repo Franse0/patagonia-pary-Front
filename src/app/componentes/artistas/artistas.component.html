@@ -37,9 +37,7 @@
           >Leer mas...</span
         >
         <div class="card-links">
-          <a href="{{ artista?.tiktok }}" target="_blank">
-            <i class="fa-brands fa-tiktok" *ngIf="artista.tiktok"></i>
-          </a>
+       
           <a href="{{ artista.youtube }} " target="_blank">
             <i class="fa-brands fa-youtube" *ngIf="artista.youtube"></i>
           </a>
@@ -141,22 +139,22 @@
                   >Leer mas...</span
                 >
                 <div class="card-links">
-                  <a href="{{ selectedArtista?.tiktok }}">
+                  <a href="{{ selectedArtista?.tiktok }}" target="_blank">
                     <i class="fa-brands fa-tiktok" *ngIf="selectedArtista.tiktok"></i>
                   </a>
-                  <a href="{{ selectedArtista.youtube }} ">
+                  <a href="{{ selectedArtista.youtube }} " target="_blank">
                     <i class="fa-brands fa-youtube" *ngIf="selectedArtista.youtube"></i>
                   </a>
-                  <a href="{{ selectedArtista.spotify }}">
+                  <a href="{{ selectedArtista.spotify }}" target="_blank">
                     <i class="fa-brands fa-spotify" *ngIf="selectedArtista.spotify" ></i>
                   </a>
-                  <a (click)="mostrarMail(selectedArtista.mail)" target="_blank">
+                  <a (click)="mostrarMail(selectedArtista.mail)">
                     <i class="fa-solid fa-envelope"*ngIf="selectedArtista?.mail"></i>
                 </a>
-                <a href="{{ selectedArtista.instagram }}">
+                <a href="{{ selectedArtista.instagram }}" target="_blank">
                   <i class="fa-brands fa-instagram"*ngIf="selectedArtista.instagram"></i>  
                 </a>
-                <a href="{{ selectedArtista.soundcloud }}">
+                <a href="{{ selectedArtista.soundcloud }}" target="_blank">
                   <i class="fa-brands fa-soundcloud" *ngIf="selectedArtista.soundcloud"></i>
                 </a>
                 <a href="{{selectedArtista?.pretskit}}" target="_blank">

@@ -1,3 +1,14 @@
+.clase-con-video {
+    /* estilos para cuando hay video */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .clase-sin-video {
+    /* estilos para cuando no hay video */
+    display: flex;
+    flex-direction: column-reverse;
+  }
 
 .img-container{
     /* width: 80%; */
@@ -32,10 +43,14 @@
     width: 100%;
 }
 
+.ubi{
+    
+    text-align: center;
+    padding-bottom: 1rem;
 
-.all-container{
-    padding: 69px 1rem 1rem;
+
 }
+
 
 .title-container {
     font-size: 1rem ;
@@ -50,6 +65,13 @@
 .info-productora-container{
     padding: 1rem 1rem;
 }
+
+.show-entidad{
+    padding-bottom: 1rem;
+}
+
+
+
 
 .redes{
     display: flex;
@@ -68,8 +90,8 @@ iframe{
 }
 
 .section-galeria{
+    
     padding-top: 1rem;
-    border-top: .7px solid grey ;
 }
 
 .img-container{
@@ -100,51 +122,55 @@ iframe{
         width: 200px;
     }
     .img-show{
-        width: 100%;
         max-width: 500px;
     }
     .show-entidad{
         display: flex;
+        margin: 0 auto;
         flex-direction: row-reverse;
-        padding: 2rem 1rem;
+        padding: 0rem 1rem;
         justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid black;
     }
     .info-productora-container{
         padding: 1rem;
         width: 50%;
     }
+    .ubi{
+    
+        margin: 0 auto;
+    }
+    
     
     .show-card{
-        display: flex;
         width: 50%;
         justify-content: center;
-        align-items: center;
     }
 
     .package-producer>img{
-        width: 60%;
         margin: 0 auto;
         transition: .2s;
     }
-    .package-producer>img:hover{
-        width: 63%;
-        margin: 0 auto;
-    }
+  
 
     .all-container{
         padding-top:6em ;
     }
 
     iframe{
-        width: 100%;
+        display: block;
+        width: 80%;
         height: 400px;
+        margin: 0 auto;
+        padding-top: 1rem;
     }
     
   
 .galeria{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    width: 80%;
+    width: 100%;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
@@ -168,16 +194,28 @@ iframe{
     width: 110%;
     display: block;
 }
+.section-galeria{
+    padding: 0 1rem;
+    padding-top: 1rem;
+}
 .all-container{
     padding-top: 0px;
 }   
+.section-galeria{
+   width: 80%;
+   margin: 0 auto;
+}   
+
+
 }
 
 .padding-none{
     padding: none;
 }
 .img-container-not-video{
+    margin: 10px 0;
     width: 100%;
+    padding: 0 1rem;
 }
 
 
@@ -205,4 +243,18 @@ iframe{
 
 .caja{
     padding-top: 60px;
+}
+
+
+.comparti{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding-bottom: 1rem;
+}
+.share{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
