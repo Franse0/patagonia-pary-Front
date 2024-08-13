@@ -9,7 +9,7 @@
           <p class="negrita ">{{noticia.resumen}} </p>
 
           <!-- <p>{{noticia.cuerpo}}</p> -->
-          <div class="cuerpo" [innerHTML]="noticia.cuerpo"></div>
+          <div class="cuerpo" [innerHTML]="sanitizedHtml"></div>
         </article>
 
 
@@ -57,6 +57,5 @@
   
       </div>
      </section> 
-
 
 

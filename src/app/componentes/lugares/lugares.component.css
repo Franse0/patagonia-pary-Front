@@ -63,7 +63,7 @@ h3{
 }
 
 
-@media (min-width:1040px){
+@media (min-width:940px){
     .parrafo-descrip-card-pequeña{
         max-height:40px;
         position: relative;

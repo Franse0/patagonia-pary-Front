@@ -1,5 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, TitleStrategy } from '@angular/router';
 import { Noticia } from 'src/app/models/noticia';
 import { NoticiasService } from 'src/app/services/noticias.service';
@@ -13,19 +14,24 @@ export class NoticiaComponent implements OnInit{
   noticia:Noticia;
   noticiaAside:Noticia[];
   noticiasMas:Noticia[];
+  sanitizedHtml: SafeHtml;
 
-  constructor(private noticiaService:NoticiasService ,private route:ActivatedRoute,private viewportScroller: ViewportScroller){}
+  constructor(private noticiaService:NoticiasService ,private route:ActivatedRoute,
+    private viewportScroller: ViewportScroller,private sanitizer: DomSanitizer,
+  ){}
   ngOnInit(): void {
-
     this.viewportScroller.scrollToPosition([0, 0]);
-    this.getNoticiasAside()
-    this.route.params.subscribe(params=>{
-      const noticiaId= params['id'];
-      this.noticiaService.noticiasParticular(noticiaId).subscribe(data=>{
-        this.noticia=data
+    this.getNoticiasAside();
+    this.route.params.subscribe(params => {
+      const noticiaId = params['id'];
+      this.noticiaService.noticiasParticular(noticiaId).subscribe(data => {
+        this.noticia = data;
+        this.sanitizedHtml = this.sanitizer.bypassSecurityTrustHtml(this.noticia.cuerpo.toString());
+        console.log(this.noticia.cuerpo); // Añade esto para depuración
+        console.log(this.sanitizedHtml)
         this.noticiaAside = this.limitToMax3(this.noticiaAside.filter(noticia => noticia.id !== data.id));
-      })
-    })
+      });
+    });
   }
 
   getNoticiasAside() {
@@ -40,7 +46,9 @@ export class NoticiaComponent implements OnInit{
     this.viewportScroller.scrollToPosition([0, 0]);
     const id = Number((event.target as HTMLElement).id);
     this.noticiaService.noticiasParticular(id).subscribe(data=>{
+      this.sanitizedHtml= "";
       this.noticia=data;
+      this.sanitizedHtml=this.sanitizer.bypassSecurityTrustHtml(this.noticia.cuerpo.toString())
       this.getNoticiasAside()
     })
   }

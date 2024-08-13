@@ -69,6 +69,13 @@ export class HeaderComponent {
     }
   }
   
+  paginaPrioncipal() {
+    this.router.navigate(["/pagina-principal"])
+    const nav = document.getElementById("nav");
+    if(nav) {
+    nav.classList.remove('visible');
+    }
+  }
   
 
   
